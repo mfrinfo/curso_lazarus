@@ -1,0 +1,60 @@
+object frmAtualizaBancoDados: TfrmAtualizaBancoDados
+  Left = 705
+  Height = 66
+  Top = 391
+  Width = 482
+  BorderStyle = bsNone
+  Caption = 'frmAtualizaBancoDados'
+  ClientHeight = 66
+  ClientWidth = 482
+  Position = poScreenCenter
+  LCLVersion = '1.8.4.0'
+  object Panel1: TPanel
+    Left = 0
+    Height = 66
+    Top = 0
+    Width = 482
+    Align = alClient
+    BevelOuter = bvLowered
+    BevelWidth = 3
+    BorderWidth = 3
+    Caption = 'Panel1'
+    ClientHeight = 66
+    ClientWidth = 482
+    Color = clBlack
+    ParentColor = False
+    TabOrder = 0
+    object Panel2: TPanel
+      Left = 6
+      Height = 54
+      Top = 6
+      Width = 470
+      Align = alClient
+      BevelInner = bvLowered
+      BevelOuter = bvNone
+      BevelWidth = 2
+      BorderWidth = 2
+      ClientHeight = 54
+      ClientWidth = 470
+      Color = clBtnFace
+      Enabled = False
+      ParentColor = False
+      TabOrder = 0
+      object Label1: TLabel
+        Left = 48
+        Height = 25
+        Top = 14
+        Width = 376
+        Caption = 'Atualizando Banco de Dados.... Aguarde'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -21
+        Font.Name = 'Tahoma'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentColor = False
+        ParentFont = False
+      end
+    end
+  end
+end

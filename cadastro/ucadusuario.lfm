@@ -1,0 +1,215 @@
+inherited frmCadUsuario: TfrmCadUsuario
+  Height = 461
+  Width = 837
+  Caption = 'Cadastro'
+  ClientHeight = 461
+  ClientWidth = 837
+  OnClose = FormClose
+  OnCreate = FormCreate
+  inherited pnlTitulo: TPanel
+    Width = 837
+    ClientWidth = 837
+    inherited imgIcon: TImage
+      Height = 30
+      Width = 30
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869632603000089504E47
+        0D0A1A0A0000000D494844520000001E0000001E080400000091396629000000
+        0467414D410000B18F0BFC6105000000206348524D00007A26000080840000FA
+        00000080E8000075300000EA6000003A98000017709CBA513C00000002624B47
+        440000AA8D2332000000097048597300000DD700000DD70142289B7800000007
+        74494D4507E3011902023855C5FC5B000001F44944415438CBAD943F68535114
+        C6BF1B22B5499436285628486D8B8B8216948038B45B11C950141C8A593A8AB8
+        7470F0DF60112AB48B7FD6AA1DECE42686565C94521B445C4A4B0591FA2FB691
+        26E0949F8B89F7DD775F12D0B39DEF9CEF3BE77EF7BD2BFD4398C6650635AC3E
+        EDD2B656F5CCBC6899CC5ECD29AD277AAFB2523AAC73DAD459F3BD8595302C70
+        0B1340267849F43876D04F8643C41964D96D24C65B86FEE671AB94D04DE554D4
+        96BA94D086F206E78C55F21AD04288CC4ECD6B5547CD2749A247F755F1AC5656
+        D237F9B23EEB426D96F9C0EB08338D8F9CD37977CDC654DB8C2AB140FE86114F
+        D7084B3E328DC5EA7E57C3603A448E38828DD7D4737AEC7455D8EFA176AB1C26
+        EFD69AD337A9BB216AA716753BAC38CE1D07E9A04487835D62D677925E8AF438
+        D80C570279928F1CF71B718F1B21C16FB62053CCF84D140729D2EF60535CB37D
+        261DACD7EFD2AC6B5C4F1DC552F08B329B1164498FD4EB90FBF4C3CA7E724051
+        4117252BEBE601EBECB190ABAC90F53E061C61A9765DA4B8CE1693743A3D6728
+        507004686782AF8C61240C636CF0D0BF22862C050A0CD78093AC31CB3E4922C6
+        1CAF38A6068121CB0AD39238C1174ED70B179927AEA641926546C573462DF01D
+        99E65449628845B14DCA827ED1D622B99D4A5C2965AC5FB44DA79ABF457F2261
+        C8B7DAFB9FE3379AE6FB4BC56234320000002574455874646174653A63726561
+        746500323031392D30312D32355430313A30323A35362B30313A3030E77A8505
+        0000002574455874646174653A6D6F6469667900323031392D30312D32355430
+        313A30323A35362B30313A303096273DB90000001974455874536F6674776172
+        65007777772E696E6B73636170652E6F72679BEE3C1A0000000049454E44AE42
+        6082
+      }
+    end
+    inherited lblTitulo: TLabel
+      Left = 54
+      Width = 64
+      Caption = 'Usuário'
+    end
+  end
+  inherited pnlBotoes: TPanel
+    Top = 411
+    Width = 837
+    ClientWidth = 837
+    inherited btnNovo: TBitBtn
+      OnClick = btnNovoClick
+    end
+    inherited btnAlterar: TBitBtn
+      OnClick = btnAlterarClick
+    end
+    inherited btnCancelar: TBitBtn
+      OnClick = btnCancelarClick
+    end
+    inherited btnGravar: TBitBtn
+      OnClick = btnGravarClick
+    end
+    inherited btnApagar: TBitBtn
+      OnClick = btnApagarClick
+    end
+    inherited btnNavigator: TDBNavigator
+      Hints.Strings = (      )
+    end
+    inherited btnFechar: TBitBtn
+      Left = 743
+      OnClick = btnFecharClick
+    end
+  end
+  inherited pgcPrincipal: TPageControl
+    Height = 361
+    Width = 837
+    inherited tabListagem: TTabSheet
+      ClientHeight = 333
+      ClientWidth = 829
+      inherited pnlListagemTopo: TPanel
+        Width = 829
+        ClientWidth = 829
+      end
+      inherited pnlListagemCentro: TPanel
+        Height = 273
+        Width = 829
+        ClientHeight = 273
+        ClientWidth = 829
+        inherited grdListagem: TDBGrid
+          Height = 271
+          Width = 827
+          Columns = <          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Código'
+              Width = 250
+              FieldName = 'usuarioID'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Nome'
+              Width = 500
+              FieldName = 'Nome'
+            end>
+        end
+      end
+    end
+    inherited tabManutencao: TTabSheet
+      ClientHeight = 333
+      ClientWidth = 829
+      object edtUsuarioId: TLabeledEdit[0]
+        Tag = 1
+        Left = 12
+        Height = 23
+        Top = 32
+        Width = 350
+        EditLabel.AnchorSideLeft.Control = edtUsuarioId
+        EditLabel.AnchorSideRight.Control = edtUsuarioId
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = edtUsuarioId
+        EditLabel.Left = 12
+        EditLabel.Height = 15
+        EditLabel.Top = 14
+        EditLabel.Width = 350
+        EditLabel.Caption = 'Código'
+        EditLabel.ParentColor = False
+        MaxLength = 36
+        TabOrder = 0
+      end
+      object edtNome: TLabeledEdit[1]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 80
+        Width = 581
+        EditLabel.AnchorSideLeft.Control = edtNome
+        EditLabel.AnchorSideRight.Control = edtNome
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = edtNome
+        EditLabel.Left = 12
+        EditLabel.Height = 15
+        EditLabel.Top = 62
+        EditLabel.Width = 581
+        EditLabel.Caption = 'Usuário'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 1
+      end
+      object edtSenha: TLabeledEdit[2]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 130
+        Width = 413
+        EchoMode = emPassword
+        EditLabel.AnchorSideLeft.Control = edtSenha
+        EditLabel.AnchorSideRight.Control = edtSenha
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = edtSenha
+        EditLabel.Left = 12
+        EditLabel.Height = 15
+        EditLabel.Top = 112
+        EditLabel.Width = 413
+        EditLabel.Caption = 'Senha'
+        EditLabel.ParentColor = False
+        MaxLength = 40
+        PasswordChar = '*'
+        TabOrder = 2
+      end
+    end
+  end
+  inherited qryListagem: TZQuery
+    SQL.Strings = (
+      'SELECT usuarioID,'
+      '       Nome,'
+      #9'   Senha'
+      '  FROM usuarios'
+    )
+    object qryListagemusuarioID: TStringField[0]
+      DisplayLabel = 'Código'
+      FieldKind = fkData
+      FieldName = 'usuarioID'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 144
+    end
+    object qryListagemNome: TStringField[1]
+      FieldKind = fkData
+      FieldName = 'Nome'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 200
+    end
+    object qryListagemSenha: TStringField[2]
+      FieldKind = fkData
+      FieldName = 'Senha'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 160
+    end
+  end
+end

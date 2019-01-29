@@ -1,0 +1,203 @@
+inherited frmCadCategoria: TfrmCadCategoria
+  Left = 504
+  Height = 418
+  Top = 298
+  Width = 853
+  Caption = 'Cadastro'
+  ClientHeight = 418
+  ClientWidth = 853
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  inherited pnlTitulo: TPanel
+    Width = 853
+    ClientWidth = 853
+    TabOrder = 2
+    inherited imgIcon: TImage
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869631903000089504E47
+        0D0A1A0A0000000D4948445200000020000000200804000000D973B27F000000
+        0467414D410000B18F0BFC6105000000206348524D00007A26000080840000FA
+        00000080E8000075300000EA6000003A98000017709CBA513C00000002624B47
+        440000AA8D2332000000097048597300000EC400000EC401952B0E1B00000007
+        74494D4507E301190202168913F194000001E74944415448C7BD94BD6E135110
+        46CF6E13B98EB015D1605E012490A074E1D8520A9020F1D338928B58BC431AC0
+        54207E04A64885408A12925740147664E3D4B60BFB50F827EBF5DA5E1AA6DA9D
+        6FE6DCB973E75E7CE3D8641BDB606E8656FC64DBA16D3FBA6F381346AEB6D13C
+        FDAE9731EDC23C40A0C00FBE13B7C73C822098A473CA2DA043930E3976C9015D
+        1E06BF50B5BA948E55D569F197EAD82333532D63DDB17A6E98065051F528A6D7
+        557D1EB2D90E800E87316F952E504903B8073483FEA233E8D304EEA7016C0357
+        09FE36B09D06700DEC24F86F03D769003F81DDD909CC9B98A1089CA70134801C
+        D598F7902CD048370717EAD87A640E5EA87A663899C4134E9608050AF349CC73
+        4A16E8F2952B762892053A3C087EA7BD0B79CF63DA99772652632562E4ABC896
+        42F7FD60CBA12DDFFBCC34DDFB3F66C39EA5047FC95E740B89112D8FF18F3AB0
+        1C13CB0ED4CE9AF449C4084B0EE288A93848AA6C2162322916EDAB43F7A662EC
+        3F217D12310344562C2F7EAF5D7DE0B73920E2ACA54E2FDF0C7BBCACCDC50FDD
+        8BDE9699589B026A9B578725C0E60A969A5DFDA71E2C37370258D859E2212679
+        E780CD73B0025A550D2CF18E2D863C0D3EDF94CB5BB618F224F802D388E567A7
+        4001B0B7E62E74016CAD7D727C6D77C56DECFA12C0E3754FCE5F20EAD267F432
+        D9520000002574455874646174653A63726561746500323031392D30312D3235
+        5430313A30323A32322B30313A303019F0A80F0000002574455874646174653A
+        6D6F6469667900323031392D30312D32355430313A30323A32322B30313A3030
+        68AD10B30000001974455874536F667477617265007777772E696E6B73636170
+        652E6F72679BEE3C1A0000000049454E44AE426082
+      }
+    end
+    inherited lblTitulo: TLabel
+      Width = 80
+      Caption = 'Categoria'
+    end
+  end
+  inherited pnlBotoes: TPanel
+    Top = 368
+    Width = 853
+    ClientWidth = 853
+    inherited btnNovo: TBitBtn
+      Caption = 'NOVO'
+      OnClick = btnNovoClick
+    end
+    inherited btnAlterar: TBitBtn
+      Caption = 'ALTERAR'
+      OnClick = btnAlterarClick
+    end
+    inherited btnCancelar: TBitBtn
+      Caption = 'CANCELAR'
+      OnClick = btnCancelarClick
+    end
+    inherited btnGravar: TBitBtn
+      Caption = 'GRAVAR'
+      OnClick = btnGravarClick
+    end
+    inherited btnApagar: TBitBtn
+      Caption = 'APAGAR'
+      OnClick = btnApagarClick
+    end
+    inherited btnNavigator: TDBNavigator
+      Hints.Strings = (      )
+    end
+    inherited btnFechar: TBitBtn
+      Left = 759
+      Caption = 'FECHAR'
+      OnClick = btnFecharClick
+    end
+  end
+  inherited pgcPrincipal: TPageControl
+    Height = 318
+    Width = 853
+    ActivePage = tabManutencao
+    TabIndex = 1
+    TabOrder = 0
+    inherited tabListagem: TTabSheet
+      ClientHeight = 290
+      ClientWidth = 845
+      inherited pnlListagemTopo: TPanel
+        Width = 845
+        ClientWidth = 845
+        inherited mskPesquisa: TMaskEdit
+          OnChange = mskPesquisaChange
+        end
+        inherited btnPesquisa: TBitBtn
+          Caption = 'PESQUISAR'
+          OnClick = btnPesquisaClick
+        end
+      end
+      inherited pnlListagemCentro: TPanel
+        Height = 230
+        Width = 845
+        ClientHeight = 230
+        ClientWidth = 845
+        inherited grdListagem: TDBGrid
+          Height = 228
+          Width = 843
+          Columns = <          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Código'
+              Width = 250
+              FieldName = 'categoriaId'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Descrição'
+              Width = 530
+              FieldName = 'descricao'
+            end>
+          OnDblClick = grdListagemDblClick
+          OnKeyDown = nil
+          OnTitleClick = grdListagemTitleClick
+        end
+      end
+    end
+    inherited tabManutencao: TTabSheet
+      ClientHeight = 290
+      ClientWidth = 845
+      object edtCategoriaId: TLabeledEdit[0]
+        Tag = 1
+        Left = 12
+        Height = 23
+        Top = 32
+        Width = 356
+        EditLabel.AnchorSideLeft.Control = edtCategoriaId
+        EditLabel.AnchorSideRight.Control = edtCategoriaId
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = edtCategoriaId
+        EditLabel.Left = 12
+        EditLabel.Height = 15
+        EditLabel.Top = 14
+        EditLabel.Width = 356
+        EditLabel.Caption = 'Código'
+        EditLabel.ParentColor = False
+        MaxLength = 36
+        TabOrder = 0
+      end
+      object edtDescricao: TLabeledEdit[1]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 80
+        Width = 492
+        EditLabel.AnchorSideLeft.Control = edtDescricao
+        EditLabel.AnchorSideRight.Control = edtDescricao
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = edtDescricao
+        EditLabel.Left = 12
+        EditLabel.Height = 15
+        EditLabel.Top = 62
+        EditLabel.Width = 492
+        EditLabel.Caption = 'Descrição'
+        EditLabel.ParentColor = False
+        MaxLength = 30
+        TabOrder = 1
+      end
+    end
+  end
+  inherited qryListagem: TZQuery
+    SQL.Strings = (
+      'SELECT categoriaId,'
+      '       descricao '
+      '  FROM categorias'
+    )
+    object qryListagemcategoriaId: TStringField[0]
+      DisplayLabel = 'Código'
+      FieldKind = fkData
+      FieldName = 'categoriaId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 144
+    end
+    object qryListagemdescricao: TStringField[1]
+      DisplayLabel = 'Descrição'
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 120
+    end
+  end
+end

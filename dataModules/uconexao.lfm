@@ -1,0 +1,47 @@
+object dtmPrincipal: TdtmPrincipal
+  OldCreateOrder = False
+  Height = 268
+  HorizontalOffset = 813
+  VerticalOffset = 415
+  Width = 567
+  PPI = 96
+  object ConDataBase: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = False
+    Properties.Strings = (
+      'AutoEncodeStrings='
+      'codepage='
+    )
+    TransactIsolationLevel = tiReadCommitted
+    SQLHourGlass = True
+    HostName = 'localhost'
+    Port = 3050
+    Database = 'C:\WL-PDV\db\PDVLOCAL.FDB'
+    User = 'SYSBDA'
+    Password = 'master@weblim'
+    Protocol = 'firebirdd-3.0'
+    LibraryLocation = 'C:\udemy\lazarus_venda\dll\fbclient.dll'
+    left = 80
+    top = 32
+  end
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = False
+    ClientCodepage = 'UTF8'
+    Properties.Strings = (
+      'codepage=UTF8'
+      'controls_cp=CP_UTF8'
+    )
+    TransactIsolationLevel = tiReadCommitted
+    SQLHourGlass = True
+    HostName = '192.168.1.58'
+    Port = 3050
+    Database = 'C:\CursoFree\DBTESTE.FDB'
+    User = 'SYSDBA'
+    Password = 'mudar@123'
+    Protocol = 'firebird-3.0'
+    LibraryLocation = 'C:\udemy\lazarus_venda\dll\fbclient.dll'
+    left = 379
+    top = 168
+  end
+end

@@ -1,0 +1,93 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 496
+  Height = 566
+  Top = 154
+  Width = 894
+  Caption = 'Sistema de Vendas'
+  ClientHeight = 546
+  ClientWidth = 894
+  Menu = mmuPrincipal
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poDefault
+  LCLVersion = '1.8.4.0'
+  WindowState = wsMaximized
+  object pgcForms: TPageControl
+    Left = 0
+    Height = 473
+    Top = 50
+    Width = 894
+    Align = alClient
+    TabOrder = 0
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 894
+    Align = alTop
+    ClientHeight = 50
+    ClientWidth = 894
+    TabOrder = 1
+    object Label1: TLabel
+      Cursor = crHandPoint
+      Left = 8
+      Height = 19
+      Top = 17
+      Width = 346
+      Caption = 'Curso de Lazarus + ACBR com MySQL na Prática'
+      Font.Color = clNavy
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsUnderline]
+      ParentColor = False
+      ParentFont = False
+      OnClick = Label1Click
+    end
+  end
+  object StbPrincipal: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 523
+    Width = 894
+    Panels = <    
+      item
+        Width = 50
+      end>
+    SimplePanel = False
+  end
+  object mmuPrincipal: TMainMenu
+    left = 149
+    top = 120
+    object mmuCadastro: TMenuItem
+      Caption = 'Cadastro'
+      object mmuCategoria: TMenuItem
+        Caption = 'Categoria'
+        OnClick = mmuCategoriaClick
+      end
+      object mmuSeparacao1: TMenuItem
+        Caption = '-'
+      end
+      object mmuUsuario: TMenuItem
+        Caption = 'Usuário'
+        OnClick = mmuUsuarioClick
+      end
+      object mmuAcoesDeAcesso: TMenuItem
+        Caption = 'Ações de Acesso'
+        OnClick = mmuAcoesDeAcessoClick
+      end
+      object mmuPermissaoDeAcoesParaUsuario: TMenuItem
+        Caption = 'Permissão de Ações para Usuário'
+        OnClick = mmuPermissaoDeAcoesParaUsuarioClick
+      end
+      object mmuSeparacao2: TMenuItem
+        Caption = '-'
+      end
+      object mmuFechar: TMenuItem
+        Caption = 'Fechar'
+        OnClick = mmuFecharClick
+      end
+    end
+  end
+end

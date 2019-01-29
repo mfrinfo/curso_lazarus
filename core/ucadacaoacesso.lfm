@@ -1,0 +1,209 @@
+inherited frmCadAcaoAcesso: TfrmCadAcaoAcesso
+  Height = 457
+  Width = 900
+  Caption = 'Cadastro'
+  ClientHeight = 457
+  ClientWidth = 900
+  OnClose = FormClose
+  OnCreate = FormCreate
+  inherited pnlTitulo: TPanel
+    Width = 900
+    ClientWidth = 900
+    inherited imgIcon: TImage
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869630503000089504E47
+        0D0A1A0A0000000D4948445200000020000000200804000000D973B27F000000
+        0467414D410000B18F0BFC6105000000206348524D00007A26000080840000FA
+        00000080E8000075300000EA6000003A98000017709CBA513C00000002624B47
+        440000AA8D2332000000097048597300000EC400000EC401952B0E1B00000007
+        74494D4507E3011A000C0CFBC35EE0000001D34944415448C7E5954148545114
+        86BFF374A240196863820BA34C6CE126DD48AE9244DA24E5AAA535BA2FB14D2D
+        72578BB6BA6829181359442041B41A236C5398961184A02015330E6691C9DFC2
+        49DFDCF7EE9BD919F42FCF7FCEFFCE3DFFB9F7C13F079D4B6453EA548F5A7D74
+        83B2CA7B8B038DEA9B76F04E7DD184017D957C02324D298C6D0D0258896E6682
+        B3006CD0EFD4AEDB1C68887127FE8B93F669473BA3A2FCC801E87D0C7317D031
+        BD503272A0C3B1CC2B08B8C4E92ACC39E48B06768B53BCAE28B0463126BA04B5
+        606FD5C508373808C0168F9CB40F60BF759F2B1181C9B04DC74BB3F0D9D8A855
+        67024F65AED319151316A94D0BA1F2ACEA427BB09B7494DB36E09548718133A4
+        5966DA72558CFE3FC1EE10D54D3F4D1479CE03DBF2A5EB31D7EC63345CAF8721
+        8316D5E615C8EBBB4655531E34CD382BB2A2235E01499ADDFB84812E928D644E
+        D830680CF7F13A4F0A809F8C71A774D4B2F6FFA2A01A502EF19ABF510704404B
+        4CAF691A2A1AD0CE4BDD0C801FB1F466151ECE910D80D9186AC10A158A37B94E
+        B72D1AA885790E38F465BB07EA24EDC4A7A903E01943F679CF9C416D978D67D2
+        B9E9E536169489F0EAD57CA9F88BAE2AF0F5ADBC9EA8C9479E508F3A549B74F0
+        E41FDFFEE00F68BEAD9C22672B050000002574455874646174653A6372656174
+        6500323031392D30312D32355432333A31323A31322B30313A3030D7C301CA00
+        00002574455874646174653A6D6F6469667900323031392D30312D3235543233
+        3A31323A31322B30313A3030A69EB9760000001974455874536F667477617265
+        007777772E696E6B73636170652E6F72679BEE3C1A0000000049454E44AE4260
+        82
+      }
+    end
+    inherited lblTitulo: TLabel
+      Width = 149
+      Caption = 'Ações de Acesso'
+    end
+  end
+  inherited pnlBotoes: TPanel
+    Top = 407
+    Width = 900
+    ClientWidth = 900
+    inherited btnNovo: TBitBtn
+      OnClick = btnNovoClick
+    end
+    inherited btnAlterar: TBitBtn
+      OnClick = btnAlterarClick
+    end
+    inherited btnGravar: TBitBtn
+      OnClick = btnGravarClick
+    end
+    inherited btnNavigator: TDBNavigator
+      Hints.Strings = (      )
+    end
+    inherited btnFechar: TBitBtn
+      Left = 806
+    end
+  end
+  inherited pgcPrincipal: TPageControl
+    Height = 357
+    Width = 900
+    ActivePage = tabManutencao
+    TabIndex = 1
+    inherited tabListagem: TTabSheet
+      ClientHeight = 329
+      ClientWidth = 892
+      inherited pnlListagemTopo: TPanel
+        Width = 892
+        ClientWidth = 892
+      end
+      inherited pnlListagemCentro: TPanel
+        Height = 269
+        Width = 892
+        ClientHeight = 269
+        ClientWidth = 892
+        inherited grdListagem: TDBGrid
+          Height = 267
+          Width = 890
+          Columns = <          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Código'
+              Width = 280
+              FieldName = 'acaoAcessoId'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Descrição'
+              Width = 300
+              FieldName = 'descricao'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Chave'
+              Width = 250
+              FieldName = 'chave'
+            end>
+        end
+      end
+    end
+    inherited tabManutencao: TTabSheet
+      ClientHeight = 329
+      ClientWidth = 892
+      object edtChave: TLabeledEdit[0]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 121
+        Width = 413
+        EditLabel.AnchorSideLeft.Control = edtChave
+        EditLabel.AnchorSideRight.Control = edtChave
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = edtChave
+        EditLabel.Left = 12
+        EditLabel.Height = 15
+        EditLabel.Top = 103
+        EditLabel.Width = 413
+        EditLabel.Caption = 'Chave'
+        EditLabel.ParentColor = False
+        MaxLength = 40
+        TabOrder = 0
+      end
+      object edtDescricao: TLabeledEdit[1]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 71
+        Width = 581
+        EditLabel.AnchorSideLeft.Control = edtDescricao
+        EditLabel.AnchorSideRight.Control = edtDescricao
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = edtDescricao
+        EditLabel.Left = 12
+        EditLabel.Height = 15
+        EditLabel.Top = 53
+        EditLabel.Width = 581
+        EditLabel.Caption = 'Descrição'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 1
+      end
+      object edtacaoAcessoId: TLabeledEdit[2]
+        Tag = 1
+        Left = 12
+        Height = 23
+        Top = 23
+        Width = 413
+        EditLabel.AnchorSideLeft.Control = edtacaoAcessoId
+        EditLabel.AnchorSideRight.Control = edtacaoAcessoId
+        EditLabel.AnchorSideRight.Side = asrBottom
+        EditLabel.AnchorSideBottom.Control = edtacaoAcessoId
+        EditLabel.Left = 12
+        EditLabel.Height = 15
+        EditLabel.Top = 5
+        EditLabel.Width = 413
+        EditLabel.Caption = 'Código'
+        EditLabel.ParentColor = False
+        MaxLength = 36
+        TabOrder = 2
+      end
+    end
+  end
+  inherited qryListagem: TZQuery
+    SQL.Strings = (
+      'SELECT acaoAcessoId, descricao, chave  FROM acaoAcesso'
+    )
+    object qryListagemacaoAcessoId: TStringField[0]
+      DisplayLabel = 'Código'
+      FieldKind = fkData
+      FieldName = 'acaoAcessoId'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 144
+    end
+    object qryListagemdescricao: TStringField[1]
+      DisplayLabel = 'Descrição'
+      FieldKind = fkData
+      FieldName = 'descricao'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 400
+    end
+    object qryListagemchave: TStringField[2]
+      DisplayLabel = 'Chave'
+      FieldKind = fkData
+      FieldName = 'chave'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 240
+    end
+  end
+end
