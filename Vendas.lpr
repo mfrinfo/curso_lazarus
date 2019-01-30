@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, uPrincipal, rxnew, lazcontrols, zcomponent, uConexao, utelaheranca,
+  Forms, uPrincipal, lazcontrols, zcomponent, uConexao, utelaheranca,
   uCadCategoria, cArquivoIni, uAtualizaDB, cAtualizacaoBancoDeDados,
   cAtualizacaoTabelaMYSQL, uenum, cusuariologado, ufuncaoCriptografia, uutils,
   catualizacaocampomysql, cCadCategoria, ccadusuario, ucadusuario, uLogin,

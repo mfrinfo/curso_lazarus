@@ -6,8 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Buttons, DbCtrls, ComCtrls, MaskEdit, DBGrids, rxcurredit,
-  rxtooledit, ZDataset, uEnum, uUtils;
+  StdCtrls, Buttons, DbCtrls, ComCtrls, MaskEdit, DBGrids, ZDataset, uEnum, uUtils;
 
 type
 
@@ -162,10 +161,6 @@ begin
       TDBLookupComboBox(Components[i]).KeyValue:=Null
     else if (Components[i] is TMemo) then
       TMemo(Components[i]).Text:=''
-    else if (Components[i] is TCurrencyEdit) then
-      TCurrencyEdit(Components[i]).Text:=''
-    else if (Components[i] is TRxDateEdit) then
-      TRxDateEdit(Components[i]).Date:=0
     else if (Components[i] is TMaskEdit) then
       TMaskEdit(Components[i]).Text:='';
 
