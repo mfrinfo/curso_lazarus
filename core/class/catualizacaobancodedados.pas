@@ -13,8 +13,8 @@ uses Classes,
      ZAbstractRODataset,
      ZAbstractDataset,
      ZDataset,
-     cArquivoIni,
      DB,
+     uEnum,
      SysUtils;
 
 type
@@ -27,21 +27,11 @@ type
 
   public
     ConexaoDB:TZConnection;
+    TipoDb: TTipoBancoDados;
     constructor Create(aConexao:TZConnection);
     procedure ExecutaDiretoBancoDeDados(aScript: String);
+    function AtualizarBancoDeDados: Boolean;
 end;
-
-type
-
-  { TAtualizaBancoDadosMYSQL }
-
-  TAtualizaBancoDadosMYSQL = Class
-  private
-    ConexaoDB: TZConnection;
-  public
-    function AtualizarBancoDeDadosMYSQL: Boolean;
-    constructor Create(aConexao: TZConnection);
-End;
 
 implementation
 
@@ -77,9 +67,7 @@ begin
 end;
 
 
-{ TAtualizaBancoDadosMYSQL }
-
-function TAtualizaBancoDadosMYSQL.AtualizarBancoDeDadosMYSQL: Boolean;
+function TAtualizaBancoDados.AtualizarBancoDeDados: Boolean;
 var oAtualizarDB:TAtualizaBancoDados;
     oTabela: TAtualizaBancoDados;
     oCampo: TAtualizaBancoDados;
@@ -88,14 +76,9 @@ begin
     //Classe Principal de Atualização
     oAtualizarDB := TAtualizaBancoDados.Create(ConexaoDB);
 
-    //Sub-Class de Atualização
-    if TArquivoIni.TipoDataBase='FIREBIRD' then begin
+    oTabela := TAtualizacaoTable.Create(ConexaoDB);
+    oCampo  := TAtualizacaoCampo.Create(ConexaoDB);
 
-    end
-    else begin
-      oTabela := TAtualizacaoTableMYSQL.Create(ConexaoDB);
-      oCampo  := TAtualizacaoCampoMYSQL.Create(ConexaoDB);
-    end;
     Result  :=true;
   Finally
     FreeAndNil(oCampo);
@@ -104,10 +87,6 @@ begin
   End;
 end;
 
-constructor TAtualizaBancoDadosMYSQL.Create(aConexao: TZConnection);
-begin
-  ConexaoDB:=aConexao;
-end;
 
 end.
 

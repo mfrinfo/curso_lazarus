@@ -36,7 +36,7 @@ object dtmPrincipal: TdtmPrincipal
     SQLHourGlass = True
     HostName = 'localhost'
     Port = 3050
-    Database = 'C:\CursoFree\DBTESTE.FDB'
+    Database = 'C:\CursoLazarus\dbFirebird\DBVENDA.FDB'
     User = 'SYSDBA'
     Password = 'mudar@123'
     Protocol = 'firebird-3.0'

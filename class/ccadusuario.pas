@@ -137,9 +137,10 @@ begin
     Qry.SQL.Add('INSERT INTO usuarios (usuarioId, '+
                 '                      nome, '+
                 '                      senha )'+
-                ' VALUES              ('+GuidId+', '+
+                ' VALUES              (:usuarioId, '+
                 '                      :nome, '+
                 '                      :senha )' );
+    Qry.ParamByName('usuarioId').AsString  :=GuidId;
     Qry.ParamByName('nome').AsString       :=Self.F_nome;
     Qry.ParamByName('senha').AsString      :=Self.F_senha;
 

@@ -128,14 +128,14 @@ begin
 end;
 
 procedure TfrmPrincipal.AtualizacaoBancoDados(aForm:TfrmAtualizaBancoDados);
-var oAtualizarMYSQL:TAtualizaBancoDadosMYSQL;
+var oAtualizarDB:TAtualizaBancoDados;
 begin
   try
-    oAtualizarMYSQL:=TAtualizaBancoDadosMYSQL.Create(DtmPrincipal.ConDataBase);
-    oAtualizarMYSQL.AtualizarBancoDeDadosMYSQL;
+    oAtualizarDB:=TAtualizaBancoDados.Create(DtmPrincipal.ConDataBase);
+    oAtualizarDB.AtualizarBancoDeDados;
   finally
-    if Assigned(oAtualizarMYSQL) then
-       FreeAndNil(oAtualizarMYSQL);
+    if Assigned(oAtualizarDB) then
+       FreeAndNil(oAtualizarDB);
   end;
 end;
 
