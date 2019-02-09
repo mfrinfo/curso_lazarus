@@ -1,14 +1,17 @@
 inherited frmCadUsuario: TfrmCadUsuario
-  Height = 461
-  Width = 837
-  Caption = 'Cadastro'
-  ClientHeight = 461
-  ClientWidth = 837
+  Left = 681
+  Height = 389
+  Top = 356
+  Width = 831
+  Caption = 'Cadastro de Usuário'
+  ClientHeight = 389
+  ClientWidth = 831
   OnClose = FormClose
   OnCreate = FormCreate
+  Position = poDesigned
   inherited pnlTitulo: TPanel
-    Width = 837
-    ClientWidth = 837
+    Width = 831
+    ClientWidth = 831
     inherited imgIcon: TImage
       Height = 30
       Width = 30
@@ -49,9 +52,9 @@ inherited frmCadUsuario: TfrmCadUsuario
     end
   end
   inherited pnlBotoes: TPanel
-    Top = 411
-    Width = 837
-    ClientWidth = 837
+    Top = 339
+    Width = 831
+    ClientWidth = 831
     inherited btnNovo: TBitBtn
       OnClick = btnNovoClick
     end
@@ -71,41 +74,28 @@ inherited frmCadUsuario: TfrmCadUsuario
       Hints.Strings = (      )
     end
     inherited btnFechar: TBitBtn
-      Left = 743
+      Left = 737
       OnClick = btnFecharClick
     end
   end
   inherited pgcPrincipal: TPageControl
-    Height = 361
-    Width = 837
+    Height = 289
+    Width = 831
     inherited tabListagem: TTabSheet
-      ClientHeight = 333
-      ClientWidth = 829
+      ClientHeight = 261
+      ClientWidth = 823
       inherited pnlListagemTopo: TPanel
-        Width = 829
-        ClientWidth = 829
+        Width = 823
+        ClientWidth = 823
       end
       inherited pnlListagemCentro: TPanel
-        Height = 273
-        Width = 829
-        ClientHeight = 273
-        ClientWidth = 829
+        Height = 201
+        Width = 823
+        ClientHeight = 201
+        ClientWidth = 823
         inherited grdListagem: TDBGrid
-          Height = 271
-          Width = 827
-          Columns = <          
-            item
-              PickList.Strings = (              )
-              Title.Caption = 'Código'
-              Width = 250
-              FieldName = 'usuarioID'
-            end          
-            item
-              PickList.Strings = (              )
-              Title.Caption = 'Nome'
-              Width = 500
-              FieldName = 'Nome'
-            end>
+          Height = 199
+          Width = 821
         end
       end
     end
@@ -180,36 +170,5 @@ inherited frmCadUsuario: TfrmCadUsuario
       #9'   Senha'
       '  FROM usuarios'
     )
-    object qryListagemusuarioID: TStringField[0]
-      DisplayLabel = 'Código'
-      FieldKind = fkData
-      FieldName = 'usuarioID'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 144
-    end
-    object qryListagemNome: TStringField[1]
-      FieldKind = fkData
-      FieldName = 'Nome'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 200
-    end
-    object qryListagemSenha: TStringField[2]
-      FieldKind = fkData
-      FieldName = 'Senha'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 160
-    end
   end
 end

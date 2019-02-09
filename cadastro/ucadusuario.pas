@@ -17,9 +17,6 @@ type
     edtNome: TLabeledEdit;
     edtSenha: TLabeledEdit;
     edtUsuarioId: TLabeledEdit;
-    qryListagemNome: TStringField;
-    qryListagemSenha: TStringField;
-    qryListagemusuarioID: TStringField;
     procedure btnAlterarClick(Sender: TObject);
     procedure btnApagarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -34,6 +31,7 @@ type
     oUsuario:TUsuario;
     function Gravar(aEstadoDoCadastro:TEstadoDoCadastro):boolean; override;
     function Apagar:Boolean; override;
+    procedure ConfigurarCampos; override;
   end;
 
 var
@@ -138,6 +136,21 @@ begin
   if oUsuario.Selecionar(QryListagem.FieldByName('usuarioID').AsString) then begin
      Result:=oUsuario.Apagar;
   end;
+end;
+
+procedure TfrmCadUsuario.ConfigurarCampos;
+begin
+  qryListagem.Fields[0].DisplayLabel:='Código';
+  qryListagem.Fields[1].DisplayLabel:='Nome';
+  qryListagem.Fields[1].DisplayLabel:='Senha';
+
+  grdListagem.Columns.Add();
+  grdListagem.Columns[0].FieldName:='usuarioID';
+  grdListagem.Columns[0].Width:=250;
+
+  grdListagem.Columns.Add();
+  grdListagem.Columns[1].FieldName:='Nome';
+  grdListagem.Columns[1].Width:=500;
 end;
 
 end.

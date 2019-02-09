@@ -87,13 +87,13 @@ end;
 procedure TAtualizacaoCampo.Versao1;
 begin
   {$region 'Exemplo de Atualização e Remoção de Colunas da Tabela'}
-    if not CampoExisteNaTabela('categorias','testeColuna') then begin
-       ExecutaDiretoBancoDeDados('ALTER TABLE categorias ADD '+sColumn+' testeColuna varchar(30) ');
-    end;
+    //if not CampoExisteNaTabela('categorias','testeColuna') then begin
+    //   ExecutaDiretoBancoDeDados('ALTER TABLE categorias ADD '+sColumn+' testeColuna varchar(30) ');
+    //end;
 
-    if CampoExisteNaTabela('categorias','testeColuna') then begin
-       ExecutaDiretoBancoDeDados('ALTER TABLE categorias DROP '+sColumn+' testeColuna ');
-    end;
+    //if CampoExisteNaTabela('categorias','testeColuna') then begin
+    //   ExecutaDiretoBancoDeDados('ALTER TABLE categorias DROP '+sColumn+' testeColuna ');
+    //end;
   {$endregion}
 end;
 

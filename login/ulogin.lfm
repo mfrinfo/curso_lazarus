@@ -10,6 +10,7 @@ object frmLogin: TfrmLogin
   ClientWidth = 392
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
+  Position = poScreenCenter
   LCLVersion = '1.8.4.0'
   object pnlTitulo: TPanel
     Left = 0

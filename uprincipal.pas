@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
   ComCtrls, ExtCtrls, StdCtrls, uConexao, ZDbcIntfs, cUsuarioLogado, uUtils,
-  uAtualizaDB, LCLIntf;
+  uAtualizaDB, LCLIntf, ZCompatibility;
 
 type
 
@@ -85,14 +85,19 @@ begin
     else begin
       DtmPrincipal:=TDtmPrincipal.Create(self);     //Instancia o DataModule
       with DtmPrincipal.ConDataBase do begin
+        Connected:=False;
         SQLHourGlass:=true;                        //Habilita o Cursor em cada transação no banco de dados
         if TArquivoIni.TipoDataBase='FIREBIRD' then begin
           LibraryLocation:=ExtractFilePath(Application.ExeName)+'\dll\fbclient.dll';  //Seta a DLL para conexao do SQL
           Protocol:='firebird-3.0';            //Protocolo do banco de dados
+          ControlsCodePage:=cGET_ACP;
+          ClientCodepage:='WIN1252';
         end
         else begin
           LibraryLocation:=ExtractFilePath(Application.ExeName)+'\dll\libmysql.dll';  //Seta a DLL para conexao do SQL
           Protocol:='mysql';            //Protocolo do banco de dados
+          ControlsCodePage:=cCP_UTF8;
+          ClientCodepage:='';
         end;
 
         HostName:= TArquivoIni.LerIni('SERVER','HostName'); //Instancia do SQLServer

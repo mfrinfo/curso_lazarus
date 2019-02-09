@@ -25,13 +25,7 @@ type
     pnlTitulo: TPanel;
     pnlUsuarios: TPanel;
     QryAcoes: TZQuery;
-    QryAcoesacaoAcessoId: TStringField;
-    QryAcoesativo: TSmallintField;
-    QryAcoesdescricao: TWideStringField;
-    QryAcoesusuarioId: TStringField;
     QryUsuario: TZQuery;
-    QryUsuarioNome: TStringField;
-    QryUsuariousuarioID: TStringField;
     Splitter1: TSplitter;
     procedure btnFecharClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -43,6 +37,7 @@ type
     procedure QryUsuarioAfterScroll(DataSet: TDataSet);
   private
     procedure SelecionarAcoesAcessoPorUsuario;
+    procedure ConfigurarCampos;
 
   public
 
@@ -71,11 +66,31 @@ begin
   Close;
 end;
 
+procedure TfrmUsuarioVsAcoes.ConfigurarCampos;
+begin
+  QryAcoes.Fields[0].DisplayLabel:='Cód. Usuário';
+  QryAcoes.Fields[1].DisplayLabel:='Código';
+  QryAcoes.Fields[2].DisplayLabel:='Descrição';
+  QryAcoes.Fields[3].DisplayLabel:='Ativo';
+
+  QryUsuario.Fields[0].DisplayLabel:='Usuário';
+  QryUsuario.Fields[1].DisplayLabel:='Cod. Usuário';
+
+  grdUsuario.Columns.Add();
+  grdUsuario.Columns[0].FieldName:='Nome';
+  grdUsuario.Columns[0].Width:=200;
+
+  grdAcoes.Columns.Add();
+  grdAcoes.Columns[0].FieldName:='descricao';
+  grdAcoes.Columns[0].Width:=553;
+end;
+
 procedure TfrmUsuarioVsAcoes.FormShow(Sender: TObject);
 begin
   Try
     QryUsuario.DisableControls;
     QryUsuario.Open;
+    ConfigurarCampos;
     SelecionarAcoesAcessoPorUsuario;
   Finally
     QryUsuario.EnableControls;

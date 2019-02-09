@@ -12,7 +12,8 @@ uses
   ZConnection,
   ZAbstractRODataset,
   ZAbstractDataset,
-  ZDataset;
+  ZDataset,
+  uUtils;
 
 type
 
@@ -42,26 +43,26 @@ begin
   Result:='';
   sTipoDB:=TArquivoIni.TipoDataBase;
   if sTipoDB='MYSQL' then begin
-    sSelect := ' SELECT UUID() AS UUID'
-  end
-  else if sTipoDB = 'FIREBIRD' then begin
-    sSelect := ' select gen_uuid() AS UUID from rdb$database  '
+    sSelect := ' SELECT UUID() AS UUID ';
+    try
+      try
+        Qry:=TZQuery.Create(nil);
+        Qry.Connection:=ConexaoDB;
+        Qry.SQL.Clear;
+        Qry.SQL.Add(sSelect);
+        Qry.Open;
+        Result:=UpperCase(Qry.FieldByName('UUID').AsString);
+      finally
+        Qry.Close;
+        if Assigned(Qry) then
+           FreeAndNil(Qry);
+      end;
+    except
+       Result := UpperCase(GuidCreate());
+    end;
   end
   else
-    sSelect := ' SELECT UUID() AS UUID ';
-
-  Try
-    Qry:=TZQuery.Create(nil);
-    Qry.Connection:=ConexaoDB;
-    Qry.SQL.Clear;
-    Qry.SQL.Add(sSelect);
-    Qry.Open;
-    Result:=Qry.FieldByName('UUID').AsString;
-  Finally
-    Qry.Close;
-    if Assigned(Qry) then
-       FreeAndNil(Qry);
-  End;
+    Result := UpperCase(GuidCreate());
 end;
 
 destructor TBase.Destroy;

@@ -16,8 +16,6 @@ type
   TfrmCadCategoria = class(TfrmTelaHeranca)
     edtCategoriaId: TLabeledEdit;
     edtDescricao: TLabeledEdit;
-    qryListagemcategoriaId: TStringField;
-    qryListagemdescricao: TStringField;
     procedure btnAlterarClick(Sender: TObject);
     procedure btnApagarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -31,10 +29,12 @@ type
     procedure grdListagemDblClick(Sender: TObject);
     procedure grdListagemTitleClick(Column: TColumn);
     procedure mskPesquisaChange(Sender: TObject);
+    procedure pnlTituloClick(Sender: TObject);
   private
     oCategoria:TCategoria;
     function Gravar(aEstadoDoCadastro:TEstadoDoCadastro):boolean; override;
     function Apagar:Boolean; override;
+    procedure ConfigurarCampos; override;
   public
 
   end;
@@ -78,6 +78,25 @@ end;
 procedure TfrmCadCategoria.mskPesquisaChange(Sender: TObject);
 begin
   inherited;
+end;
+
+procedure TfrmCadCategoria.pnlTituloClick(Sender: TObject);
+begin
+
+end;
+
+procedure TfrmCadCategoria.ConfigurarCampos;
+begin
+  qryListagem.Fields[0].DisplayLabel:='Código';
+  qryListagem.Fields[1].DisplayLabel:='Descrição';
+
+  grdListagem.Columns.Add();
+  grdListagem.Columns[0].FieldName:='categoriaId';
+  grdListagem.Columns[0].Width:=250;
+
+  grdListagem.Columns.Add();
+  grdListagem.Columns[1].FieldName:='descricao';
+  grdListagem.Columns[1].Width:=500;
 end;
 
 function TfrmCadCategoria.Gravar(aEstadoDoCadastro: TEstadoDoCadastro): boolean;

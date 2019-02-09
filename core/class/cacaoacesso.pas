@@ -140,11 +140,12 @@ begin
     Qry.SQL.Add('INSERT INTO acaoAcesso (acaoAcessoId, '+
                 '                        descricao, '+
                 '                        chave )'+
-                ' VALUES                ('+GuidId+', '+
+                ' VALUES                (:acaoAcessoId,'+
                 '                        :descricao, '+
                 '                        :chave )' );
-    Qry.ParamByName('descricao').AsString  :=Self.F_descricao;
-    Qry.ParamByName('chave').AsString      :=Self.F_chave;
+    Qry.ParamByName('acaoAcessoId').AsString  :=GuidId;
+    Qry.ParamByName('descricao').AsString     :=Self.F_descricao;
+    Qry.ParamByName('chave').AsString         :=Self.F_chave;
 
     Try
       ConexaoDB.StartTransaction;

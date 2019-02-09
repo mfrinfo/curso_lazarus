@@ -17,20 +17,19 @@ type
     edtacaoAcessoId: TLabeledEdit;
     edtChave: TLabeledEdit;
     edtDescricao: TLabeledEdit;
-    qryListagemacaoAcessoId: TStringField;
-    qryListagemchave: TStringField;
-    qryListagemdescricao: TStringField;
     procedure btnAlterarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
 
   public
     oAcaoAcesso:TAcaoAcesso;
     function Gravar(aEstadoDoCadastro:TEstadoDoCadastro):boolean; override;
     function Apagar:Boolean; override;
+    procedure ConfigurarCampos; override;
   end;
 
 var
@@ -47,11 +46,35 @@ begin
   end;
 end;
 
+procedure TfrmCadAcaoAcesso.ConfigurarCampos;
+begin
+  qryListagem.Fields[0].DisplayLabel:='Código';
+  qryListagem.Fields[1].DisplayLabel:='Descrição';
+  qryListagem.Fields[2].DisplayLabel:='Descrição';
+
+  grdListagem.Columns.Add();
+  grdListagem.Columns[0].FieldName:='acaoAcessoId';
+  grdListagem.Columns[0].Width:=250;
+
+  grdListagem.Columns.Add();
+  grdListagem.Columns[1].FieldName:='descricao';
+  grdListagem.Columns[1].Width:=300;
+
+  grdListagem.Columns.Add();
+  grdListagem.Columns[2].FieldName:='chave';
+  grdListagem.Columns[2].Width:=260;
+end;
+
 procedure TfrmCadAcaoAcesso.FormCreate(Sender: TObject);
 begin
   inherited;
   oAcaoAcesso:=TAcaoAcesso.Create(DtmPrincipal.ConDataBase);
   IndiceAtual:='acaoAcessoId';
+end;
+
+procedure TfrmCadAcaoAcesso.FormShow(Sender: TObject);
+begin
+  inherited;
 end;
 
 procedure TfrmCadAcaoAcesso.FormClose(Sender: TObject;

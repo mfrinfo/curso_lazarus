@@ -70,6 +70,7 @@ type
     IndiceAtual:string;
     function Gravar(aEstadoDoCadastro:TEstadoDoCadastro):boolean; virtual;
     function Apagar:Boolean; virtual;
+    procedure ConfigurarCampos; virtual;
   end;
 
 var
@@ -136,7 +137,7 @@ begin
   end;
 end;
 
-Procedure TfrmTelaHeranca.DesabilitarEditPK;
+procedure TfrmTelaHeranca.DesabilitarEditPK;
 var i:Integer;
 begin
   for I := 0 to ComponentCount -1 do begin
@@ -191,6 +192,12 @@ begin
   showmessage('Apagar');
   result:=true;
 end;
+
+procedure TfrmTelaHeranca.ConfigurarCampos;
+begin
+
+end;
+
 {$endregion}
 
 procedure TfrmTelaHeranca.FormClose(Sender: TObject;
@@ -374,6 +381,7 @@ end;
 
 procedure TfrmTelaHeranca.FormShow(Sender: TObject);
 begin
+  Self.Position:=poScreenCenter;
   ControlaIndiceTab(pgcPrincipal, 0);
   lblIndice.Caption:=IndiceAtual;
   DesabilitarEditPK;
@@ -382,6 +390,7 @@ begin
      ExibirLabelIndice(IndiceAtual, lblIndice);
      SelectOriginal:=QryListagem.SQL.Text;
      QryListagem.Open;
+     ConfigurarCampos;
   end;
 end;
 

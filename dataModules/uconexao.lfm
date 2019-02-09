@@ -1,18 +1,19 @@
 object dtmPrincipal: TdtmPrincipal
   OldCreateOrder = False
   Height = 268
-  HorizontalOffset = 352
-  VerticalOffset = 214
+  HorizontalOffset = 171
+  VerticalOffset = 2
   Width = 567
   PPI = 96
   object ConDataBase: TZConnection
-    ControlsCodePage = cCP_UTF8
-    AutoEncodeStrings = False
+    ControlsCodePage = cCP_UTF16
     Properties.Strings = (
       'AutoEncodeStrings='
       'codepage='
+      'controls_cp=CP_UTF16'
     )
     TransactIsolationLevel = tiReadCommitted
+    Connected = True
     SQLHourGlass = True
     HostName = 'localhost'
     Port = 0

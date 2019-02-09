@@ -1,11 +1,11 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 496
-  Height = 566
-  Top = 154
-  Width = 894
+  Left = 231
+  Height = 660
+  Top = 192
+  Width = 1110
   Caption = 'Sistema de Vendas'
-  ClientHeight = 546
-  ClientWidth = 894
+  ClientHeight = 640
+  ClientWidth = 1110
   Menu = mmuPrincipal
   OnClose = FormClose
   OnCreate = FormCreate
@@ -15,9 +15,9 @@ object frmPrincipal: TfrmPrincipal
   WindowState = wsMaximized
   object pgcForms: TPageControl
     Left = 0
-    Height = 473
+    Height = 567
     Top = 50
-    Width = 894
+    Width = 1110
     Align = alClient
     TabOrder = 0
   end
@@ -25,10 +25,10 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Height = 50
     Top = 0
-    Width = 894
+    Width = 1110
     Align = alTop
     ClientHeight = 50
-    ClientWidth = 894
+    ClientWidth = 1110
     TabOrder = 1
     object Label1: TLabel
       Cursor = crHandPoint
@@ -49,8 +49,8 @@ object frmPrincipal: TfrmPrincipal
   object StbPrincipal: TStatusBar
     Left = 0
     Height = 23
-    Top = 523
-    Width = 894
+    Top = 617
+    Width = 1110
     Panels = <    
       item
         Width = 50

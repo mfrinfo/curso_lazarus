@@ -1,14 +1,18 @@
 inherited frmCadAcaoAcesso: TfrmCadAcaoAcesso
-  Height = 457
-  Width = 900
-  Caption = 'Cadastro'
-  ClientHeight = 457
-  ClientWidth = 900
+  Left = 580
+  Height = 448
+  Top = 196
+  Width = 873
+  Caption = 'Cadastro de Ações de Acesso'
+  ClientHeight = 448
+  ClientWidth = 873
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poDesigned
   inherited pnlTitulo: TPanel
-    Width = 900
-    ClientWidth = 900
+    Width = 873
+    ClientWidth = 873
     inherited imgIcon: TImage
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869630503000089504E47
@@ -45,9 +49,9 @@ inherited frmCadAcaoAcesso: TfrmCadAcaoAcesso
     end
   end
   inherited pnlBotoes: TPanel
-    Top = 407
-    Width = 900
-    ClientWidth = 900
+    Top = 398
+    Width = 873
+    ClientWidth = 873
     inherited btnNovo: TBitBtn
       OnClick = btnNovoClick
     end
@@ -61,54 +65,35 @@ inherited frmCadAcaoAcesso: TfrmCadAcaoAcesso
       Hints.Strings = (      )
     end
     inherited btnFechar: TBitBtn
-      Left = 806
+      Left = 779
     end
   end
   inherited pgcPrincipal: TPageControl
-    Height = 357
-    Width = 900
+    Height = 348
+    Width = 873
     ActivePage = tabManutencao
     TabIndex = 1
     inherited tabListagem: TTabSheet
-      ClientHeight = 329
-      ClientWidth = 892
+      ClientHeight = 320
+      ClientWidth = 865
       inherited pnlListagemTopo: TPanel
-        Width = 892
-        ClientWidth = 892
+        Width = 865
+        ClientWidth = 865
       end
       inherited pnlListagemCentro: TPanel
-        Height = 269
-        Width = 892
-        ClientHeight = 269
-        ClientWidth = 892
+        Height = 260
+        Width = 865
+        ClientHeight = 260
+        ClientWidth = 865
         inherited grdListagem: TDBGrid
-          Height = 267
-          Width = 890
-          Columns = <          
-            item
-              PickList.Strings = (              )
-              Title.Caption = 'Código'
-              Width = 280
-              FieldName = 'acaoAcessoId'
-            end          
-            item
-              PickList.Strings = (              )
-              Title.Caption = 'Descrição'
-              Width = 300
-              FieldName = 'descricao'
-            end          
-            item
-              PickList.Strings = (              )
-              Title.Caption = 'Chave'
-              Width = 250
-              FieldName = 'chave'
-            end>
+          Height = 258
+          Width = 863
         end
       end
     end
     inherited tabManutencao: TTabSheet
-      ClientHeight = 329
-      ClientWidth = 892
+      ClientHeight = 320
+      ClientWidth = 865
       object edtChave: TLabeledEdit[0]
         Tag = 2
         Left = 12
@@ -172,38 +157,5 @@ inherited frmCadAcaoAcesso: TfrmCadAcaoAcesso
     SQL.Strings = (
       'SELECT acaoAcessoId, descricao, chave  FROM acaoAcesso'
     )
-    object qryListagemacaoAcessoId: TStringField[0]
-      DisplayLabel = 'Código'
-      FieldKind = fkData
-      FieldName = 'acaoAcessoId'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 144
-    end
-    object qryListagemdescricao: TStringField[1]
-      DisplayLabel = 'Descrição'
-      FieldKind = fkData
-      FieldName = 'descricao'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 400
-    end
-    object qryListagemchave: TStringField[2]
-      DisplayLabel = 'Chave'
-      FieldKind = fkData
-      FieldName = 'chave'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 240
-    end
   end
 end

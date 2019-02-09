@@ -1,26 +1,27 @@
 object frmTelaHeranca: TfrmTelaHeranca
-  Left = 528
-  Height = 549
-  Top = 235
-  Width = 998
+  Left = 507
+  Height = 426
+  Top = 346
+  Width = 838
   BorderStyle = bsDialog
   Caption = 'Informe aqui o Título'
-  ClientHeight = 549
-  ClientWidth = 998
+  ClientHeight = 426
+  ClientWidth = 838
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
+  Position = poScreenCenter
   LCLVersion = '1.8.4.0'
   object pnlTitulo: TPanel
     Left = 0
     Height = 50
     Top = 0
-    Width = 998
+    Width = 838
     Align = alTop
     BevelColor = clNone
     BevelOuter = bvNone
     ClientHeight = 50
-    ClientWidth = 998
+    ClientWidth = 838
     Color = clSilver
     ParentColor = False
     TabOrder = 0
@@ -90,12 +91,12 @@ object frmTelaHeranca: TfrmTelaHeranca
   object pnlBotoes: TPanel
     Left = 0
     Height = 50
-    Top = 499
-    Width = 998
+    Top = 376
+    Width = 838
     Align = alBottom
     BevelOuter = bvNone
     ClientHeight = 50
-    ClientWidth = 998
+    ClientWidth = 838
     TabOrder = 1
     object btnNovo: TBitBtn
       Tag = 99
@@ -307,7 +308,7 @@ object frmTelaHeranca: TfrmTelaHeranca
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
     end
     object btnFechar: TBitBtn
-      Left = 904
+      Left = 744
       Height = 25
       Top = 16
       Width = 90
@@ -347,25 +348,25 @@ object frmTelaHeranca: TfrmTelaHeranca
   end
   object pgcPrincipal: TPageControl
     Left = 0
-    Height = 449
+    Height = 326
     Top = 50
-    Width = 998
+    Width = 838
     ActivePage = tabListagem
     Align = alClient
     TabIndex = 0
     TabOrder = 2
     object tabListagem: TTabSheet
       Caption = 'Listagem'
-      ClientHeight = 421
-      ClientWidth = 990
+      ClientHeight = 298
+      ClientWidth = 830
       object pnlListagemTopo: TPanel
         Left = 0
         Height = 60
         Top = 0
-        Width = 990
+        Width = 830
         Align = alTop
         ClientHeight = 60
-        ClientWidth = 990
+        ClientWidth = 830
         TabOrder = 0
         object lblIndice: TLabel
           Left = 3
@@ -428,18 +429,18 @@ object frmTelaHeranca: TfrmTelaHeranca
       end
       object pnlListagemCentro: TPanel
         Left = 0
-        Height = 361
+        Height = 238
         Top = 60
-        Width = 990
+        Width = 830
         Align = alClient
-        ClientHeight = 361
-        ClientWidth = 990
+        ClientHeight = 238
+        ClientWidth = 830
         TabOrder = 1
         object grdListagem: TDBGrid
           Left = 1
-          Height = 359
+          Height = 236
           Top = 1
-          Width = 988
+          Width = 828
           Align = alClient
           Color = clWindow
           Columns = <>

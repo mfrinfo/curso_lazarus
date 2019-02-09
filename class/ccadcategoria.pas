@@ -125,7 +125,8 @@ begin
     Qry:=TZQuery.Create(nil);
     Qry.Connection:=ConexaoDB;
     Qry.SQL.Clear;
-    Qry.SQL.Add('INSERT INTO categorias (categoriaId, descricao) values ('+GuidId+', :descricao)');
+    Qry.SQL.Add('INSERT INTO categorias (categoriaId, descricao) values (:categoriaId, :descricao)');
+    Qry.ParamByName('categoriaId').AsString :=GuidId;
     Qry.ParamByName('descricao').AsString :=Self.F_descricao;
     Try
       ConexaoDB.StartTransaction;

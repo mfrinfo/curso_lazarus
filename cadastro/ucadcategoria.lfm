@@ -1,18 +1,20 @@
 inherited frmCadCategoria: TfrmCadCategoria
-  Left = 504
-  Height = 418
-  Top = 298
-  Width = 853
-  Caption = 'Cadastro'
-  ClientHeight = 418
-  ClientWidth = 853
+  Left = 701
+  Height = 424
+  Top = 352
+  Width = 830
+  Caption = 'Cadastro de Categoria'
+  ClientHeight = 424
+  ClientWidth = 830
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
+  Position = poDesigned
   inherited pnlTitulo: TPanel
-    Width = 853
-    ClientWidth = 853
+    Width = 830
+    ClientWidth = 830
     TabOrder = 2
+    OnClick = pnlTituloClick
     inherited imgIcon: TImage
       Picture.Data = {
         1754506F727461626C654E6574776F726B477261706869631903000089504E47
@@ -49,9 +51,9 @@ inherited frmCadCategoria: TfrmCadCategoria
     end
   end
   inherited pnlBotoes: TPanel
-    Top = 368
-    Width = 853
-    ClientWidth = 853
+    Top = 374
+    Width = 830
+    ClientWidth = 830
     inherited btnNovo: TBitBtn
       Caption = 'NOVO'
       OnClick = btnNovoClick
@@ -76,23 +78,21 @@ inherited frmCadCategoria: TfrmCadCategoria
       Hints.Strings = (      )
     end
     inherited btnFechar: TBitBtn
-      Left = 759
+      Left = 736
       Caption = 'FECHAR'
       OnClick = btnFecharClick
     end
   end
   inherited pgcPrincipal: TPageControl
-    Height = 318
-    Width = 853
-    ActivePage = tabManutencao
-    TabIndex = 1
+    Height = 324
+    Width = 830
     TabOrder = 0
     inherited tabListagem: TTabSheet
-      ClientHeight = 290
-      ClientWidth = 845
+      ClientHeight = 296
+      ClientWidth = 822
       inherited pnlListagemTopo: TPanel
-        Width = 845
-        ClientWidth = 845
+        Width = 822
+        ClientWidth = 822
         inherited mskPesquisa: TMaskEdit
           OnChange = mskPesquisaChange
         end
@@ -102,26 +102,13 @@ inherited frmCadCategoria: TfrmCadCategoria
         end
       end
       inherited pnlListagemCentro: TPanel
-        Height = 230
-        Width = 845
-        ClientHeight = 230
-        ClientWidth = 845
+        Height = 236
+        Width = 822
+        ClientHeight = 236
+        ClientWidth = 822
         inherited grdListagem: TDBGrid
-          Height = 228
-          Width = 843
-          Columns = <          
-            item
-              PickList.Strings = (              )
-              Title.Caption = 'Código'
-              Width = 250
-              FieldName = 'categoriaId'
-            end          
-            item
-              PickList.Strings = (              )
-              Title.Caption = 'Descrição'
-              Width = 530
-              FieldName = 'descricao'
-            end>
+          Height = 234
+          Width = 820
           OnDblClick = grdListagemDblClick
           OnKeyDown = nil
           OnTitleClick = grdListagemTitleClick
@@ -177,27 +164,5 @@ inherited frmCadCategoria: TfrmCadCategoria
       '       descricao '
       '  FROM categorias'
     )
-    object qryListagemcategoriaId: TStringField[0]
-      DisplayLabel = 'Código'
-      FieldKind = fkData
-      FieldName = 'categoriaId'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 144
-    end
-    object qryListagemdescricao: TStringField[1]
-      DisplayLabel = 'Descrição'
-      FieldKind = fkData
-      FieldName = 'descricao'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 120
-    end
   end
 end
