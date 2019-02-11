@@ -126,13 +126,6 @@ object frmPrincipal: TfrmPrincipal
     top = 120
     object mmuCadastro: TMenuItem
       Caption = 'Cadastro'
-      object mmuCategoria: TMenuItem
-        Caption = 'Categoria'
-        OnClick = mmuCategoriaClick
-      end
-      object mmuSeparacao1: TMenuItem
-        Caption = '-'
-      end
       object mmuUsuario: TMenuItem
         Caption = 'Usuário'
         OnClick = mmuUsuarioClick

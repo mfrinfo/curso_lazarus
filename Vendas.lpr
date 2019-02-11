@@ -8,9 +8,9 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, uPrincipal, lazcontrols, zcomponent, uConexao, utelaheranca,
-  uCadCategoria, cArquivoIni, uAtualizaDB, cAtualizacaoBancoDeDados,
+  cArquivoIni, uAtualizaDB, cAtualizacaoBancoDeDados,
   cAtualizacaoTabelaMYSQL, uenum, cusuariologado, ufuncaoCriptografia, uutils,
-  catualizacaocampomysql, cCadCategoria, ccadusuario, ucadusuario, uLogin,
+  catualizacaocampomysql, ccadusuario, ucadusuario, uLogin,
   cacaoacesso, uCadAcaoAcesso, cInstanciarForm, uUsuarioVsAcoes, cbase;
 
 {$R *.res}

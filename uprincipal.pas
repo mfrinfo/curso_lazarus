@@ -18,10 +18,8 @@ type
     Label1: TLabel;
     mmuCadastro: TMenuItem;
     mmuAcoesDeAcesso: TMenuItem;
-    mmuSeparacao1: TMenuItem;
     mmuPermissaoDeAcoesParaUsuario: TMenuItem;
     mmuUsuario: TMenuItem;
-    mmuCategoria: TMenuItem;
     mmuSeparacao2: TMenuItem;
     mmuFechar: TMenuItem;
     mmuPrincipal: TMainMenu;
@@ -54,7 +52,7 @@ implementation
 
 {$R *.lfm}
 
-uses uCadCategoria, uCadUsuario, cArquivoIni, cAtualizacaoBancoDeDados, uLogin,
+uses uCadUsuario, cArquivoIni, cAtualizacaoBancoDeDados, uLogin,
      cAcaoAcesso, uCadAcaoAcesso, cInstanciarForm, uUsuarioVsAcoes;
 
 { TfrmPrincipal }
@@ -62,7 +60,7 @@ uses uCadCategoria, uCadUsuario, cArquivoIni, cAtualizacaoBancoDeDados, uLogin,
 
 procedure TfrmPrincipal.mmuCategoriaClick(Sender: TObject);
 begin
-  TInstanciarForm.CriarForm(TfrmCadCategoria, oUsuarioLogado, DtmPrincipal.ConDataBase);
+
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
@@ -118,7 +116,6 @@ end;
 procedure TfrmPrincipal.CriarAcoes;
 begin
   try
-    TAcaoAcesso.CriarAcoes(TfrmCadCategoria,DtmPrincipal.ConDataBase);
     TAcaoAcesso.CriarAcoes(TfrmCadUsuario,  DtmPrincipal.ConDataBase);
     TAcaoAcesso.CriarAcoes(TfrmCadAcaoAcesso,DtmPrincipal.ConDataBase);
     TAcaoAcesso.CriarAcoes(TfrmUsuarioVsAcoes,DtmPrincipal.ConDataBase);

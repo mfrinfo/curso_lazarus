@@ -40,7 +40,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="23">
+    <Units Count="21">
       <Unit0>
         <Filename Value="Vendas.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -69,116 +69,103 @@
         <ResourceBaseClass Value="Form"/>
       </Unit3>
       <Unit4>
-        <Filename Value="cadastro\ucadcategoria.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmCadCategoria"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uCadCategoria"/>
-      </Unit4>
-      <Unit5>
         <Filename Value="class\carquivoini.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cArquivoIni"/>
-      </Unit5>
-      <Unit6>
+      </Unit4>
+      <Unit5>
         <Filename Value="core\uatualizadb.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmAtualizaBancoDados"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uAtualizaDB"/>
-      </Unit6>
-      <Unit7>
+      </Unit5>
+      <Unit6>
         <Filename Value="core\class\catualizacaobancodedados.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cAtualizacaoBancoDeDados"/>
-      </Unit7>
-      <Unit8>
+      </Unit6>
+      <Unit7>
         <Filename Value="core\class\catualizacaotabelamysql.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cAtualizacaoTabelaMYSQL"/>
-      </Unit8>
-      <Unit9>
+      </Unit7>
+      <Unit8>
         <Filename Value="core\uenum.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uEnum"/>
-      </Unit9>
-      <Unit10>
+      </Unit8>
+      <Unit9>
         <Filename Value="core\class\cusuariologado.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cUsuarioLogado"/>
-      </Unit10>
-      <Unit11>
+      </Unit9>
+      <Unit10>
         <Filename Value="core\ufuncaocriptografia.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ufuncaoCriptografia"/>
-      </Unit11>
-      <Unit12>
+      </Unit10>
+      <Unit11>
         <Filename Value="core\uutils.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="uUtils"/>
-      </Unit12>
-      <Unit13>
+      </Unit11>
+      <Unit12>
         <Filename Value="core\class\catualizacaocampomysql.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cAtualizacaoCampoMYSQL"/>
-      </Unit13>
-      <Unit14>
-        <Filename Value="class\ccadcategoria.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="cCadCategoria"/>
-      </Unit14>
-      <Unit15>
+      </Unit12>
+      <Unit13>
         <Filename Value="class\ccadusuario.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cCadUsuario"/>
-      </Unit15>
-      <Unit16>
+      </Unit13>
+      <Unit14>
         <Filename Value="cadastro\ucadusuario.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCadUsuario"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-      </Unit16>
-      <Unit17>
+      </Unit14>
+      <Unit15>
         <Filename Value="login\ulogin.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmLogin"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uLogin"/>
-      </Unit17>
-      <Unit18>
+      </Unit15>
+      <Unit16>
         <Filename Value="core\class\cacaoacesso.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cAcaoAcesso"/>
-      </Unit18>
-      <Unit19>
+      </Unit16>
+      <Unit17>
         <Filename Value="core\ucadacaoacesso.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCadAcaoAcesso"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadAcaoAcesso"/>
-      </Unit19>
-      <Unit20>
+      </Unit17>
+      <Unit18>
         <Filename Value="core\class\cinstanciarform.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cInstanciarForm"/>
-      </Unit20>
-      <Unit21>
+      </Unit18>
+      <Unit19>
         <Filename Value="core\uusuariovsacoes.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmUsuarioVsAcoes"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uUsuarioVsAcoes"/>
-      </Unit21>
-      <Unit22>
+      </Unit19>
+      <Unit20>
         <Filename Value="core\class\cbase.pas"/>
         <IsPartOfProject Value="True"/>
-      </Unit22>
+      </Unit20>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
