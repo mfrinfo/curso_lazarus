@@ -27,7 +27,6 @@ type
 
   public
     ConexaoDB:TZConnection;
-    TipoDb: TTipoBancoDados;
     constructor Create(aConexao:TZConnection);
     procedure ExecutaDiretoBancoDeDados(aScript: String);
     function AtualizarBancoDeDados: Boolean;

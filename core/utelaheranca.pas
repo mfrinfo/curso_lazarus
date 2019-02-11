@@ -383,14 +383,13 @@ procedure TfrmTelaHeranca.FormShow(Sender: TObject);
 begin
   Self.Position:=poScreenCenter;
   ControlaIndiceTab(pgcPrincipal, 0);
-  lblIndice.Caption:=IndiceAtual;
   DesabilitarEditPK;
   if QryListagem.SQL.Text<>EmptyStr then begin
-     QryListagem.IndexFieldNames:=IndiceAtual;
-     ExibirLabelIndice(IndiceAtual, lblIndice);
      SelectOriginal:=QryListagem.SQL.Text;
      QryListagem.Open;
      ConfigurarCampos;
+     QryListagem.IndexFieldNames:=IndiceAtual;
+     ExibirLabelIndice(IndiceAtual, lblIndice);
   end;
 end;
 

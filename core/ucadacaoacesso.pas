@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   StdCtrls, Buttons, DbCtrls, ComCtrls, MaskEdit, DBGrids, utelaheranca, db,
-  ZDataset, cAcaoAcesso, uEnum, uConexao;
+  cAcaoAcesso, uEnum, uConexao;
 
 type
 

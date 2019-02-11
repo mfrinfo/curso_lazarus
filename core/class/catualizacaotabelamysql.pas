@@ -51,11 +51,6 @@ constructor TAtualizacaoTable.Create(aConexao: TZConnection);
 begin
 
   ConexaoDB:=aConexao;
-  if (ConexaoDb.Protocol='firebird-3.0') then
-     TipoDb:=dbFirebird
-  else
-     TipoDb:=dbMySQL;
-
   Categoria;
   Cliente;
   Produto;
@@ -80,22 +75,12 @@ Begin
     Qry:=TZQuery.Create(nil);
     Qry.Connection := ConexaoDB;
     Qry.SQL.Clear;
-
-    if self.TipoDb = dbMySQL then begin
-      Qry.SQL.Add('  SELECT table_name ');
-      Qry.SQL.Add('    FROM information_schema.tables ');
-      Qry.SQL.Add('   WHERE table_schema =:Schema ');
-      Qry.SQL.Add('     AND table_name =:Tabela ');
-      Qry.ParamByName('Tabela').AsString := aNomeTabela;
-      Qry.ParamByName('Schema').ASString:=ConexaoDB.DataBase;
-    end
-    else if (Self.TipoDb = dbFirebird) then begin
-      Qry.SQL.Add(' SELECT Tabela.rdb$relation_name ');
-      Qry.SQL.Add('   FROM rdb$relations Tabela ');
-      Qry.SQL.Add('  WHERE Tabela.rdb$relation_name=:Tabela');
-      Qry.ParamByName('Tabela').AsString := UpperCase(aNomeTabela);
-    end;
-
+    Qry.SQL.Add('  SELECT table_name ');
+    Qry.SQL.Add('    FROM information_schema.tables ');
+    Qry.SQL.Add('   WHERE table_schema =:Schema ');
+    Qry.SQL.Add('     AND table_name =:Tabela ');
+    Qry.ParamByName('Tabela').AsString := aNomeTabela;
+    Qry.ParamByName('Schema').ASString:=ConexaoDB.DataBase;
     Qry.Open;
 
     if Qry.IsEmpty then
@@ -183,20 +168,13 @@ begin
 end;
 
 procedure TAtualizacaoTable.UsuariosAcaoAcesso;
-var sTipoTinyInt:string;
 begin
-
-  if (TipoDb=dbFirebird) then
-    sTipoTinyInt:=' SMALLINT '
-  else
-    sTipoTinyInt:=' tinyint(1) ';
-
   if not TabelaExisteNoBancoDeDados('usuariosAcaoAcesso') then begin
     ExecutaDiretoBancoDeDados(
       'CREATE TABLE usuariosAcaoAcesso( '+
       '	 usuarioId  VARCHAR(36) NOT NULL, '+
       '	 acaoAcessoId VARCHAR(36) NOT NULL, '+
-      '	 ativo '+sTipoTinyInt+' DEFAULT 1 NOT NULL, '+
+      '	 ativo tinyint(1) DEFAULT 1 NOT NULL, '+
       '	 PRIMARY KEY (usuarioId, acaoAcessoId), '+
       '	 CONSTRAINT FK_UsuarioAcaoAcessoUsuario FOREIGN KEY (usuarioId) references usuarios(usuarioId), '+
       '	 CONSTRAINT FK_UsuarioAcaoAcessoAcaoAcesso FOREIGN KEY (acaoAcessoId) references acaoAcesso(acaoAcessoId) '+

@@ -124,13 +124,7 @@ inherited frmCadCategoria: TfrmCadCategoria
         Height = 23
         Top = 32
         Width = 356
-        EditLabel.AnchorSideLeft.Control = edtCategoriaId
-        EditLabel.AnchorSideRight.Control = edtCategoriaId
-        EditLabel.AnchorSideRight.Side = asrBottom
-        EditLabel.AnchorSideBottom.Control = edtCategoriaId
-        EditLabel.Left = 12
         EditLabel.Height = 15
-        EditLabel.Top = 14
         EditLabel.Width = 356
         EditLabel.Caption = 'Código'
         EditLabel.ParentColor = False
@@ -143,13 +137,7 @@ inherited frmCadCategoria: TfrmCadCategoria
         Height = 23
         Top = 80
         Width = 492
-        EditLabel.AnchorSideLeft.Control = edtDescricao
-        EditLabel.AnchorSideRight.Control = edtDescricao
-        EditLabel.AnchorSideRight.Side = asrBottom
-        EditLabel.AnchorSideBottom.Control = edtDescricao
-        EditLabel.Left = 12
         EditLabel.Height = 15
-        EditLabel.Top = 62
         EditLabel.Width = 492
         EditLabel.Caption = 'Descrição'
         EditLabel.ParentColor = False

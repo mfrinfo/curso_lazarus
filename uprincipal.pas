@@ -14,6 +14,7 @@ type
   { TfrmPrincipal }
 
   TfrmPrincipal = class(TForm)
+    imgMysql: TImage;
     Label1: TLabel;
     mmuCadastro: TMenuItem;
     mmuAcoesDeAcesso: TMenuItem;
@@ -24,6 +25,7 @@ type
     mmuSeparacao2: TMenuItem;
     mmuFechar: TMenuItem;
     mmuPrincipal: TMainMenu;
+    pnlDbImg: TPanel;
     pgcForms: TPageControl;
     Panel1: TPanel;
     StbPrincipal: TStatusBar;
@@ -87,18 +89,11 @@ begin
       with DtmPrincipal.ConDataBase do begin
         Connected:=False;
         SQLHourGlass:=true;                        //Habilita o Cursor em cada transação no banco de dados
-        if TArquivoIni.TipoDataBase='FIREBIRD' then begin
-          LibraryLocation:=ExtractFilePath(Application.ExeName)+'\dll\fbclient.dll';  //Seta a DLL para conexao do SQL
-          Protocol:='firebird-3.0';            //Protocolo do banco de dados
-          ControlsCodePage:=cGET_ACP;
-          ClientCodepage:='WIN1252';
-        end
-        else begin
-          LibraryLocation:=ExtractFilePath(Application.ExeName)+'\dll\libmysql.dll';  //Seta a DLL para conexao do SQL
-          Protocol:='mysql';            //Protocolo do banco de dados
-          ControlsCodePage:=cCP_UTF8;
-          ClientCodepage:='';
-        end;
+        LibraryLocation:=ExtractFilePath(Application.ExeName)+'\dll\libmysql.dll';  //Seta a DLL para conexao do SQL
+        Protocol:='mysql';            //Protocolo do banco de dados
+        ControlsCodePage:=cCP_UTF8;
+        ClientCodepage:='';
+        imgMysql.Visible:=true;
 
         HostName:= TArquivoIni.LerIni('SERVER','HostName'); //Instancia do SQLServer
         Port    := StrToInt(TArquivoIni.LerIni('SERVER','Port'));  //Porta do SQL Server

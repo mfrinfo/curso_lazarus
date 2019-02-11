@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   StdCtrls, Buttons, DbCtrls, ComCtrls, MaskEdit, DBGrids, utelaheranca, db,
-  ZDataset, cCadUsuario, uEnum, uConexao, uUtils;
+  cCadUsuario, uEnum, uConexao, uUtils;
 
 type
 
@@ -142,7 +142,7 @@ procedure TfrmCadUsuario.ConfigurarCampos;
 begin
   qryListagem.Fields[0].DisplayLabel:='Código';
   qryListagem.Fields[1].DisplayLabel:='Nome';
-  qryListagem.Fields[1].DisplayLabel:='Senha';
+  qryListagem.Fields[2].DisplayLabel:='Senha';
 
   grdListagem.Columns.Add();
   grdListagem.Columns[0].FieldName:='usuarioID';

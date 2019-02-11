@@ -10,7 +10,6 @@ uses
 Type
    TEstadoDoCadastro = (ecInserir, ecAlterar, ecNenhum);
    TAcaoExcluirEstoque = (aeeApagar, aeeAlterar);
-   TTipoBancoDados = (dbMySQL, dbFirebird);
 
 implementation
 

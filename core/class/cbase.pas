@@ -16,9 +16,7 @@ uses
   uUtils;
 
 type
-
   { TBase }
-
   TBase = class
   private
     F_ConexaoDB:TZConnection;
@@ -31,38 +29,34 @@ type
     property GuidId:String              read getGuidId;
   end;
 
+
 implementation
 
 { TUsuario }
 
 function TBase.getGuidId: String;
-var sTipoDB:String;
-    Qry:TZQuery;
+var Qry:TZQuery;
     sSelect:String;
 begin
   Result:='';
-  sTipoDB:=TArquivoIni.TipoDataBase;
-  if sTipoDB='MYSQL' then begin
-    sSelect := ' SELECT UUID() AS UUID ';
+  sSelect := ' SELECT UUID() AS UUID ';
+  try
     try
-      try
-        Qry:=TZQuery.Create(nil);
-        Qry.Connection:=ConexaoDB;
-        Qry.SQL.Clear;
-        Qry.SQL.Add(sSelect);
-        Qry.Open;
-        Result:=UpperCase(Qry.FieldByName('UUID').AsString);
-      finally
-        Qry.Close;
-        if Assigned(Qry) then
-           FreeAndNil(Qry);
-      end;
-    except
-       Result := UpperCase(GuidCreate());
+      Qry:=TZQuery.Create(nil);
+      Qry.Connection:=ConexaoDB;
+      Qry.SQL.Clear;
+      Qry.SQL.Add(sSelect);
+      Qry.Open;
+      Result:=UpperCase(Qry.FieldByName('UUID').AsString);
+    finally
+      Qry.Close;
+      if Assigned(Qry) then
+         FreeAndNil(Qry);
     end;
-  end
-  else
-    Result := UpperCase(GuidCreate());
+  except
+     Result := UpperCase(GuidCreate());
+  end;
+
 end;
 
 destructor TBase.Destroy;

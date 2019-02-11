@@ -11,7 +11,7 @@ object frmTelaHeranca: TfrmTelaHeranca
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.0.0.4'
   object pnlTitulo: TPanel
     Left = 0
     Height = 50
@@ -77,8 +77,8 @@ object frmTelaHeranca: TfrmTelaHeranca
       Left = 57
       Height = 24
       Top = 14
-      Width = 228
-      Caption = 'NÃO DIGITAR NADA AQUI'
+      Width = 144
+      Caption = 'DIGITAR TÍTULO'
       Font.CharSet = ANSI_CHARSET
       Font.Height = -19
       Font.Name = 'Microsoft Sans Serif'
