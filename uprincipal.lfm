@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 321
   Height = 660
-  Top = 154
+  Top = 172
   Width = 1110
   Caption = 'Sistema de Vendas'
   ClientHeight = 640

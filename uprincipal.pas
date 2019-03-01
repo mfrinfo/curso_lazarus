@@ -64,8 +64,10 @@ begin
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
+var bFinalizarAplicacao:Boolean;
 begin
   try
+    bFinalizarAplicacao:=false;
     frmAtualizaBancoDados:=TfrmAtualizaBancoDados.Create(self);
     frmAtualizaBancoDados.Show;
     frmAtualizaBancoDados.Refresh;
@@ -80,7 +82,7 @@ begin
       MessageOK('Arquivo '+ TArquivoIni.ArquivoIni +' Criado com sucesso' +#13+
                  'Configure o arquivo antes de inicializar aplicação',MtInformation);
 
-      Application.Terminate;
+      bFinalizarAplicacao:=true;
     end
     else begin
       DtmPrincipal:=TDtmPrincipal.Create(self);     //Instancia o DataModule
@@ -102,13 +104,16 @@ begin
         TransactIsolationLevel:=tiReadCommitted;
         Connected:=True;  //Faz a Conexão do Banco
       end;
+      AtualizacaoBancoDados(frmAtualizaBancoDados);
+      CriarAcoes;
     end;
-
-    AtualizacaoBancoDados(frmAtualizaBancoDados);
-    CriarAcoes;
-
   finally
      frmAtualizaBancoDados.Free;
+  end;
+
+  if bFinalizarAplicacao then begin
+    Application.Terminate;
+    Halt;
   end;
 
 end;

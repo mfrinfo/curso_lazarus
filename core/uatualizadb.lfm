@@ -1,14 +1,14 @@
 object frmAtualizaBancoDados: TfrmAtualizaBancoDados
   Left = 705
   Height = 66
-  Top = 391
+  Top = 392
   Width = 482
   BorderStyle = bsNone
   Caption = 'frmAtualizaBancoDados'
   ClientHeight = 66
   ClientWidth = 482
   Position = poScreenCenter
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.0.0.4'
   object Panel1: TPanel
     Left = 0
     Height = 66
