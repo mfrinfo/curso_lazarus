@@ -1,0 +1,205 @@
+inherited frmCadProduto: TfrmCadProduto
+  Left = 635
+  Height = 418
+  Top = 236
+  Caption = 'Cadastro de Produto'
+  ClientHeight = 418
+  OnClose = FormClose
+  OnCreate = FormCreate
+  inherited pnlTitulo: TPanel
+    inherited lblTitulo: TLabel
+      Width = 66
+      Caption = 'Produto'
+    end
+  end
+  inherited pnlBotoes: TPanel
+    Top = 368
+    inherited btnAlterar: TBitBtn
+      OnClick = btnAlterarClick
+    end
+    inherited btnGravar: TBitBtn
+      OnClick = btnGravarClick
+    end
+    inherited btnNavigator: TDBNavigator
+      Hints.Strings = (      )
+    end
+  end
+  inherited pgcPrincipal: TPageControl
+    Height = 318
+    inherited tabListagem: TTabSheet
+      ClientHeight = 290
+      inherited pnlListagemCentro: TPanel
+        Height = 230
+        ClientHeight = 230
+        inherited grdListagem: TDBGrid
+          Height = 228
+        end
+      end
+    end
+    inherited tabManutencao: TTabSheet
+      ClientHeight = 290
+      object edtProdutoId: TLabeledEdit[0]
+        Tag = 1
+        Left = 12
+        Height = 23
+        Top = 32
+        Width = 356
+        EditLabel.Height = 15
+        EditLabel.Width = 356
+        EditLabel.Caption = 'Código'
+        EditLabel.ParentColor = False
+        MaxLength = 36
+        TabOrder = 0
+      end
+      object edtDescricao: TLabeledEdit[1]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 80
+        Width = 598
+        EditLabel.Height = 15
+        EditLabel.Width = 598
+        EditLabel.Caption = 'Descrição'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 2
+      end
+      object edtGTIN: TLabeledEdit[2]
+        Tag = 2
+        Left = 386
+        Height = 23
+        Top = 32
+        Width = 222
+        EditLabel.Height = 15
+        EditLabel.Width = 222
+        EditLabel.Caption = 'GTIN'
+        EditLabel.ParentColor = False
+        MaxLength = 14
+        TabOrder = 1
+        OnChange = edtGTINChange
+        OnExit = edtGTINExit
+      end
+      object edtValorDaVenda: TCalcEdit[3]
+        Left = 12
+        Height = 23
+        Top = 136
+        Width = 176
+        CalculatorLayout = clNormal
+        AsFloat = 0
+        AsInteger = 0
+        ButtonWidth = 23
+        DialogTop = 0
+        DialogLeft = 0
+        NumGlyphs = 1
+        MaxLength = 0
+        TabOrder = 3
+        TextHint = '0.00'
+      end
+      object edtQtdeEstoque: TCalcEdit[4]
+        Left = 200
+        Height = 23
+        Top = 136
+        Width = 176
+        CalculatorLayout = clNormal
+        AsFloat = 0
+        AsInteger = 0
+        ButtonWidth = 23
+        DialogTop = 0
+        DialogLeft = 0
+        NumGlyphs = 1
+        MaxLength = 0
+        TabOrder = 4
+        TextHint = '0.00'
+      end
+      object edtDataUltimaVenda: TDateEdit[5]
+        Left = 392
+        Height = 23
+        Top = 136
+        Width = 144
+        CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+        DateOrder = doNone
+        ButtonWidth = 23
+        NumGlyphs = 1
+        MaxLength = 0
+        TabOrder = 5
+        TextHint = '  /  / '
+      end
+      object Label1: TLabel[6]
+        Left = 13
+        Height = 15
+        Top = 118
+        Width = 79
+        Caption = 'Valor da Venda'
+        ParentColor = False
+      end
+      object Label2: TLabel[7]
+        Left = 200
+        Height = 15
+        Top = 118
+        Width = 71
+        Caption = 'Qtde Estoque'
+        ParentColor = False
+      end
+      object Label3: TLabel[8]
+        Left = 392
+        Height = 15
+        Top = 118
+        Width = 112
+        Caption = 'Data da última venda'
+        ParentColor = False
+      end
+      object Panel1: TPanel[9]
+        Left = 640
+        Height = 130
+        Top = 8
+        Width = 170
+        BevelInner = bvRaised
+        BevelOuter = bvLowered
+        ClientHeight = 130
+        ClientWidth = 170
+        TabOrder = 6
+        object imgFoto: TImage
+          Tag = 1
+          Left = 2
+          Height = 126
+          Top = 2
+          Width = 166
+          Align = alClient
+        end
+      end
+      object btnCarregar: TSpeedButton[10]
+        Left = 640
+        Height = 22
+        Top = 144
+        Width = 80
+        Caption = 'Carregar'
+        OnClick = btnCarregarClick
+      end
+      object btnLimpar: TSpeedButton[11]
+        Left = 733
+        Height = 22
+        Top = 144
+        Width = 77
+        Caption = 'Limpar'
+        OnClick = btnLimparClick
+      end
+      object barGTIN: TACBrBarCode[12]
+        Left = 610
+        Height = 50
+        Top = 224
+        Width = 200
+        Modul = 2
+        Ratio = 2
+        Typ = bcCodeEAN13
+        Angle = 0
+        ShowText = bcoCode
+      end
+    end
+  end
+  inherited qryListagem: TZQuery
+    SQL.Strings = (
+      'SELECT produtoId, descricao,gtin,valorVenda,qtdeEstoque,dataUltimaCompra '
+      'FROM produtos'
+    )
+  end
+end

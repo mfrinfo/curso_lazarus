@@ -1,0 +1,305 @@
+inherited frmCadCliente: TfrmCadCliente
+  Left = 641
+  Top = 263
+  Caption = 'Cadastro de Cliente'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  inherited pnlTitulo: TPanel
+    inherited imgIcon: TImage
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869636709000089504E47
+        0D0A1A0A0000000D4948445200000020000000200806000000737A7AF4000000
+        0473424954080808087C0864880000000970485973000000B1000000B101C62D
+        498D0000001974455874536F667477617265007777772E696E6B73636170652E
+        6F72679BEE3C1A000008E44944415458858D97796C5CD515C67FF7ADB3CF78DF
+        E2780BD80E4B48D86942091184022D4B0B856E52494559BAA85525A40AD282DA
+        3FA854954545054A114A0B95500BB440B7843424050282982476ECC48EE32D76
+        BC8CB7F12C6FB9B77FCCC44B1C20477AD2BCB9E79EF3DDEF7DF7DC7385528A33
+        B2EEEB6D4CFB6A847613D00A54151E80E1C27308255FC3CDBDC5AA3773671256
+        7C2680BE2F5721C456505F07A267869659107F42A947A8FBCBF0A983EBD76F89
+        EED9F3DCECA70338F6ED0062FA4184F811103AC3C4A75A1AA57E838AFF82FAE7
+        B300575C777BB1E11ADB85E4F15D3B5F7C61198037EF6E795008B69496255618
+        BA6984CB4D8A9A0294360710BAF8CC8C7FDD2E787C9B647A56110868C4A3069E
+        AFCB9CA3007C4D4382B09562F7EE9D2F5E699C9CF8FA776B424ED63EE4E49C95
+        0D752BD09481F414B3C71D668F3B4C746568DA9CC00C699F98FCF55DF0D0131E
+        00C1A089659964F24AD0344D00CC4F1682E2257FB8B9C087E974666551511CC3
+        3038D5E6465DBAFF39059F2299C7B72DFC0ED84B63E8DA52F60462078001F0E6
+        3D2D37CDCDA55B0012B1BCCEEC58194E2A8992FEFCA4F498CB786786D2D6E069
+        018C2525BA2EA82F0F71564D0C5DD7011898C83094CCCCFBF9BE44B99187E701
+        7839FF7E00D330300C03A1E9D45E7A33A9911E460EBCB524C9D4B11CA5AD41A4
+        02D73DB93A300CF07DA82AB2F9E94D4D44A29105F6723E7B3AC7199F751899CC
+        F041D7385E26E3CE03081595AF695EFF159CF414652B1A8854D6A31B2689BA73
+        193BFC2E7E2E8F5E297865AF4EDB4E4967AF42D34C2C4B47D7352C4362DB3EA5
+        519360682943615B67F39A0A00761D1CE5FDCE71EEB9536B02DA0C00616889E2
+        AA06EC4804DDB2507E9E76CD3069DAF41D52A37D4C0E1E66EBABC31C9A301102
+        E2B100BABE2048C7D308853406A73D721E749F7068AE0C626B3EAE2FE99C80F3
+        CA35AA8B83C4422657B494FFBEE3E587AFD21FB861F5ED91A21577E8BA856159
+        F48E4CD33E9CA5BE3C0C4067FF047D99306F1FC9B1FD60128068D4C634F4D3EA
+        0021E81898A1A52A444958C7D0050A38319EA232615314B1F8D2C535F829BBDA
+        3002576AA03D1508250090BE4F6D4582E6AA304A4AA4EFD350534C6399CDABFF
+        EBE1ECEA2841DBC0323F2179C10627B33455843035984BCD21A4E482FA589E55
+        2140297CE9A36BB2D6D0034343BA555AE2E6B2F8AE8BA169541687F15D17A514
+        41CBA2776A8E78C8E299EF6DC08C44D8D73BC9FB9DC374F627194EA648E7BC65
+        20F6F54EB16E651821048EE3103416E942CB50B36A86E2CA81F70C2BFEF6D47F
+        7ED74EBCEC1C9A2FD98C1E89A0A4C42F485C6A1A633339945220047630C865AB
+        835CB6BA7A49C2EEA129DE3938C881DE71F61F1D6364324BA0B9641930A5148D
+        6B7A08C7D300550650257D8FBE8E7729AE6EA4426F219848608516CABF2CD482
+        93FBFA74B6AA26C1AA9AFCA7BCEE81975128945208B1508094925436CD275F00
+        B0FAF335CC257378EE1EA6C62691F22202D104866521A5A42A3EC7AD97D7233E
+        05C062BBA8B9920BCF0D333931492018C0344DEC788EC6D66E02E125A7749550
+        7DB7CEB0E8987D6FE6462AE66A8826FB10BA8E1B4A70DC8C503B710CC3B609C4
+        628C4EA609062CA2C17CB99D4D3B641D495922301F7948C519DCBB83A065A01B
+        3A736B6FA6B254A35ABD4454749E749BD5401D0738918B71EFFE3B79EDC4E578
+        A162946E1288C588D83A0DA991252B7CABAD9FF6E373F3EFEF770DF3C1B19925
+        3E659911CEBBF8620C3B888A952382314CBB9A51FBC78C72ED49B74103C471A0
+        79CBC7DFA03F53CA864009CA70705AD6A3E56608267B915E4190850275C7C616
+        009CB93C884D6BEB967D06E93A0403362D4793F45E7F2DCACCB3258460DABC95
+        84FB011693831A70A463B68A63E9128A03413CA5E346AB88C58BB04A578015C0
+        B06D1402E92D6C37A51456388C150EB3ACA9510ACD30906690B9F32F21D4504F
+        697441D4BAA633A63683E28886A65EF9F7582B00A581BC537FBA5062359DA18A
+        4B79426E608F7636006E267F2E48CF23974A914BA5960003C86A41A61B37305A
+        7D2956DB7E508A8CE33295CE329BCD8B30A7D58250AF1A9C28DB31928D3B8065
+        E9799AFA53022AF2ABEA4B0B06FD2823FA39B4A861CAE766316C1BDD34D14D73
+        39F552325D7B0152B7D1522902ED07308706F1AA6BD0348D939B52627BAC9CDC
+        A971E1D36E56EA9D8B83F4A6401658ED99C94FF1D078415F4F0F25A4272797AD
+        1AC0F5159D9156A46E03601F6A07A5B03BDA31340DDBD0B10A678854C638ECF4
+        3480067BEA9B21C399FF909339F8638FE0EFFD827D130B09A6448867B5CF21CA
+        BB48CD24C9CECEE23B0E9E93232966688B9E4FD608CFFBDB1D0717802C32A514
+        BA1ABB0B0A2DD90F37DDBB7F6349D71B8B9DF62761D7C8D20E2C35D447D7738F
+        71CD87B770201B437A1E5E2EC74046E38BFBCEE2C9479F65A06F7011800E00AC
+        2347108B18F39DE3BD4D7557FF631E0040939BF9AA494E2EE3B560CEE438C75E
+        FA2DC9C387D07A7B782D5B01BA8E1D89F0A11345EBEDA1637F17CF3DF63C33D3
+        B32025329C6743462250D8CA9E9795A63F7AF9C9B8F300EEBEF1EE74A379F016
+        4FBACB922BDFA3FFCF4FA2BB6934219087DBF96FAE98AFEDF6B96BC714BF1AAF
+        421E6E4713825C36CDAF1F7D8A9CEB91BCEFFBF8F138C97BEE470582F8D2C7F0
+        0F6C6E68D874621900809F5D73C3DF6AAC8FB67872A9C0A63E7E07772A2F06CB
+        D671FB8EB2AEAC8A981EC1F322AC2BABC2EDEBC1B2F302EBEB1DA0EDA383F8A5
+        658CFDFC97B8F50DF8BEA334F7C00F1A576EDEBE38F6B226FF918D5FF8439DB5
+        EF46CF4FCDB7C3E981A3F3E3BAAE215D0777A89FE0CA26822B9B7087FA91AE8B
+        B1A845EB3A74244F7F2884EB8C4E18B9F6AAA695573F796ABED3DE32B66EDCFC
+        C68581BD09C3EF1F5428DCE985AD200BFB73FCE3BDA4FBBB49F77733B6EFBD25
+        6300FD7D4348E9A3729DDB9A6B5B4A17D3BED896DF400A76DF55B7A580DAADDB
+        FFF5AD89BADAA79DE468C0CFCC11B00D32199789F636F44CFE0C481E3D06805D
+        B88C4422619A5B576485B36F5353DDB5EF7C520E3893DB71C11E7A635BEB4067
+        E699A9FED1B5A9436DE6C4AC61C5A2F9366B7A264D494CF3D6AC6D9839FBACF8
+        EE4BD635FE64DDBADBBACF24EEFF0109B3D3B9464AA8FB0000000049454E44AE
+        426082
+      }
+    end
+    inherited lblTitulo: TLabel
+      Width = 58
+      Caption = 'Cliente'
+    end
+  end
+  inherited pnlBotoes: TPanel
+    inherited btnAlterar: TBitBtn
+      OnClick = btnAlterarClick
+    end
+    inherited btnCancelar: TBitBtn
+      OnClick = btnCancelarClick
+    end
+    inherited btnGravar: TBitBtn
+      OnClick = btnGravarClick
+    end
+    inherited btnNavigator: TDBNavigator
+      Hints.Strings = (      )
+    end
+  end
+  inherited pgcPrincipal: TPageControl
+    inherited tabManutencao: TTabSheet
+      object edtNome: TLabeledEdit[0]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 80
+        Width = 476
+        EditLabel.Height = 15
+        EditLabel.Width = 476
+        EditLabel.Caption = 'Nome'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 2
+      end
+      object edtClienteId: TLabeledEdit[1]
+        Tag = 1
+        Left = 12
+        Height = 23
+        Top = 32
+        Width = 350
+        EditLabel.Height = 15
+        EditLabel.Width = 350
+        EditLabel.Caption = 'Código'
+        EditLabel.ParentColor = False
+        MaxLength = 36
+        TabOrder = 0
+      end
+      object rdgTipoDePessoa: TRadioGroup[2]
+        Left = 376
+        Height = 54
+        Top = 8
+        Width = 440
+        AutoFill = True
+        Caption = 'Tipo de Pessoa'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 2
+        ClientHeight = 34
+        ClientWidth = 436
+        Columns = 2
+        ItemIndex = 0
+        Items.Strings = (
+          'Física'
+          'Jurídica'
+        )
+        OnClick = rdgTipoDePessoaClick
+        TabOrder = 1
+      end
+      object edtDocumento: TMaskEdit[3]
+        Left = 504
+        Height = 23
+        Top = 80
+        Width = 312
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 3
+        OnExit = edtDocumentoExit
+        SpaceChar = '_'
+      end
+      object lblDocumento: TLabel[4]
+        Left = 504
+        Height = 15
+        Top = 63
+        Width = 63
+        Caption = 'Documento'
+        ParentColor = False
+      end
+      object edtCEP: TMaskEdit[5]
+        Left = 12
+        Height = 23
+        Top = 128
+        Width = 113
+        CharCase = ecNormal
+        MaxLength = 0
+        TabOrder = 4
+        SpaceChar = '_'
+      end
+      object lblDocumento1: TLabel[6]
+        Left = 12
+        Height = 15
+        Top = 109
+        Width = 21
+        Caption = 'CEP'
+        ParentColor = False
+      end
+      object edtLogradouro: TLabeledEdit[7]
+        Tag = 2
+        Left = 176
+        Height = 23
+        Top = 128
+        Width = 496
+        EditLabel.Height = 15
+        EditLabel.Width = 496
+        EditLabel.Caption = 'Logradouro'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 6
+      end
+      object edtNumero: TLabeledEdit[8]
+        Tag = 2
+        Left = 685
+        Height = 23
+        Top = 128
+        Width = 132
+        EditLabel.Height = 15
+        EditLabel.Width = 132
+        EditLabel.Caption = 'Número'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 7
+      end
+      object edtBairro: TLabeledEdit[9]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 184
+        Width = 297
+        EditLabel.Height = 15
+        EditLabel.Width = 297
+        EditLabel.Caption = 'Bairro'
+        EditLabel.ParentColor = False
+        MaxLength = 40
+        TabOrder = 8
+      end
+      object edtCidade: TLabeledEdit[10]
+        Tag = 2
+        Left = 321
+        Height = 23
+        Top = 184
+        Width = 424
+        EditLabel.Height = 15
+        EditLabel.Width = 424
+        EditLabel.Caption = 'Cidade'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 9
+      end
+      object edtUf: TLabeledEdit[11]
+        Tag = 2
+        Left = 756
+        Height = 23
+        Top = 184
+        Width = 60
+        EditLabel.Height = 15
+        EditLabel.Width = 60
+        EditLabel.Caption = 'UF'
+        EditLabel.ParentColor = False
+        MaxLength = 2
+        TabOrder = 10
+      end
+      object edtEmail: TLabeledEdit[12]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 240
+        Width = 804
+        CharCase = ecLowerCase
+        EditLabel.Height = 15
+        EditLabel.Width = 804
+        EditLabel.Caption = 'e-mail'
+        EditLabel.ParentColor = False
+        MaxLength = 100
+        TabOrder = 11
+        OnEnter = edtEmailEnter
+        OnExit = edtEmailExit
+      end
+      object BitBtn1: TBitBtn[13]
+        Left = 128
+        Height = 26
+        Top = 127
+        Width = 43
+        Caption = 'Buscar'
+        OnClick = BitBtn1Click
+        TabOrder = 5
+      end
+    end
+  end
+  inherited qryListagem: TZQuery
+    SQL.Strings = (
+      'SELECT clientesId, nome, documento, tipoPessoa, cep, logradouro, numero, bairro, cidade, email FROM clientes'
+    )
+  end
+  object ACBrBuscaCEP: TACBrCEP[5]
+    ProxyPort = '8080'
+    WebService = wsCepLivre
+    ChaveAcesso = 'e72b376ec92b125f395a7fc6b6c8eb18'
+    Usuario = 'mfrinfophone@gmail.com'
+    Senha = 'oVtqoE'
+    PesquisarIBGE = True
+    OnBuscaEfetuada = ACBrBuscaCEPBuscaEfetuada
+    left = 552
+  end
+end

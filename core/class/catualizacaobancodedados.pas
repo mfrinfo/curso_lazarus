@@ -67,22 +67,17 @@ end;
 
 
 function TAtualizaBancoDados.AtualizarBancoDeDados: Boolean;
-var oAtualizarDB:TAtualizaBancoDados;
-    oTabela: TAtualizaBancoDados;
+var oTabela: TAtualizaBancoDados;
     oCampo: TAtualizaBancoDados;
 begin
+  Result :=false;
   Try
-    //Classe Principal de Atualização
-    oAtualizarDB := TAtualizaBancoDados.Create(ConexaoDB);
-
     oTabela := TAtualizacaoTable.Create(ConexaoDB);
     oCampo  := TAtualizacaoCampo.Create(ConexaoDB);
-
     Result  :=true;
   Finally
     FreeAndNil(oCampo);
     FreeAndNil(oTabela);
-    FreeAndNil(oAtualizarDB);
   End;
 end;
 

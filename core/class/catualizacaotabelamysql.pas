@@ -110,12 +110,41 @@ end;
 
 procedure TAtualizacaoTable.Cliente;
 begin
-
+  if not TabelaExisteNoBancoDeDados('clientes') then begin
+    ExecutaDiretoBancoDeDados(
+      'CREATE TABLE clientes ( '+
+      '	 clientesId   VARCHAR(36) NOT NULL, '+
+      '	 nome         VARCHAR(50), '+
+      '	 documento    VARCHAR(20), '+
+      '	 tipoPessoa   CHAR(1), '+
+      '	 cep          VARCHAR(10), '+
+      '	 logradouro   VARCHAR(50), '+
+      '	 numero       VARCHAR(10), '+
+      '	 bairro       VARCHAR(40), '+
+      '	 cidade       VARCHAR(50), '+
+      '	 uf           CHAR(2), '+
+      '	 email        VARCHAR(100), '+
+      '	 PRIMARY KEY (clientesId) '+
+      '	) '
+    );
+  end;
 end;
 
 procedure TAtualizacaoTable.Produto;
 begin
-
+  if not TabelaExisteNoBancoDeDados('produtos') then begin
+    ExecutaDiretoBancoDeDados(
+      'CREATE TABLE produtos ( '+
+      '	 produtoId    VARCHAR(36) NOT NULL, '+
+      '	 descricao    VARCHAR(50), '+
+      '	 gtin         VARCHAR(14), '+
+      '	 valorVenda   Decimal(18,2), '+
+      '	 qtdeEstoque  Decimal(18,2), '+
+      '	 dataUltimaCompra DateTime, '+
+      '	 PRIMARY KEY (produtoId) '+
+      '	) '
+    );
+  end;
 end;
 
 procedure TAtualizacaoTable.Vendas;
@@ -135,7 +164,7 @@ begin
     ExecutaDiretoBancoDeDados(
       'CREATE TABLE usuarios ( '+
       '	 usuarioId VARCHAR(36) NOT NULL, '+
-      '	 nome VARCHAR(50) NOT NULL, '+
+      '	 nome VARCHAR(50) NOT NULL UNIQUE, '+
       '	 senha VARCHAR(40) NOT NULL, '+
       '	 PRIMARY KEY (usuarioId) '+
       '	) '

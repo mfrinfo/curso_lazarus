@@ -178,7 +178,7 @@ begin
 
       Self.F_usuarioId     := Qry.FieldByName('usuarioId').AsString;
       Self.F_nome          := Qry.FieldByName('nome').AsString;
-      Self.F_Senha         := Qry.FieldByName('senha').AsString;;
+      Self.F_Senha         := Qry.FieldByName('senha').AsString;
     Except
       Result:=false;
     End;

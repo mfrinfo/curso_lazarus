@@ -1,10 +1,10 @@
 inherited frmCadUsuario: TfrmCadUsuario
-  Left = 681
-  Height = 389
-  Top = 356
+  Left = 582
+  Height = 392
+  Top = 136
   Width = 831
   Caption = 'Cadastro de Usuário'
-  ClientHeight = 389
+  ClientHeight = 392
   ClientWidth = 831
   OnClose = FormClose
   OnCreate = FormCreate
@@ -52,7 +52,7 @@ inherited frmCadUsuario: TfrmCadUsuario
     end
   end
   inherited pnlBotoes: TPanel
-    Top = 339
+    Top = 342
     Width = 831
     ClientWidth = 831
     inherited btnNovo: TBitBtn
@@ -79,29 +79,32 @@ inherited frmCadUsuario: TfrmCadUsuario
     end
   end
   inherited pgcPrincipal: TPageControl
-    Height = 289
+    Height = 292
     Width = 831
+    ActivePage = tabManutencao
+    TabIndex = 1
     inherited tabListagem: TTabSheet
-      ClientHeight = 261
+      ClientHeight = 264
       ClientWidth = 823
       inherited pnlListagemTopo: TPanel
         Width = 823
         ClientWidth = 823
       end
       inherited pnlListagemCentro: TPanel
-        Height = 201
+        Height = 204
         Width = 823
-        ClientHeight = 201
+        ClientHeight = 204
         ClientWidth = 823
         inherited grdListagem: TDBGrid
-          Height = 199
+          Height = 202
           Width = 821
+          Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
         end
       end
     end
     inherited tabManutencao: TTabSheet
-      ClientHeight = 333
-      ClientWidth = 829
+      ClientHeight = 264
+      ClientWidth = 823
       object edtUsuarioId: TLabeledEdit[0]
         Tag = 1
         Left = 12

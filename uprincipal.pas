@@ -16,6 +16,12 @@ type
   TfrmPrincipal = class(TForm)
     imgMysql: TImage;
     Label1: TLabel;
+    mmuPDV: TMenuItem;
+    mmuProcesso: TMenuItem;
+    mmuProduto: TMenuItem;
+    mmuCliente: TMenuItem;
+    N1: TMenuItem;
+    mmuCategoria: TMenuItem;
     mmuCadastro: TMenuItem;
     mmuAcoesDeAcesso: TMenuItem;
     mmuPermissaoDeAcoesParaUsuario: TMenuItem;
@@ -33,8 +39,11 @@ type
     procedure Label1Click(Sender: TObject);
     procedure mmuAcoesDeAcessoClick(Sender: TObject);
     procedure mmuCategoriaClick(Sender: TObject);
+    procedure mmuClienteClick(Sender: TObject);
     procedure mmuFecharClick(Sender: TObject);
+    procedure mmuPDVClick(Sender: TObject);
     procedure mmuPermissaoDeAcoesParaUsuarioClick(Sender: TObject);
+    procedure mmuProdutoClick(Sender: TObject);
     procedure mmuUsuarioClick(Sender: TObject);
   private
     procedure AtualizacaoBancoDados(aForm: TfrmAtualizaBancoDados);
@@ -53,14 +62,20 @@ implementation
 {$R *.lfm}
 
 uses uCadUsuario, cArquivoIni, cAtualizacaoBancoDeDados, uLogin,
-     cAcaoAcesso, uCadAcaoAcesso, cInstanciarForm, uUsuarioVsAcoes;
+     cAcaoAcesso, uCadAcaoAcesso, cInstanciarForm, uUsuarioVsAcoes, ucadcategoria,
+     ucadcliente, ucadproduto, upropdv;
 
 { TfrmPrincipal }
 
 
 procedure TfrmPrincipal.mmuCategoriaClick(Sender: TObject);
 begin
+  TInstanciarForm.CriarForm(TfrmCadCategoria, oUsuarioLogado, DtmPrincipal.ConDataBase);
+end;
 
+procedure TfrmPrincipal.mmuClienteClick(Sender: TObject);
+begin
+  TInstanciarForm.CriarForm(TfrmCadCliente, oUsuarioLogado, DtmPrincipal.ConDataBase);
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
@@ -124,6 +139,9 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmCadUsuario,  DtmPrincipal.ConDataBase);
     TAcaoAcesso.CriarAcoes(TfrmCadAcaoAcesso,DtmPrincipal.ConDataBase);
     TAcaoAcesso.CriarAcoes(TfrmUsuarioVsAcoes,DtmPrincipal.ConDataBase);
+    TAcaoAcesso.CriarAcoes(TfrmCadCategoria,DtmPrincipal.ConDataBase);
+    TAcaoAcesso.CriarAcoes(TfrmCadCliente,DtmPrincipal.ConDataBase);
+    TAcaoAcesso.CriarAcoes(TfrmCadProduto,DtmPrincipal.ConDataBase);
   finally
     TAcaoAcesso.PreencherUsuariosVsAcoes(DtmPrincipal.ConDataBase);
   end;
@@ -179,9 +197,24 @@ begin
   Application.Terminate;
 end;
 
+procedure TfrmPrincipal.mmuPDVClick(Sender: TObject);
+begin
+  try
+    frmpropdv:=Tfrmpropdv.Create(self);
+    frmpropdv.ShowModal;
+  finally
+    frmpropdv.Release;
+  end;
+end;
+
 procedure TfrmPrincipal.mmuPermissaoDeAcoesParaUsuarioClick(Sender: TObject);
 begin
   TInstanciarForm.CriarForm(TfrmUsuarioVsAcoes, oUsuarioLogado, DtmPrincipal.ConDataBase);
+end;
+
+procedure TfrmPrincipal.mmuProdutoClick(Sender: TObject);
+begin
+  TInstanciarForm.CriarForm(TfrmCadProduto, oUsuarioLogado, DtmPrincipal.ConDataBase);
 end;
 
 procedure TfrmPrincipal.mmuUsuarioClick(Sender: TObject);

@@ -1,21 +1,21 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 321
-  Height = 660
-  Top = 172
+  Left = 419
+  Height = 585
+  Top = 191
   Width = 1110
   Caption = 'Sistema de Vendas'
-  ClientHeight = 640
+  ClientHeight = 565
   ClientWidth = 1110
   Menu = mmuPrincipal
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poDefault
-  LCLVersion = '2.0.0.4'
+  LCLVersion = '2.0.2.0'
   WindowState = wsMaximized
   object pgcForms: TPageControl
     Left = 0
-    Height = 567
+    Height = 492
     Top = 50
     Width = 1110
     Align = alClient
@@ -113,7 +113,7 @@ object frmPrincipal: TfrmPrincipal
   object StbPrincipal: TStatusBar
     Left = 0
     Height = 23
-    Top = 617
+    Top = 542
     Width = 1110
     Panels = <    
       item
@@ -138,12 +138,34 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Permissão de Ações para Usuário'
         OnClick = mmuPermissaoDeAcoesParaUsuarioClick
       end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object mmuCategoria: TMenuItem
+        Caption = 'Categoria'
+        OnClick = mmuCategoriaClick
+      end
+      object mmuCliente: TMenuItem
+        Caption = 'Cliente'
+        OnClick = mmuClienteClick
+      end
+      object mmuProduto: TMenuItem
+        Caption = 'Produto'
+        OnClick = mmuProdutoClick
+      end
       object mmuSeparacao2: TMenuItem
         Caption = '-'
       end
       object mmuFechar: TMenuItem
         Caption = 'Fechar'
         OnClick = mmuFecharClick
+      end
+    end
+    object mmuProcesso: TMenuItem
+      Caption = 'Processo'
+      object mmuPDV: TMenuItem
+        Caption = 'PDV'
+        OnClick = mmuPDVClick
       end
     end
   end

@@ -1,8 +1,8 @@
 object dtmPrincipal: TdtmPrincipal
   OldCreateOrder = False
   Height = 268
-  HorizontalOffset = 171
-  VerticalOffset = 2
+  HorizontalOffset = 736
+  VerticalOffset = 268
   Width = 567
   PPI = 96
   object ConDataBase: TZConnection

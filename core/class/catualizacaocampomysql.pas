@@ -76,6 +76,10 @@ begin
     if CampoExisteNaTabela('categorias','testeColuna') then begin
        ExecutaDiretoBancoDeDados('ALTER TABLE categorias DROP Column testeColuna ');
     end;
+
+    if not CampoExisteNaTabela('produtos','foto') then begin
+       ExecutaDiretoBancoDeDados('ALTER TABLE produtos ADD Column foto LONGBLOB ');
+    end;
   {$endregion}
 end;
 

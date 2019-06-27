@@ -8,10 +8,12 @@ object frmLogin: TfrmLogin
   Caption = 'Acesso'
   ClientHeight = 240
   ClientWidth = 392
+  OnClose = FormClose
   OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.0.2.0'
   object pnlTitulo: TPanel
     Left = 0
     Height = 50
@@ -176,7 +178,7 @@ object frmLogin: TfrmLogin
   object btnAcessar: TBitBtn
     Left = 254
     Height = 25
-    Top = 194
+    Top = 192
     Width = 99
     Caption = 'ACESSAR'
     Glyph.Data = {

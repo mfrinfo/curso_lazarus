@@ -1,7 +1,7 @@
 object frmTelaHeranca: TfrmTelaHeranca
-  Left = 507
+  Left = 631
   Height = 426
-  Top = 346
+  Top = 218
   Width = 838
   BorderStyle = bsDialog
   Caption = 'Informe aqui o Título'
@@ -11,7 +11,7 @@ object frmTelaHeranca: TfrmTelaHeranca
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.0.4'
+  LCLVersion = '2.0.2.0'
   object pnlTitulo: TPanel
     Left = 0
     Height = 50
@@ -445,6 +445,7 @@ object frmTelaHeranca: TfrmTelaHeranca
           Color = clWindow
           Columns = <>
           DataSource = dtsListagem
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
           TabOrder = 0
           TitleFont.Color = clWindowText
           TitleFont.Height = -11

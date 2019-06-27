@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Buttons, uUtils;
+  StdCtrls, Buttons, ACBrEnterTab, uUtils;
 
 type
 
@@ -24,10 +24,13 @@ type
     pnlTitulo: TPanel;
     procedure btnAcessarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     bFechar:Boolean;
+    oEnter:TACBrEnterTab;
     procedure FecharAplicacao;
     procedure FecharFormulario;
   public
@@ -60,9 +63,21 @@ begin
   CanClose:=bFechar;
 end;
 
+procedure TfrmLogin.FormCreate(Sender: TObject);
+begin
+  oEnter:=TACBrEnterTab.Create(self);
+  oEnter.EnterAsTab:=true;
+end;
+
 procedure TfrmLogin.btnFecharClick(Sender: TObject);
 begin
   FecharAplicacao;
+end;
+
+procedure TfrmLogin.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  if Assigned(oEnter) then
+     FreeAndNil(oEnter);
 end;
 
 procedure TfrmLogin.btnAcessarClick(Sender: TObject);

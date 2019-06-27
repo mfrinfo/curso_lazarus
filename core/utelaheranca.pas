@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Buttons, DbCtrls, ComCtrls, MaskEdit, DBGrids, ZDataset, uEnum, uUtils;
+  StdCtrls, Buttons, DbCtrls, ComCtrls, MaskEdit, DBGrids, EditBtn,
+  ACBrEnterTab, ACBrValidador, ZDataset, uEnum, uUtils;
 
 type
 
@@ -67,6 +68,8 @@ type
 
   public
     EstadoDoCadastro:TEstadoDoCadastro;
+    oEnter:TACBrEnterTab;
+    oValidador:TACBrValidador;
     IndiceAtual:string;
     function Gravar(aEstadoDoCadastro:TEstadoDoCadastro):boolean; virtual;
     function Apagar:Boolean; virtual;
@@ -163,7 +166,16 @@ begin
     else if (Components[i] is TMemo) then
       TMemo(Components[i]).Text:=''
     else if (Components[i] is TMaskEdit) then
-      TMaskEdit(Components[i]).Text:='';
+      TMaskEdit(Components[i]).Text:=''
+    else if (Components[i] is TCalcEdit) then
+      TCalcEdit(Components[i]).Text:=''
+    else if (Components[i] is TDateEdit) then
+      TDateEdit(Components[i]).Text:=''
+    else if (Components[i] is TImage) then begin
+      if TImage(Components[i]).Tag=1 then begin
+         TImage(Components[i]).Picture.Assign(nil);
+      end;
+    end;
 
   end;
 end;
@@ -178,18 +190,11 @@ end;
 {$region 'Métodos Virtual'}
 function TfrmTelaHeranca.Gravar(aEstadoDoCadastro: TEstadoDoCadastro): boolean;
 begin
-   if (aEstadoDoCadastro=ecInserir) then
-       showmessage('Inserir')
-   else if (EstadoDoCadastro=ecAlterar) then
-       showmessage('Alterado')
-   else
-      showmessage('Nada aconteceu');
-   result:=true;
+  result:=true;
 end;
 
 function TfrmTelaHeranca.Apagar: Boolean;
 begin
-  showmessage('Apagar');
   result:=true;
 end;
 
@@ -204,6 +209,12 @@ procedure TfrmTelaHeranca.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
   try
+    if Assigned(oEnter) then
+       FreeAndNil(oEnter);
+
+    if Assigned(oValidador) then
+       FreeAndNil(oValidador);
+
     QryListagem.Close;
   finally
     CloseAction:=caFree;
@@ -213,6 +224,12 @@ end;
 
 procedure TfrmTelaHeranca.FormCreate(Sender: TObject);
 begin
+  oEnter:=TACBrEnterTab.Create(self);
+  oEnter.EnterAsTab:=true;
+
+  oValidador:=TACBrValidador.Create(self);
+  oValidador.IgnorarChar:='./-';
+
   QryListagem.Connection:=DtmPrincipal.ConDataBase;
   ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavigator, pgcPrincipal, true);
   grdListagem.Options:=[dgTitles,
@@ -364,7 +381,7 @@ begin
         QryListagem.Refresh;
      end
      else begin
-       MessageERROR('Erro ao Gravar');
+       MessageERROR('Erro ao Apagar');
      end;
    finally
      EstadoDoCadastro:=ecNenhum;

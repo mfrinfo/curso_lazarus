@@ -1,0 +1,171 @@
+object frmpropdv: Tfrmpropdv
+  Left = 304
+  Height = 677
+  Top = 160
+  Width = 1116
+  ClientHeight = 677
+  ClientWidth = 1116
+  LCLVersion = '2.0.2.0'
+  WindowState = wsMaximized
+  object Panel1: TPanel
+    Left = 0
+    Height = 100
+    Top = 0
+    Width = 1116
+    Align = alTop
+    ClientHeight = 100
+    ClientWidth = 1116
+    TabOrder = 0
+    object edtCodigo: TMaskEdit
+      Left = 15
+      Height = 29
+      Top = 40
+      Width = 196
+      CharCase = ecNormal
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      MaxLength = 0
+      ParentFont = False
+      TabOrder = 0
+      TextHint = 'Informe o Código'
+      SpaceChar = '_'
+    end
+    object edtDescricao: TMaskEdit
+      Left = 222
+      Height = 29
+      Top = 40
+      Width = 377
+      Anchors = [akTop, akLeft, akRight]
+      CharCase = ecNormal
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      MaxLength = 0
+      ParentFont = False
+      TabOrder = 1
+      SpaceChar = '_'
+    end
+    object edtValor: TMaskEdit
+      Left = 618
+      Height = 29
+      Top = 40
+      Width = 168
+      Alignment = taRightJustify
+      Anchors = [akTop, akRight]
+      CharCase = ecNormal
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      MaxLength = 0
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 4
+      TabStop = False
+      Text = '0.00'
+      SpaceChar = '_'
+    end
+    object pnlFotoProduto: TPanel
+      Left = 990
+      Height = 98
+      Top = 1
+      Width = 125
+      Align = alRight
+      BevelInner = bvLowered
+      BevelOuter = bvLowered
+      Caption = 'SEM IMAGEM'
+      ClientHeight = 98
+      ClientWidth = 125
+      Color = clWhite
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      TabOrder = 2
+      object imgFotoProduto: TImage
+        Left = 2
+        Height = 94
+        Top = 2
+        Width = 121
+        Align = alClient
+        Stretch = True
+      end
+    end
+    object edtQtde: TCalcEdit
+      Left = 803
+      Height = 29
+      Top = 40
+      Width = 168
+      CalculatorLayout = clNormal
+      AsFloat = 0
+      AsInteger = 0
+      ButtonWidth = 23
+      DialogTop = 0
+      DialogLeft = 0
+      NumGlyphs = 1
+      Anchors = [akTop, akRight]
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Segoe UI Semibold'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      MaxLength = 0
+      ParentFont = False
+      TabOrder = 3
+      TextHint = '0.00'
+    end
+    object lblCodigoGTIN: TLabel
+      Left = 15
+      Height = 15
+      Top = 23
+      Width = 64
+      Caption = 'Código Gtin'
+      ParentColor = False
+    end
+    object lblDescricao: TLabel
+      Left = 222
+      Height = 15
+      Top = 23
+      Width = 114
+      Caption = 'Descrição do Produto'
+      ParentColor = False
+    end
+    object lblProduto: TLabel
+      Left = 618
+      Height = 15
+      Top = 23
+      Width = 73
+      Anchors = [akTop, akRight]
+      Caption = 'Valor Produto'
+      ParentColor = False
+    end
+    object lblQtde: TLabel
+      Left = 803
+      Height = 15
+      Top = 23
+      Width = 62
+      Anchors = [akTop, akRight]
+      Caption = 'Quantidade'
+      ParentColor = False
+    end
+  end
+end

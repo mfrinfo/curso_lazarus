@@ -38,17 +38,7 @@ implementation
 
 class function TUsuarioLogado.TenhoAcesso(aUsuarioId:string; aChave:String; aConexao: TZConnection):Boolean;
 var Qry:TZQuery;
-    sSubSelect, sTipoDB:String;
 begin
-
-  sTipoDB:=TArquivoIni.TipoDataBase;
-  if sTipoDb = 'MYSQL' then
-     sSubSelect := '(SELECT acaoAcessoId FROM acaoAcesso WHERE chave=:chave LIMIT 1)'
-  else if sTipoDb = 'FIREBIRD' then
-     sSubSelect := '(SELECT FIRST 1 acaoAcessoId FROM acaoAcesso WHERE chave=:chave)'
-  else
-     sSubSelect := '(SELECT acaoAcessoId FROM acaoAcesso WHERE chave=:chave LIMIT 1)';
-
   try
     Result:=true;
     Qry:=TZQuery.Create(nil);
@@ -57,7 +47,9 @@ begin
     Qry.SQL.Add('SELECT usuarioId '+
                 '  FROM usuariosAcaoAcesso '+
                 ' WHERE usuarioId=:usuarioId  '+
-                '   AND acaoAcessoId='+sSubSelect+
+                '   AND acaoAcessoId=(SELECT acaoAcessoId '+
+                                     '  FROM acaoAcesso '+
+                                     ' WHERE chave=:chave LIMIT 1)'+
                 '   AND ativo=1');
     Qry.ParamByName('usuarioId').AsString        :=aUsuarioId;
     Qry.ParamByName('chave').AsString            :=aChave;
