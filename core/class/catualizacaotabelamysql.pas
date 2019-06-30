@@ -36,8 +36,8 @@ type
     procedure Categoria;
     procedure Cliente;
     procedure Produto;
-    procedure Vendas;
-    procedure VendasItens;
+    procedure PdvVenda;
+    procedure PdvVendaProdutos;
     procedure Usuario;
     procedure AcaoAcesso;
     procedure UsuariosAcaoAcesso;
@@ -54,8 +54,8 @@ begin
   Categoria;
   Cliente;
   Produto;
-  Vendas;
-  VendasItens;
+  PdvVenda;
+  PdvVendaProdutos;
   Usuario;
   AcaoAcesso;
   UsuariosAcaoAcesso;
@@ -147,14 +147,42 @@ begin
   end;
 end;
 
-procedure TAtualizacaoTable.Vendas;
+procedure TAtualizacaoTable.PdvVenda;
 begin
-
+  if not TabelaExisteNoBancoDeDados('pdvVenda') then begin
+    ExecutaDiretoBancoDeDados(
+      'CREATE TABLE pdvVenda ( '+
+      '	 pdvVendaId VARCHAR(36) NOT NULL, '+
+      '  usuarioId VARCHAR(36) NOT NULL, '+
+      '	 data DateTime, '+
+      '	 hora DateTime, '+
+      '	 valorTotalVenda Decimal(18,2), '+
+      '	 PRIMARY KEY (pdvVendaId), '+
+      '  CONSTRAINT FK_PdvVendaUsuario FOREIGN KEY (usuarioId) references usuarios(usuarioId) '+
+      '	) '
+    );
+  end;
 end;
 
-procedure TAtualizacaoTable.VendasItens;
+procedure TAtualizacaoTable.PdvVendaProdutos;
 begin
-
+  if not TabelaExisteNoBancoDeDados('pdvVendaProdutos') then begin
+    ExecutaDiretoBancoDeDados(
+      'CREATE TABLE pdvVendaProdutos ( '+
+      '	 pdvVendaId VARCHAR(36) NOT NULL, '+
+      '  item Integer, '+
+      '	 produtoId VARCHAR(36) NOT NULL, '+
+      '	 gtin VARCHAR(14), '+
+      '	 descricaoProduto VARCHAR(50), '+
+      '	 qtde Decimal(18,2), '+
+      '	 valorUnitario Decimal(18,2), '+
+      '	 valorTotalProduto Decimal(18,2), '+
+      '	 PRIMARY KEY (pdvVendaId, item), '+
+      '  CONSTRAINT FK_PdvVendaProdutosProduto FOREIGN KEY (produtoId) references produtos(produtoId), '+
+      '  CONSTRAINT FK_PdvVendaProdutosPdvVenda FOREIGN KEY (pdvVendaId) references pdvVenda(pdvVendaId) '+
+      '	) '
+    );
+  end;
 end;
 
 procedure TAtualizacaoTable.Usuario;

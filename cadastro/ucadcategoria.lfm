@@ -1,6 +1,6 @@
 inherited frmCadCategoria: TfrmCadCategoria
   Left = 575
-  Top = 290
+  Top = 291
   Caption = 'Cadastro de Categoria'
   OnClose = FormClose
   OnCreate = FormCreate

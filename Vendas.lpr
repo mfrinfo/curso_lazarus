@@ -12,7 +12,7 @@ uses
   uenum, cusuariologado, ufuncaoCriptografia, uutils, catualizacaocampomysql,
   ccadusuario, ucadusuario, uLogin, cacaoacesso, uCadAcaoAcesso,
   cInstanciarForm, uUsuarioVsAcoes, cbase, ucadcategoria, ucadcliente,
-  ucadproduto, upropdv;
+  ucadproduto, upropdv, cpdvvenda;
 
 {$R *.res}
 

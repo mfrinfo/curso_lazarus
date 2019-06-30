@@ -1,7 +1,7 @@
 object frmTelaHeranca: TfrmTelaHeranca
   Left = 631
   Height = 426
-  Top = 218
+  Top = 219
   Width = 838
   BorderStyle = bsDialog
   Caption = 'Informe aqui o Título'

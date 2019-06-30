@@ -21,6 +21,9 @@ uses Classes,
      uUtils;
 
 type
+
+  { TProduto }
+
   TProduto = class(TBase)
 
   private
@@ -39,6 +42,7 @@ type
     function Apagar:Boolean;
     function Selecionar(id:string):Boolean;
     function GTINExiste(aCodigo:string; aProdutoId:string; aEstadoDoCadastro:TEstadoDoCadastro): Boolean;
+    function SelecionarGTIN(id:string): Boolean;
 
   published
     property produtoId:String  read F_produtoId write F_produtoId;
@@ -271,6 +275,41 @@ begin
        MessageOK('Já Existe um produto com este Código :'+#13+
                  Qry.FieldByName('produtoId').AsString+' - '+Qry.FieldByName('descricao').AsString, mtWarning);
     end;
+
+  finally
+   if Assigned(Qry) then
+      FreeAndNil(Qry);
+  end;
+end;
+
+function TProduto.SelecionarGTIN(id: string): Boolean;
+var Qry:TZQuery;
+begin
+  try
+    Result:=true;
+    Qry:=TZQuery.Create(nil);
+    Qry.Connection:=ConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add(' SELECT '+
+                '      produtoId '+
+                '      ,descricao '+
+                '      ,gtin '+
+                '      ,valorVenda '+
+                '      ,qtdeEstoque '+
+                '      ,dataUltimaCompra '+
+                '      ,foto '+
+                ' FROM produtos' +
+                ' WHERE gtin=:id ');
+    Qry.ParamByName('Id').AsString:=id;
+    Qry.Open;
+
+    Self.F_produtoId := Qry.FieldByName('produtoId').AsString;
+    Self.F_descricao := Qry.FieldByName('descricao').AsString;
+    Self.F_gtin := Qry.FieldByName('gtin').AsString;
+    Self.F_valorVenda := Qry.FieldByName('valorVenda').AsFloat;
+    Self.F_qtdeEstoque := Qry.FieldByName('qtdeEstoque').AsFloat;
+    Self.F_dataUltimaCompra := Qry.FieldByName('dataUltimaCompra').AsDateTime;
+    LoadBitmapFromBlob(Self.F_Foto, TBlobField(Qry.FieldByName('foto')));
 
   finally
    if Assigned(Qry) then

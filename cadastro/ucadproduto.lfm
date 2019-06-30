@@ -1,7 +1,7 @@
 inherited frmCadProduto: TfrmCadProduto
   Left = 635
   Height = 418
-  Top = 236
+  Top = 237
   Caption = 'Cadastro de Produto'
   ClientHeight = 418
   OnClose = FormClose
@@ -93,6 +93,7 @@ inherited frmCadProduto: TfrmCadProduto
         NumGlyphs = 1
         MaxLength = 0
         TabOrder = 3
+        Text = '0'
         TextHint = '0.00'
       end
       object edtQtdeEstoque: TCalcEdit[4]
@@ -109,6 +110,7 @@ inherited frmCadProduto: TfrmCadProduto
         NumGlyphs = 1
         MaxLength = 0
         TabOrder = 4
+        Text = '0'
         TextHint = '0.00'
       end
       object edtDataUltimaVenda: TDateEdit[5]

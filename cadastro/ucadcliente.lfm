@@ -1,6 +1,6 @@
 inherited frmCadCliente: TfrmCadCliente
   Left = 641
-  Top = 263
+  Top = 264
   Caption = 'Cadastro de Cliente'
   OnClose = FormClose
   OnCreate = FormCreate
