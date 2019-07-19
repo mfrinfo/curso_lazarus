@@ -31,7 +31,7 @@ object frmpropdv: Tfrmpropdv
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -16
-      Font.Name = 'Segoe UI Semibold'
+      Font.Name = 'Segoe UI'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       Font.Style = [fsBold]
@@ -52,38 +52,16 @@ object frmpropdv: Tfrmpropdv
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -16
-      Font.Name = 'Segoe UI Semibold'
+      Font.Name = 'Segoe UI'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       Font.Style = [fsBold]
       MaxLength = 0
+      ParentColor = True
       ParentFont = False
       ReadOnly = True
       TabOrder = 1
       TabStop = False
-      SpaceChar = '_'
-    end
-    object edtValor: TMaskEdit
-      Left = 627
-      Height = 29
-      Top = 40
-      Width = 168
-      Alignment = taRightJustify
-      Anchors = [akTop, akRight]
-      CharCase = ecNormal
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -16
-      Font.Name = 'Segoe UI Semibold'
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      Font.Style = [fsBold]
-      MaxLength = 0
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 4
-      TabStop = False
-      Text = '0.00'
       SpaceChar = '_'
     end
     object pnlFotoProduto: TPanel
@@ -107,7 +85,7 @@ object frmpropdv: Tfrmpropdv
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 4
       object imgFotoProduto: TImage
         Left = 2
         Height = 94
@@ -116,33 +94,6 @@ object frmpropdv: Tfrmpropdv
         Align = alClient
         Stretch = True
       end
-    end
-    object edtQtde: TCalcEdit
-      Left = 812
-      Height = 29
-      Top = 40
-      Width = 168
-      CalculatorLayout = clNormal
-      AsFloat = 0
-      AsInteger = 0
-      ButtonWidth = 23
-      DialogTop = 0
-      DialogLeft = 0
-      NumGlyphs = 1
-      Anchors = [akTop, akRight]
-      Font.CharSet = ANSI_CHARSET
-      Font.Color = clBlack
-      Font.Height = -16
-      Font.Name = 'Segoe UI Semibold'
-      Font.Pitch = fpVariable
-      Font.Quality = fqDraft
-      Font.Style = [fsBold]
-      MaxLength = 0
-      ParentFont = False
-      TabOrder = 3
-      OnExit = edtQtdeExit
-      Text = '0'
-      TextHint = '0.00'
     end
     object lblCodigoGTIN: TLabel
       Left = 15
@@ -209,6 +160,54 @@ object frmpropdv: Tfrmpropdv
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
+    end
+    object edtValor: TCurrencyEdit
+      Left = 627
+      Height = 29
+      Top = 40
+      Width = 165
+      Alignment = taRightJustify
+      DisplayFormat = '#0.00'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      Anchors = [akTop, akRight]
+      MaxValue = 0
+      MinValue = 0
+      ParentColor = True
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 2
+      TabStop = False
+      Value = 0
+      ZeroEmpty = False
+    end
+    object edtQtde: TCurrencyEdit
+      Left = 808
+      Height = 29
+      Top = 40
+      Width = 165
+      Alignment = taRightJustify
+      DisplayFormat = '#0.00'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      Anchors = [akTop, akRight]
+      MaxValue = 0
+      MinValue = 0
+      ParentFont = False
+      TabOrder = 3
+      Value = 0
+      ZeroEmpty = False
+      OnExit = edtQtdeExit
     end
   end
   object pnlBotoes: TPanel
@@ -422,6 +421,7 @@ object frmpropdv: Tfrmpropdv
       Font.Quality = fqDraft
       Font.Style = [fsBold]
       MaxLength = 0
+      ParentColor = True
       ParentFont = False
       ReadOnly = True
       TabOrder = 4

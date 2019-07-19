@@ -44,6 +44,8 @@ type
     function GTINExiste(aCodigo:string; aProdutoId:string; aEstadoDoCadastro:TEstadoDoCadastro): Boolean;
     function SelecionarGTIN(id:string): Boolean;
 
+    class function BaixaNoEstoque(produtoId:string; qtde:Double; aConexaoDB :TZConnection): Boolean; static;
+
   published
     property produtoId:String  read F_produtoId write F_produtoId;
     property descricao:String  read F_descricao write F_descricao;
@@ -316,6 +318,35 @@ begin
       FreeAndNil(Qry);
   end;
 end;
+
+class function TProduto.BaixaNoEstoque(produtoId: string; qtde: Double; aConexaoDB: TZConnection): Boolean;
+var Qry:TZQuery;
+begin
+  try
+    Result:=true;
+    Qry:=TZQuery.Create(nil);
+    Qry.Connection:=aConexaoDB;
+    Qry.SQL.Clear;
+    Qry.SQL.Add(' UPDATE produtos'+
+                '    SET qtdeEstoque=qtdeEstoque - :qtdeEstoque '+
+                '  WHERE produtoId=:produtoId ');
+    Qry.ParamByName('produtoId').AsString  := produtoId;
+    Qry.ParamByName('qtdeEstoque').AsFloat := qtde;
+
+    try
+      aConexaoDB.StartTransaction;
+      Qry.ExecSQL;
+      aConexaoDB.Commit;
+    except
+      aConexaoDB.Rollback;
+      Result:=false;
+    end;
+  finally
+   if Assigned(Qry) then
+      FreeAndNil(Qry);
+  end;
+end;
+
 
 
 

@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
-  EditBtn, StdCtrls, Buttons, DBCtrls, DBGrids, ACBrEnterTab, BufDataset, db;
+  EditBtn, StdCtrls, Buttons, DBCtrls, DBGrids, rxcurredit, ACBrEnterTab,
+  BufDataset, db;
 
 type
 
@@ -19,13 +20,13 @@ type
     btnFechar: TBitBtn;
     btnGravar: TBitBtn;
     bufTemp: TBufDataset;
+    edtValor: TCurrencyEdit;
+    edtQtde: TCurrencyEdit;
     dtsbufTemp: TDataSource;
     grdProdutos: TDBGrid;
-    edtQtde: TCalcEdit;
     imgFotoProduto: TImage;
     edtCodigo: TMaskEdit;
     edtDescricao: TMaskEdit;
-    edtValor: TMaskEdit;
     lblUsuario: TLabel;
     lblTotalVenda: TLabel;
     lblCodigoGTIN: TLabel;
@@ -39,8 +40,8 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
-    procedure edtCodigoExit(Sender: TObject);
     procedure edtQtdeExit(Sender: TObject);
+    procedure edtCodigoExit(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -85,7 +86,7 @@ begin
     if (oProduto.gtin <> EmptyStr) then begin
        UltimoProdutoId:=oProduto.produtoId;
        edtdescricao.Text:=oProduto.descricao;
-       edtValor.Text:=oProduto.valorVenda.ToString();
+       edtValor.value:=oProduto.valorVenda;
        imgFotoProduto.Picture.Assign(oProduto.foto);
        edtQtde.Text:='1';
     end;
@@ -111,12 +112,12 @@ procedure Tfrmpropdv.GravarProdutoBufTemp;
 var iProximo:Integer;
     dValorTotal:Double;
 begin
-   if (edtValor.Text=EmptyStr) or (edtQtde.Text=EmptyStr) or (edtCodigo.Text=EmptyStr) then begin
+   if (edtValor.value<=0) or (edtQtde.value<=0) or (edtCodigo.Text=EmptyStr) then begin
       Exit;
    end;
 
-   if StrToInt(edtQtde.Text)=0 then
-     edtQtde.Text:='1';
+   if edtQtde.Value=0 then
+     edtQtde.Value:=1;
 
    iProximo:=Sequenciar;
 
@@ -126,7 +127,7 @@ begin
    bufTemp.FieldByName('codigogtin').AsString:=edtCodigo.Text;
    bufTemp.FieldByName('descricao').AsString:=edtdescricao.Text;
    bufTemp.FieldByName('quantidade').AsFloat:=StrToFloat(edtQtde.Text);
-   bufTemp.FieldByName('valorUnitario').AsFloat:=StrToFloat(edtValor.Text);
+   bufTemp.FieldByName('valorUnitario').AsFloat:=edtValor.Value;
    bufTemp.FieldByName('valorTotal').AsFloat:= bufTemp.FieldByName('quantidade').AsFloat * bufTemp.FieldByName('valorUnitario').AsFloat;
    bufTemp.Post;
 
@@ -152,8 +153,8 @@ procedure Tfrmpropdv.LimparCampos(todos: boolean=false);
 begin
   edtCodigo.Text:=EmptyStr;
   edtdescricao.Text:=EmptyStr;
-  edtQtde.Text:='1';
-  edtValor.Text:='0.00';
+  edtQtde.Value:=1;
+  edtValor.Value:=0;
   imgFotoProduto.Picture.Assign(nil);
   if todos then
     edtTotalVenda.Text:='0.00';
@@ -205,7 +206,13 @@ begin
             oVendaProduto.qtde:=bufTemp.FieldByName('quantidade').AsFloat;
             oVendaProduto.valorUnitario:=bufTemp.FieldByName('valorUnitario').AsFloat;
             oVendaProduto.valorTotalProduto:=bufTemp.FieldByName('valorTotal').AsFloat;
-            oVendaProduto.Inserir;
+            if oVendaProduto.Inserir then begin
+               TProduto.BaixaNoEstoque(bufTemp.FieldByName('produtoid').AsString,
+                                       bufTemp.FieldByName('quantidade').AsFloat,
+                                       dtmPrincipal.ConDataBase);
+            end;
+
+
           finally
             if Assigned(oVendaProduto) then
                FreeAndNil(oVendaProduto);
@@ -224,15 +231,15 @@ begin
   end;
 end;
 
-procedure Tfrmpropdv.edtCodigoExit(Sender: TObject);
-begin
-  SelecionarProduto(TMaskEdit(Sender).Text);
-end;
-
 procedure Tfrmpropdv.edtQtdeExit(Sender: TObject);
 begin
   GravarProdutoBufTemp;
   SetFocusPadrao;
+end;
+
+procedure Tfrmpropdv.edtCodigoExit(Sender: TObject);
+begin
+  SelecionarProduto(TMaskEdit(Sender).Text);
 end;
 
 procedure Tfrmpropdv.FormClose(Sender: TObject; var CloseAction: TCloseAction);
