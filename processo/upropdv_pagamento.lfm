@@ -1,7 +1,7 @@
 object frmpropdvpagamento: Tfrmpropdvpagamento
-  Left = 566
+  Left = 548
   Height = 376
-  Top = 256
+  Top = 208
   Width = 838
   BorderStyle = bsNone
   Caption = 'Pagamento'

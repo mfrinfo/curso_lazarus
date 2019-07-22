@@ -38,6 +38,7 @@ type
     procedure Produto;
     procedure PdvVenda;
     procedure PdvVendaProdutos;
+    procedure PdvVendaFormaPagamento;
     procedure Usuario;
     procedure AcaoAcesso;
     procedure UsuariosAcaoAcesso;
@@ -56,6 +57,7 @@ begin
   Produto;
   PdvVenda;
   PdvVendaProdutos;
+  PdvVendaFormaPagamento;
   Usuario;
   AcaoAcesso;
   UsuariosAcaoAcesso;
@@ -180,6 +182,27 @@ begin
       '	 PRIMARY KEY (pdvVendaId, item), '+
       '  CONSTRAINT FK_PdvVendaProdutosProduto FOREIGN KEY (produtoId) references produtos(produtoId), '+
       '  CONSTRAINT FK_PdvVendaProdutosPdvVenda FOREIGN KEY (pdvVendaId) references pdvVenda(pdvVendaId) '+
+      '	) '
+    );
+  end;
+end;
+
+procedure TAtualizacaoTable.PdvVendaFormaPagamento;
+begin
+  if not TabelaExisteNoBancoDeDados('PdvVendaFormaPagamento') then begin
+    ExecutaDiretoBancoDeDados(
+      'CREATE TABLE PdvVendaFormaPagamento ( '+
+      '	 pdvVendaId VARCHAR(36) NOT NULL, '+
+      '  item Integer, '+
+      '	 codigoMeioPagamento CHAR(2) NOT NULL, '+
+      '	 descricaoMeioPagamento VARCHAR(40), '+
+      '	 codigoCartao CHAR(2), '+
+      '	 operadoraCartao VARCHAR(30), '+
+      '	 cnpjOperadoraCartao VARCHAR(20), '+
+      '	 valorPago Decimal(18,2), '+
+      '	 valorTroco Decimal(18,2), '+
+      '	 PRIMARY KEY (pdvVendaId, item), '+
+      '  CONSTRAINT FK_PdvVendaFormaPagamento FOREIGN KEY (pdvVendaId) references pdvVenda(pdvVendaId) '+
       '	) '
     );
   end;

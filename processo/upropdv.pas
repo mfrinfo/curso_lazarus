@@ -71,7 +71,7 @@ implementation
 {$R *.lfm}
 
 uses uPrincipal, cCadProduto, uConexao, uUtils, cpdvvenda, cpdvvendaproduto,
-     upropdv_pagamento;
+     upropdv_pagamento, cPdvVendaFormaPagamento;
 
 { Tfrmpropdv }
 
@@ -271,6 +271,7 @@ end;
 procedure Tfrmpropdv.btnGravarClick(Sender: TObject);
 var oVenda:TPdvVenda;
     oVendaProduto:TPdvVendaProduto;
+    oVendaFormaPg:TPdvVendaFormaPagamento;
 begin
 
   if bufTemp.IsEmpty then
@@ -320,6 +321,32 @@ begin
       finally
         bufTemp.EnableControls;
       end;
+
+      try
+        bufPagamento.DisableControls;
+        bufPagamento.First;
+        while not bufPagamento.Eof do begin
+          try
+            oVendaFormaPg:=TPdvVendaFormaPagamento.Create(dtmPrincipal.ConDataBase);
+            oVendaFormaPg.pdvVendaId:=oVenda.pdvVendaId;
+            oVendaFormaPg.item:=bufPagamento.FieldByName('item').AsInteger;
+            oVendaFormaPg.codigoMeioPagamento:=bufPagamento.FieldByName('codigoMeioPagamento').AsString;
+            oVendaFormaPg.descricaoMeioPagamento:=bufPagamento.FieldByName('descricaoMeioPagamento').AsString;
+            oVendaFormaPg.codigoCartao:=bufPagamento.FieldByName('codigoCartao').AsString;
+            oVendaFormaPg.operadoraCartao:=bufPagamento.FieldByName('operadoraCartao').AsString;
+            oVendaFormaPg.cnpjOperadoraCartao:=bufPagamento.FieldByName('cnpjOperadoraCartao').AsString;
+            oVendaFormaPg.valorPago:=bufPagamento.FieldByName('valorPago').AsFloat;
+            oVendaFormaPg.valorTroco:=bufPagamento.FieldByName('valorTroco').AsFloat;
+            oVendaFormaPg.Inserir;
+          finally
+            if Assigned(oVendaFormaPg) then
+               FreeAndNil(oVendaFormaPg);
+          end;
+          bufPagamento.next;
+        end;
+      finally
+        bufPagamento.EnableControls;
+      end;
     end;
   finally
     Screen.Cursor:=crDefault;
@@ -360,7 +387,7 @@ begin
 
   bufPagamento.FieldDefs.Add('item',ftInteger,0);
   bufPagamento.FieldDefs.Add('codigoMeioPagamento',ftString,2);
-  bufPagamento.FieldDefs.Add('descricaoMeioPagamento',ftString,36);
+  bufPagamento.FieldDefs.Add('descricaoMeioPagamento',ftString,40);
   bufPagamento.FieldDefs.Add('codigoCartao',ftString,2);
   bufPagamento.FieldDefs.Add('operadoraCartao',ftString,30);
   bufPagamento.FieldDefs.Add('cnpjOperadoraCartao',ftString,20);
