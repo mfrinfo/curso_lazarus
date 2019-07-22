@@ -19,7 +19,9 @@ type
     btnCancelar: TBitBtn;
     btnFechar: TBitBtn;
     btnGravar: TBitBtn;
+    bufPagamento: TBufDataset;
     bufTemp: TBufDataset;
+    dtsBufPagamento: TDataSource;
     edtValor: TCurrencyEdit;
     edtQtde: TCurrencyEdit;
     dtsbufTemp: TDataSource;
@@ -50,12 +52,13 @@ type
   private
     UltimoProdutoId:String;
     procedure ConfigurarCampos;
+    function GravarFormaPagamentoBufDataSet: Boolean;
     procedure SetFocusPadrao;
     procedure SelecionarProduto(Gtin:String);
     function Sequenciar:Integer;
     procedure GravarProdutoBufTemp;
     procedure LimparCampos(todos:boolean=false);
-    procedure LimparBufTemp;
+    procedure LimparBufDataSet;
   public
 
   end;
@@ -67,7 +70,8 @@ implementation
 
 {$R *.lfm}
 
-uses uPrincipal, cCadProduto, uConexao, uUtils, cpdvvenda, cpdvvendaproduto;
+uses uPrincipal, cCadProduto, uConexao, uUtils, cpdvvenda, cpdvvendaproduto,
+     upropdv_pagamento;
 
 { Tfrmpropdv }
 
@@ -160,11 +164,15 @@ begin
     edtTotalVenda.Text:='0.00';
 end;
 
-procedure Tfrmpropdv.LimparBufTemp;
+procedure Tfrmpropdv.LimparBufDataSet;
 begin
   bufTemp.First;
   while not bufTemp.Eof do
     bufTemp.Delete;
+
+  bufPagamento.First;
+  while not bufPagamento.Eof do
+    bufPagamento.Delete;
 end;
 
 procedure Tfrmpropdv.btnFecharClick(Sender: TObject);
@@ -174,14 +182,103 @@ end;
 
 procedure Tfrmpropdv.btnCancelarClick(Sender: TObject);
 begin
-  LimparBufTemp;
+  LimparBufDataSet;
   LimparCampos(true);
+end;
+
+
+function Tfrmpropdv.GravarFormaPagamentoBufDataSet:Boolean;
+begin
+  try
+    Result := false;
+    frmpropdvpagamento:=Tfrmpropdvpagamento.Create(Self);
+    frmpropdvpagamento.edtValorTotal.Value:=StrToFloat(edtTotalVenda.Text);
+    frmpropdvpagamento.ShowModal;
+
+    if frmpropdvpagamento.bCancelou then
+       Exit;
+
+    bufPagamento.Append;
+    bufPagamento.FieldByName('item').AsInteger:=1;
+    bufPagamento.FieldByName('codigoMeioPagamento').AsString:=frmpropdvpagamento.sCodigoMeioPagamento;
+    case StrToInt(frmpropdvpagamento.sCodigoMeioPagamento) of
+      1: bufPagamento.FieldByName('descricaoMeioPagamento').AsString := 'Dinheiro';
+      2: bufPagamento.FieldByName('descricaoMeioPagamento').AsString := 'Cheque';
+      3: bufPagamento.FieldByName('descricaoMeioPagamento').AsString := 'Cartão de Crédito';
+      4: bufPagamento.FieldByName('descricaoMeioPagamento').AsString := 'Cartão de Débito';
+      5: bufPagamento.FieldByName('descricaoMeioPagamento').AsString := 'Crédito Loja';
+     99: bufPagamento.FieldByName('descricaoMeioPagamento').AsString := 'Outros';
+    end;
+
+    if (bufPagamento.FieldByName('codigoMeioPagamento').AsString='03') or
+       (bufPagamento.FieldByName('codigoMeioPagamento').AsString='04') then begin
+        bufPagamento.FieldByName('codigoCartao').AsString := frmpropdvpagamento.sCodigoCartao;
+
+        case StrToInt(frmpropdvpagamento.sCodigoCartao) of
+            1: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'Visa';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '01027058000191';
+            end;
+            2: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'MasterCard';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '01425787000104';
+            end;
+            3: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'American Express';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '60419645000195';
+            end;
+            4: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'Sorocred';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '60114865000100';
+            end;
+            5: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'Diners Club';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '54419627000100';
+            end;
+            6: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'Elo';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '09227084000175';
+            end;
+            7: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'Hipercard';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '03012230000169';
+            end;
+            8: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'Aura';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '17251707000173';
+            end;
+            9: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'Cabal';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '03766873000106';
+            end;
+           99: begin
+               bufPagamento.FieldByName('operadoraCartao').AsString := 'Outros';
+               bufPagamento.FieldByName('cnpjOperadoraCartao').AsString := '';
+           end;
+        end
+    end;
+    bufPagamento.FieldByName('valorPago').AsFloat:=frmpropdvpagamento.edtValorPago.Value;
+    bufPagamento.FieldByName('valorTroco').AsFloat:=frmpropdvpagamento.edtTroco.Value;
+    bufPagamento.Post;
+    Result:=true;
+  finally
+    if Assigned(frmpropdvpagamento) then
+       frmpropdvpagamento.Release;
+  end;
+
 end;
 
 procedure Tfrmpropdv.btnGravarClick(Sender: TObject);
 var oVenda:TPdvVenda;
     oVendaProduto:TPdvVendaProduto;
 begin
+
+  if bufTemp.IsEmpty then
+     exit;
+
+  if not GravarFormaPagamentoBufDataSet then
+     exit;
+
   try
     Screen.Cursor:=crSQLWait;
     oVenda:=TPdvVenda.Create(dtmPrincipal.ConDataBase);
@@ -226,7 +323,7 @@ begin
     end;
   finally
     Screen.Cursor:=crDefault;
-    LimparBufTemp;
+    LimparBufDataSet;
     LimparCampos(true);
   end;
 end;
@@ -260,6 +357,17 @@ begin
   bufTemp.CreateDataset;
   dtsbufTemp.DataSet:=bufTemp;
   grdProdutos.DataSource:=dtsbufTemp;
+
+  bufPagamento.FieldDefs.Add('item',ftInteger,0);
+  bufPagamento.FieldDefs.Add('codigoMeioPagamento',ftString,2);
+  bufPagamento.FieldDefs.Add('descricaoMeioPagamento',ftString,36);
+  bufPagamento.FieldDefs.Add('codigoCartao',ftString,2);
+  bufPagamento.FieldDefs.Add('operadoraCartao',ftString,30);
+  bufPagamento.FieldDefs.Add('cnpjOperadoraCartao',ftString,20);
+  bufPagamento.FieldDefs.Add('valorPago',ftFloat,0);
+  bufPagamento.FieldDefs.Add('valorTroco',ftFloat,0);
+  bufPagamento.CreateDataset;
+  dtsBufPagamento.DataSet:=bufPagamento;
 
   ACBrEnterTab1.EnterAsTab:=true;
   ConfigurarCampos;

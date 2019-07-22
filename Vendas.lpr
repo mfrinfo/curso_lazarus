@@ -12,7 +12,7 @@ uses
   uenum, cusuariologado, ufuncaoCriptografia, uutils, catualizacaocampomysql,
   ccadusuario, ucadusuario, uLogin, cacaoacesso, uCadAcaoAcesso,
   cInstanciarForm, uUsuarioVsAcoes, cbase, ucadcategoria, ucadcliente,
-  ucadproduto, upropdv, cpdvvenda;
+  ucadproduto, upropdv, cpdvvenda, upropdv_pagamento;
 
 {$R *.res}
 
@@ -20,6 +20,7 @@ begin
   RequireDerivedFormResource:=True;
   Application.Initialize;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(Tfrmpropdvpagamento, frmpropdvpagamento);
   Application.Run;
 end.
 

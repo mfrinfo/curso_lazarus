@@ -1,7 +1,7 @@
 object frmpropdv: Tfrmpropdv
-  Left = 482
+  Left = 392
   Height = 677
-  Top = 145
+  Top = 121
   Width = 1125
   BorderStyle = bsNone
   ClientHeight = 677
@@ -457,5 +457,15 @@ object frmpropdv: Tfrmpropdv
     DataSet = bufTemp
     left = 824
     top = 488
+  end
+  object bufPagamento: TBufDataset
+    FieldDefs = <>
+    left = 528
+    top = 464
+  end
+  object dtsBufPagamento: TDataSource
+    DataSet = bufPagamento
+    left = 624
+    top = 464
   end
 end

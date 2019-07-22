@@ -1,0 +1,384 @@
+object frmpropdvpagamento: Tfrmpropdvpagamento
+  Left = 566
+  Height = 376
+  Top = 256
+  Width = 838
+  BorderStyle = bsNone
+  Caption = 'Pagamento'
+  ClientHeight = 376
+  ClientWidth = 838
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '2.0.2.0'
+  object pnlFundo: TPanel
+    Left = 0
+    Height = 376
+    Top = 0
+    Width = 838
+    Align = alClient
+    BevelColor = clBlack
+    BevelInner = bvLowered
+    BevelWidth = 2
+    ClientHeight = 376
+    ClientWidth = 838
+    TabOrder = 0
+    object pnlInterno: TPanel
+      Left = 4
+      Height = 368
+      Top = 4
+      Width = 830
+      Align = alClient
+      ClientHeight = 368
+      ClientWidth = 830
+      TabOrder = 0
+      object edtValorTotal: TCurrencyEdit
+        Left = 16
+        Height = 29
+        Top = 40
+        Width = 165
+        Alignment = taRightJustify
+        DisplayFormat = '#0.00'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        MaxValue = 0
+        MinValue = 0
+        ParentColor = True
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 0
+        TabStop = False
+        Value = 0
+        ZeroEmpty = False
+      end
+      object lblProduto: TLabel
+        Left = 16
+        Height = 21
+        Top = 16
+        Width = 79
+        Caption = 'Valor Total'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI Semibold'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object edtValorPago: TCurrencyEdit
+        Left = 212
+        Height = 29
+        Top = 40
+        Width = 165
+        Alignment = taRightJustify
+        DisplayFormat = '#0.00'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        MaxValue = 0
+        MinValue = 0
+        ParentFont = False
+        TabOrder = 1
+        Value = 0
+        ZeroEmpty = False
+        OnChange = edtValorPagoChange
+      end
+      object lblQtde: TLabel
+        Left = 212
+        Height = 21
+        Top = 16
+        Width = 79
+        Caption = 'Valor Pago'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI Semibold'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object edtTroco: TCurrencyEdit
+        Left = 405
+        Height = 29
+        Top = 40
+        Width = 165
+        Alignment = taRightJustify
+        Color = clBlue
+        DisplayFormat = '#0.00'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        MaxValue = 0
+        MinValue = 0
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 2
+        TabStop = False
+        Value = 0
+        ZeroEmpty = False
+      end
+      object lblQtde1: TLabel
+        Left = 405
+        Height = 21
+        Top = 16
+        Width = 43
+        Caption = 'Troco'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI Semibold'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object Btn01: TBitBtn
+        Tag = 1
+        Left = 16
+        Height = 78
+        Top = 104
+        Width = 170
+        Caption = '01 - Dinheiro'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = Btn01Click
+        ParentFont = False
+        TabOrder = 3
+      end
+      object Btn02: TBitBtn
+        Tag = 1
+        Left = 207
+        Height = 78
+        Top = 104
+        Width = 170
+        Caption = '02 - Cheque'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = Btn02Click
+        ParentFont = False
+        TabOrder = 4
+      end
+      object Btn03: TBitBtn
+        Tag = 1
+        Left = 400
+        Height = 78
+        Top = 104
+        Width = 170
+        Caption = '03 - Cartão Crédito'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = Btn03Click
+        ParentFont = False
+        TabOrder = 5
+      end
+      object Btn04: TBitBtn
+        Tag = 1
+        Left = 16
+        Height = 78
+        Top = 208
+        Width = 170
+        Caption = '04 - Cartão Débito'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = Btn04Click
+        ParentFont = False
+        TabOrder = 6
+      end
+      object Btn05: TBitBtn
+        Tag = 1
+        Left = 208
+        Height = 78
+        Top = 208
+        Width = 170
+        Caption = '05 - Crédito Loja'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = Btn05Click
+        ParentFont = False
+        TabOrder = 7
+      end
+      object Btn99: TBitBtn
+        Tag = 1
+        Left = 400
+        Height = 78
+        Top = 208
+        Width = 170
+        Caption = '99 - OUTROS'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        OnClick = Btn99Click
+        ParentFont = False
+        TabOrder = 8
+      end
+      object btnCancelar: TBitBtn
+        Tag = 99
+        Left = 636
+        Height = 25
+        Top = 320
+        Width = 90
+        Caption = '&Cancelar'
+        Glyph.Data = {
+          36030000424D3603000000000000360000002800000010000000100000000100
+          18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FF9797BD2F31A78181B8FF00FFFF00FFFF00FFFF00
+          FFC1C1C64546AB10109DFF00FF6B3B3B6B3B3B9191918F8F8FAFAFAF191BA40A
+          22CA1314A39999C89C9C9C7E5454AC94993C3BAE1119AB1117A86B3B3BCF6F0A
+          CB6A0AF7F7F7C2620ACF884C4D4FBA1221BD0A2BDC1315A2B3B3D9D7B7A83C3C
+          AD121AAF0A18B81819A06B3B3BD3730AD06F0AFBFBFBC6650AC77020E7E7EC38
+          3AB01221BC0A29D81314A03635AC131CB30A1EC31415A0A6A6C06B3B3BD7770A
+          D3730AFCFCFCCB6A0AC6670BEBECEBE6E6EB383AB01221BC0A27D41223C00A24
+          CF1213A0A0A0BEFF00FF6B3B3BDC7B0AD6760AEDCBA5FCFCFCF7F7F7EFEFEFEB
+          EBEBE5E6F010119E0A29D70A31E91416A59693CBFF00FFFF00FF6B3B3BDF7E0A
+          DB7B0AD7760AD3730ACF700BCF7823D8A9813D3DAF1323BE0A30E60C26D00E24
+          CB1B1BA4A9A9C0FF00FF6B3B3BE3830ADF7F0ADB7A0AD7760AD67F20DCAA7B3D
+          3DAF1323BF0A35F11316A52A2AA8121FBA1028CE1818A0A6A6C06B3B3BE7870A
+          FCF6EAFBF4E4FCF1E0FBF2E44F51BA1323BF0A36F3161CAC8A8ACDF4ECE73837
+          AC121FBA1129CD292AA46B3B3BEA890AEDEAE5E9E5DFE5E1D8EAE6E11112A00A
+          31EA151BAE7474C6E0D8CDD6CCBBD4A6833637AD131AAE1C1DA26B3B3BEE8D0A
+          FCF8F1FCF7ECFCF5E7FCF4E79190D01213A06B6CC4FCF0DEFCE7CAFBE5C1C871
+          249D81868585B8B0B0C36B3B3BF1900AF1EFECEDEAE6E9E5E1E6E2DBE7E3DBE8
+          E4DCE3DDD3DAD1C3D4CABAD1C6B5C5650B724444FF00FFFF00FF6B3B3BF4930A
+          FCFAF7FCF8F3FCF7EEFCF6E9FCF3E4FCF1DEFCEED9FBECD3FCEACFFCE7C8C969
+          0A6B3B3BFF00FFFF00FF6B3B3BF7960AACAAFBA0A2FA959AF98993F87E8CF774
+          85F6697FF56178F35874F2516EF0CE6E0A6B3B3BFF00FFFF00FF6B3B3B6B3B3B
+          2D2BB4292AB42627B42125B41E22B41920B4171EB4141CB4111AB40E19B46B3B
+          3B6B3B3BFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+        }
+        OnClick = btnCancelarClick
+        TabOrder = 9
+      end
+      object btnOK: TBitBtn
+        Tag = 99
+        Left = 728
+        Height = 25
+        Top = 320
+        Width = 90
+        Caption = '&OK'
+        Glyph.Data = {
+          36030000424D3803000000000000360000002800000010000000100000000100
+          18000000000002030000C20E0000C20E00000000000000000000FF00FFFF00FF
+          FF00FFFF00FFA9B3A9518C58237A2B0E69120D6611227128518357A9B1A9FF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFC3C5C352965A168F222EB5433DBD5150
+          C16156C26445BD5534B042106F13507F53C3C4C3FF00FFFF00FFFF00FFC3C5C3
+          38974325B13A3CBE534BBF5D87D28E8BD29172CA7B66C6706DC8745DC26726A0
+          32316E37C3C4C3FF00FFFF00FF55AD6227B63F38BE4F42BF58AFE2B5FCF9F6FC
+          F9F4FAF7F17BCE8268C6726FC8766CC77429A134508054FF00FFA9BFAC21B236
+          2FBE4F3CBF56BFE7C4FCFAF8FCFAF7FCF9F6FCF9F4CBE8C862C56D69C77271C9
+          7861C46B137717A9B1A957BA6A30BF5037BF56D1EFD7FCFBFAFCFBF9FCFAF8FC
+          FAF7FCF9F6FCF9F481D08763C66F6BC77472C97937B3464C825039BD5231C157
+          2CBE4FB3E5BFFCFCFCFCFBFBA3DFACBCE5C0FCFAF7FCF9F6D3ECD15EC46B64C6
+          706CC8754FC0601F782639C15431C2592EBF5332C053C4EBCD86D79839BF5458
+          C76CF7F9F5FCFAF7FCF9F688D3915FC56C66C7725DC46B157E1B40C75D33C45D
+          30C1572EBF532DBF4F2EBE4F34BF523BBF55ACE2B5FCFAF8FCFAF7DDEFDA5CC5
+          6B61C56E58C36816841E4ECC6D36C66132C35B30C1572FC0532DBF4F30BF5036
+          BF534EC565F4F8F2FCFAF8FCFAF78FD6995BC4694AC05F24902C73CF8B3CC963
+          34C55F32C35B31C2572FC0532DBF4F31BF5137BF549EDEABFCFBF9FCFAF8E5F3
+          E45AC56B37BB4D509E58B5CABB54D77637C86334C55F33C45B31C2572FC0532D
+          BF5033BF5342C25DEFF8F0FCFBF9CCEBCF5BC76E1CAB2BAABAABFF00FF84D69D
+          47D06E36C76234C55F33C45B31C2572FC0542EBF5134BF5377D28B71D08443C1
+          5B31BC4758B365FF00FFFF00FFC5C8C677DD9748D16E37C76335C65F33C45B31
+          C2572FC05430BF5235BF5539C05734BF4C41B653C3C6C4FF00FFFF00FFFF00FF
+          C5C8C68EDDA862DF863FCC6637C76134C55D33C35B32C35835C35737C24F65C1
+          75C3C7C4FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBACEC089DBA268DB8959
+          D97851D46F55CE7371C986AFC6B3FF00FFFF00FFFF00FFFF00FF
+        }
+        OnClick = btnOKClick
+        TabOrder = 10
+      end
+      object pnlOperadora: TPanel
+        Left = 584
+        Height = 280
+        Top = 8
+        Width = 232
+        BevelColor = clBlack
+        BevelInner = bvLowered
+        BevelWidth = 2
+        ClientHeight = 280
+        ClientWidth = 232
+        TabOrder = 11
+        object pnlListBox: TPanel
+          Left = 4
+          Height = 272
+          Top = 4
+          Width = 224
+          Align = alClient
+          ClientHeight = 272
+          ClientWidth = 224
+          TabOrder = 0
+          object lbxOperadora: TListBox
+            Left = 1
+            Height = 270
+            Top = 1
+            Width = 222
+            Align = alClient
+            Font.CharSet = ANSI_CHARSET
+            Font.Color = clBlack
+            Font.Height = -19
+            Font.Name = 'Segoe UI'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            Font.Style = [fsBold]
+            Items.Strings = (
+              '01=Visa'
+              '02=Mastercard'
+              '03=American Express'
+              '04=Sorocred'
+              '05=Diners Club'
+              '06=Elo'
+              '07=Hipercard'
+              '08=Aura'
+              '09=Cabal'
+              '99=Outros'
+            )
+            ItemHeight = 25
+            OnClick = lbxOperadoraClick
+            ParentFont = False
+            TabOrder = 0
+          end
+        end
+      end
+    end
+  end
+end
