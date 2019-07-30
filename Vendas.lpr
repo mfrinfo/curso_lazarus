@@ -20,7 +20,6 @@ begin
   RequireDerivedFormResource:=True;
   Application.Initialize;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(Tfrmpropdvpagamento, frmpropdvpagamento);
   Application.Run;
 end.
 

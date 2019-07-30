@@ -171,6 +171,29 @@ begin
     frmLogin.Release;
     StbPrincipal.Panels[0].Text:='USUÁRIO: '+oUsuarioLogado.nome;
   end;
+
+  //{$ifdef PDV}
+  //  mmuUsuario.Enabled:=false;
+  //  mmuAcoesDeAcesso.Enabled:=false;
+  //  mmuPermissaoDeAcoesParaUsuario.Enabled:=false;
+  //  mmuCategoria.Enabled:=false;
+  //  mmuCliente.Enabled:=false;
+  //  mmuProduto.Enabled:=false;
+  //  mmuPDV.Enabled:=true;
+  //  Caption:='PDV - Sistema de Vendas';
+  //  WindowState:=wsMaximized;
+  //{$else}
+  //  mmuUsuario.Enabled:=true;
+  //  mmuAcoesDeAcesso.Enabled:=true;
+  //  mmuPermissaoDeAcoesParaUsuario.Enabled:=true;
+  //  mmuCategoria.Enabled:=true;
+  //  mmuCliente.Enabled:=true;
+  //  mmuProduto.Enabled:=true;
+  //  mmuPDV.Enabled:=false;
+  //  Caption:='RETAGUARDA - Sistema de Vendas';
+  //  WindowState:=wsMaximized;
+  //{$endif}
+
 end;
 
 procedure TfrmPrincipal.Label1Click(Sender: TObject);
