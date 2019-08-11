@@ -10,6 +10,7 @@ uses
 Type
    TEstadoDoCadastro = (ecInserir, ecAlterar, ecNenhum);
    TAcaoExcluirEstoque = (aeeApagar, aeeAlterar);
+   TModeloSAT = (msStdCall, msCdEcl);
 
 implementation
 

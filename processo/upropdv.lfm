@@ -1,16 +1,14 @@
 object frmpropdv: Tfrmpropdv
-  Left = 392
-  Height = 677
-  Top = 121
+  Left = 428
+  Height = 678
+  Top = 182
   Width = 1125
-  BorderStyle = bsNone
-  ClientHeight = 677
+  ClientHeight = 678
   ClientWidth = 1125
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   LCLVersion = '2.0.2.0'
-  WindowState = wsMaximized
   object Panel1: TPanel
     Left = 0
     Height = 100
@@ -213,7 +211,7 @@ object frmpropdv: Tfrmpropdv
   object pnlBotoes: TPanel
     Left = 0
     Height = 100
-    Top = 577
+    Top = 578
     Width = 1125
     Align = alBottom
     BevelOuter = bvNone
@@ -429,10 +427,28 @@ object frmpropdv: Tfrmpropdv
       Text = '0.00'
       SpaceChar = '_'
     end
+    object BitBtn1: TBitBtn
+      Left = 381
+      Height = 30
+      Top = 55
+      Width = 75
+      Caption = 'SAT'
+      OnClick = BitBtn1Click
+      TabOrder = 5
+    end
+    object BitBtn2: TBitBtn
+      Left = 486
+      Height = 30
+      Top = 55
+      Width = 75
+      Caption = 'NFCe'
+      OnClick = BitBtn2Click
+      TabOrder = 6
+    end
   end
   object grdProdutos: TDBGrid
     Left = 0
-    Height = 477
+    Height = 478
     Top = 100
     Width = 1125
     Align = alClient

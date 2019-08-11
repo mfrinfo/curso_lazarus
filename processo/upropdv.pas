@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
   EditBtn, StdCtrls, Buttons, DBCtrls, DBGrids, rxcurredit, ACBrEnterTab,
-  BufDataset, db;
+  ACBrSAT, ACBrNFe, ACBrDANFCeFortesFrA4, ACBrSATExtratoFortesFr, BufDataset,
+  db, ACBrSATClass;
 
 type
 
@@ -15,6 +16,8 @@ type
 
   Tfrmpropdv = class(TForm)
     ACBrEnterTab1: TACBrEnterTab;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
     btnListar: TBitBtn;
     btnCancelar: TBitBtn;
     btnFechar: TBitBtn;
@@ -39,6 +42,8 @@ type
     Panel1: TPanel;
     pnlBotoes: TPanel;
     pnlFotoProduto: TPanel;
+    procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
@@ -71,7 +76,7 @@ implementation
 {$R *.lfm}
 
 uses uPrincipal, cCadProduto, uConexao, uUtils, cpdvvenda, cpdvvendaproduto,
-     upropdv_pagamento, cPdvVendaFormaPagamento;
+     upropdv_pagamento, cPdvVendaFormaPagamento, cpdvvendanfce, cpdvvendasat, uEnum;
 
 { Tfrmpropdv }
 
@@ -186,6 +191,62 @@ begin
   LimparCampos(true);
 end;
 
+procedure Tfrmpropdv.BitBtn2Click(Sender: TObject);
+var oNFCe:TNFCe;
+begin
+  try
+    oNFCe:=TNFCe.Create;
+    oNFCe.CNPJ_SW:='11.111.111/1111-11';
+    oNFCe.CNPJ_Emitente:='11.111.111/1111-11';
+    oNFCe.IE_Emitente:='111.111.111.111';
+    oNFCe.IM_Emitente:='1111';
+  finally
+    if Assigned(oNFCe) then
+       FreeAndNil(oNFCe);
+  end;
+end;
+
+procedure Tfrmpropdv.BitBtn1Click(Sender: TObject);
+var oSAT:TSAT;
+begin
+  try
+    oSAT:=TSAT.Create;
+    oSAT.CNPJ_SW:='11.111.111/1111-11';
+    oSAT.CNPJ_Emitente:='11.111.111/1111-11';
+    oSAT.IE_Emitente:='111.111.111.111';
+    oSAT.IM_Emitente:='1111';
+    oSAT.Modelo:=msCdEcl;
+    oSAT.NomeDll:='C:\SAT\SAT.dll';
+    oSAT.CodigoAtivacao:='12345678';
+    oSAT.AssinaturaSW:='2h34kj12h34kjh1jk2h34kjh12k3h4123412938471234b123mh41jh23g4jhg12349817239471934791273812341ju23h4u1h3k4h12k34h12h14uh2394712983419237981273412uj34h1k23h4k123hjk13984712934712k34hk21j3h4kj123kj1h234kjh1k2j34hkj12h34kjh12kj34hkj123h4kj12h34kj1h23k4jh21k3j4hk1j23h4kj231h3k4jh2k3j4hkj13h4kj24kh2349123y4172341j2k3h4kj5h46k3j4h6j34h56kj34h5k6j34h5';
+    oSAT.NumeroDoCaixa:=1;
+    try
+      if (oSAT.Inicializar) then begin
+         MessageOK(oSAT.ConsultarSAT, mtInformation);
+         if (oSAT.GerarVenda) then begin
+           oSAT.ImprimirCFeSAT;
+           //oSAT.ImprimirCFeSATResumido;
+           MessageOK(oSAT.Mensagem_SAT,mtInformation);
+         end
+         else
+           MessageERROR(oSAT.Mensagem_SAT);
+      end
+      else begin
+        MessageOK('SAT não Inicializado',mtWarning);
+      end;
+
+    except
+      on E: Exception do begin
+        MessageERROR('Erro SAT: ' + E.Message);
+      end;
+    end;
+
+  finally
+    if Assigned(oSAT) then
+       FreeAndNil(oSAT);
+  end;
+
+end;
 
 function Tfrmpropdv.GravarFormaPagamentoBufDataSet:Boolean;
 begin
