@@ -16,6 +16,8 @@ type
   TfrmPrincipal = class(TForm)
     imgMysql: TImage;
     Label1: TLabel;
+    N2: TMenuItem;
+    mmuConfiguracaoDoSistema: TMenuItem;
     mmuPDV: TMenuItem;
     mmuProcesso: TMenuItem;
     mmuProduto: TMenuItem;
@@ -40,6 +42,7 @@ type
     procedure mmuAcoesDeAcessoClick(Sender: TObject);
     procedure mmuCategoriaClick(Sender: TObject);
     procedure mmuClienteClick(Sender: TObject);
+    procedure mmuConfiguracaoDoSistemaClick(Sender: TObject);
     procedure mmuFecharClick(Sender: TObject);
     procedure mmuPDVClick(Sender: TObject);
     procedure mmuPermissaoDeAcoesParaUsuarioClick(Sender: TObject);
@@ -63,7 +66,7 @@ implementation
 
 uses uCadUsuario, cArquivoIni, cAtualizacaoBancoDeDados, uLogin,
      cAcaoAcesso, uCadAcaoAcesso, cInstanciarForm, uUsuarioVsAcoes, ucadcategoria,
-     ucadcliente, ucadproduto, upropdv;
+     ucadcliente, ucadproduto, upropdv, ucadconfiguracao;
 
 { TfrmPrincipal }
 
@@ -76,6 +79,11 @@ end;
 procedure TfrmPrincipal.mmuClienteClick(Sender: TObject);
 begin
   TInstanciarForm.CriarForm(TfrmCadCliente, oUsuarioLogado, DtmPrincipal.ConDataBase);
+end;
+
+procedure TfrmPrincipal.mmuConfiguracaoDoSistemaClick(Sender: TObject);
+begin
+  TInstanciarForm.CriarForm(TfrmCadConfiguracao, oUsuarioLogado, DtmPrincipal.ConDataBase);
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
@@ -142,6 +150,7 @@ begin
     TAcaoAcesso.CriarAcoes(TfrmCadCategoria,DtmPrincipal.ConDataBase);
     TAcaoAcesso.CriarAcoes(TfrmCadCliente,DtmPrincipal.ConDataBase);
     TAcaoAcesso.CriarAcoes(TfrmCadProduto,DtmPrincipal.ConDataBase);
+    TAcaoAcesso.CriarAcoes(TfrmCadConfiguracao,DtmPrincipal.ConDataBase);
   finally
     TAcaoAcesso.PreencherUsuariosVsAcoes(DtmPrincipal.ConDataBase);
   end;

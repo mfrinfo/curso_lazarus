@@ -1,0 +1,28 @@
+object frmpdvsplash: Tfrmpdvsplash
+  Left = 537
+  Height = 101
+  Top = 294
+  Width = 372
+  BorderIcons = []
+  BorderStyle = bsDialog
+  ClientHeight = 101
+  ClientWidth = 372
+  Position = poScreenCenter
+  LCLVersion = '2.0.2.0'
+  object lblMensagem: TLabel
+    Left = 24
+    Height = 32
+    Top = 32
+    Width = 135
+    Caption = 'Aguarde...'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -27
+    Font.Name = 'Arial'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+end

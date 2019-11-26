@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 385
+  Left = 240
   Height = 585
-  Top = 121
+  Top = 89
   Width = 1110
   Caption = 'Sistema de Vendas'
   ClientHeight = 565
@@ -154,6 +154,13 @@ object frmPrincipal: TfrmPrincipal
         OnClick = mmuProdutoClick
       end
       object mmuSeparacao2: TMenuItem
+        Caption = '-'
+      end
+      object mmuConfiguracaoDoSistema: TMenuItem
+        Caption = 'Configuração do Sistema'
+        OnClick = mmuConfiguracaoDoSistemaClick
+      end
+      object N2: TMenuItem
         Caption = '-'
       end
       object mmuFechar: TMenuItem

@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, MaskEdit,
   EditBtn, StdCtrls, Buttons, DBCtrls, DBGrids, rxcurredit, ACBrEnterTab,
   ACBrSAT, ACBrNFe, ACBrDANFCeFortesFrA4, ACBrSATExtratoFortesFr, BufDataset,
-  db, ACBrSATClass;
+  db, ACBrSATClass, cCadConfiguracao, pcnConversao;
 
 type
 
@@ -16,8 +16,6 @@ type
 
   Tfrmpropdv = class(TForm)
     ACBrEnterTab1: TACBrEnterTab;
-    BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
     btnListar: TBitBtn;
     btnCancelar: TBitBtn;
     btnFechar: TBitBtn;
@@ -42,8 +40,6 @@ type
     Panel1: TPanel;
     pnlBotoes: TPanel;
     pnlFotoProduto: TPanel;
-    procedure BitBtn1Click(Sender: TObject);
-    procedure BitBtn2Click(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
@@ -55,8 +51,10 @@ type
     procedure grdProdutosKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
+    oConfiguracao:TConfiguracao;
     UltimoProdutoId:String;
     procedure ConfigurarCampos;
+    procedure FreeAndNilSplash;
     function GravarFormaPagamentoBufDataSet: Boolean;
     procedure SetFocusPadrao;
     procedure SelecionarProduto(Gtin:String);
@@ -76,7 +74,8 @@ implementation
 {$R *.lfm}
 
 uses uPrincipal, cCadProduto, uConexao, uUtils, cpdvvenda, cpdvvendaproduto,
-     upropdv_pagamento, cPdvVendaFormaPagamento, cpdvvendanfce, cpdvvendasat, uEnum;
+     upropdv_pagamento, cPdvVendaFormaPagamento, cpdvvendanfce, cpdvvendasat,
+     uEnum, upropdv_splash;
 
 { Tfrmpropdv }
 
@@ -191,63 +190,6 @@ begin
   LimparCampos(true);
 end;
 
-procedure Tfrmpropdv.BitBtn2Click(Sender: TObject);
-var oNFCe:TNFCe;
-begin
-  try
-    oNFCe:=TNFCe.Create;
-    oNFCe.CNPJ_SW:='11.111.111/1111-11';
-    oNFCe.CNPJ_Emitente:='11.111.111/1111-11';
-    oNFCe.IE_Emitente:='111.111.111.111';
-    oNFCe.IM_Emitente:='1111';
-  finally
-    if Assigned(oNFCe) then
-       FreeAndNil(oNFCe);
-  end;
-end;
-
-procedure Tfrmpropdv.BitBtn1Click(Sender: TObject);
-var oSAT:TSAT;
-begin
-  try
-    oSAT:=TSAT.Create;
-    oSAT.CNPJ_SW:='11.111.111/1111-11';
-    oSAT.CNPJ_Emitente:='11.111.111/1111-11';
-    oSAT.IE_Emitente:='111.111.111.111';
-    oSAT.IM_Emitente:='1111';
-    oSAT.Modelo:=msCdEcl;
-    oSAT.NomeDll:='C:\SAT\SAT.dll';
-    oSAT.CodigoAtivacao:='12345678';
-    oSAT.AssinaturaSW:='2h34kj12h34kjh1jk2h34kjh12k3h4123412938471234b123mh41jh23g4jhg12349817239471934791273812341ju23h4u1h3k4h12k34h12h14uh2394712983419237981273412uj34h1k23h4k123hjk13984712934712k34hk21j3h4kj123kj1h234kjh1k2j34hkj12h34kjh12kj34hkj123h4kj12h34kj1h23k4jh21k3j4hk1j23h4kj231h3k4jh2k3j4hkj13h4kj24kh2349123y4172341j2k3h4kj5h46k3j4h6j34h56kj34h5k6j34h5';
-    oSAT.NumeroDoCaixa:=1;
-    try
-      if (oSAT.Inicializar) then begin
-         MessageOK(oSAT.ConsultarSAT, mtInformation);
-         if (oSAT.GerarVenda) then begin
-           oSAT.ImprimirCFeSAT;
-           //oSAT.ImprimirCFeSATResumido;
-           MessageOK(oSAT.Mensagem_SAT,mtInformation);
-         end
-         else
-           MessageERROR(oSAT.Mensagem_SAT);
-      end
-      else begin
-        MessageOK('SAT não Inicializado',mtWarning);
-      end;
-
-    except
-      on E: Exception do begin
-        MessageERROR('Erro SAT: ' + E.Message);
-      end;
-    end;
-
-  finally
-    if Assigned(oSAT) then
-       FreeAndNil(oSAT);
-  end;
-
-end;
-
 function Tfrmpropdv.GravarFormaPagamentoBufDataSet:Boolean;
 begin
   try
@@ -333,6 +275,8 @@ procedure Tfrmpropdv.btnGravarClick(Sender: TObject);
 var oVenda:TPdvVenda;
     oVendaProduto:TPdvVendaProduto;
     oVendaFormaPg:TPdvVendaFormaPagamento;
+    oSAT:TSAT;
+    oNFCe:TNFCe;
 begin
 
   if bufTemp.IsEmpty then
@@ -343,6 +287,12 @@ begin
 
   try
     Screen.Cursor:=crSQLWait;
+    frmpdvsplash := Tfrmpdvsplash.Create(Self);
+    frmpdvsplash.Show();
+    Application.ProcessMessages;
+    frmpdvsplash.lblMensagem.Caption:='Gravando...';
+    frmpdvsplash.Refresh;
+
     oVenda:=TPdvVenda.Create(dtmPrincipal.ConDataBase);
     oVenda.usuarioId:=oUsuarioLogado.codigo;
     oVenda.data:=Date;
@@ -408,9 +358,94 @@ begin
       finally
         bufPagamento.EnableControls;
       end;
+
+
+      if (oConfiguracao.tipoEmissaoEletronica = 1) then begin
+        try
+          frmpdvsplash.lblMensagem.Caption:='Enviando ao S@T...';
+          frmpdvsplash.Refresh;
+
+          oSAT:=TSAT.Create;
+          oSAT.CNPJ_SW:='11.111.111/1111-11';
+          oSAT.CNPJ_Emitente:='11.111.111/1111-11';
+          oSAT.IE_Emitente:='111.111.111.111';
+          oSAT.IM_Emitente:='1111';
+          oSAT.Modelo:=msCdEcl;
+          oSAT.NomeDll:='C:\SAT\SAT.dll';
+          oSAT.CodigoAtivacao:='12345678';
+          oSAT.AssinaturaSW:='2h34kj12h34kjh1jk2h34kjh12k3h4123412938471234b123mh41jh23g4jhg12349817239471934791273812341ju23h4u1h3k4h12k34h12h14uh2394712983419237981273412uj34h1k23h4k123hjk13984712934712k34hk21j3h4kj123kj1h234kjh1k2j34hkj12h34kjh12kj34hkj123h4kj12h34kj1h23k4jh21k3j4hk1j23h4kj231h3k4jh2k3j4hkj13h4kj24kh2349123y4172341j2k3h4kj5h46k3j4h6j34h56kj34h5k6j34h5';
+          oSAT.NumeroDoCaixa:=1;
+          try
+            if (oSAT.Inicializar) then begin
+               if (oSAT.GerarVenda(bufTemp, bufPagamento)) then begin
+                 FreeAndNilSplash;
+                 oSAT.ImprimirCFeSAT;
+               end
+               else begin
+                 FreeAndNilSplash;
+                 MessageERROR(oSAT.Mensagem_SAT);
+               end;
+            end
+            else begin
+              FreeAndNilSplash;
+              MessageOK('SAT não Inicializado',mtWarning);
+            end;
+          except
+            on E: Exception do begin
+              FreeAndNilSplash;
+              MessageERROR('Erro SAT: ' + E.Message);
+            end;
+          end;
+        finally
+          if Assigned(oSAT) then
+             FreeAndNil(oSAT);
+        end;
+      end
+      else
+      if (oConfiguracao.tipoEmissaoEletronica=2) then begin
+          try
+            frmpdvsplash.lblMensagem.Caption:='Enviando NFC-e...';
+            frmpdvsplash.Refresh;
+
+            oNFCe:=TNFCe.Create;
+
+            oNFCe.CNPJ_Emitente:=oConfiguracao.cnpj;
+            oNFCe.CNPJ_SW:=oConfiguracao.cnpj;
+            oNFCe.IE_Emitente:=oConfiguracao.ie;
+            oNFCe.IM_Emitente:='';
+
+            oNFCe.Razao_Social_Emitente:=oConfiguracao.empresa;
+            oNFCe.Fantasia_Emitente:=oConfiguracao.empresa;
+            oNFCe.Telefone_Emitente:='';
+            oNFCe.CEP_Emitente:=oConfiguracao.cep.ToInteger;
+            oNFCe.Logradouro_Emitente:=oConfiguracao.logradouro;
+            oNFCe.Numero_Emitente:=oConfiguracao.numero;
+            oNFCe.Bairro_Emitente:=oConfiguracao.bairro;
+            oNFCe.CodIBGE_Emitente:=oConfiguracao.codibge.ToInteger;
+            oNFCe.Municipio_Emitente:=oConfiguracao.cidade;
+            oNFCe.UF_Emitente:=oConfiguracao.uf;
+            oNFCe.Codigo_Regime_Tributario:=crtRegimeNormal;
+            oNFCe.CPF_Consumidor:='';
+            oNFCe.Nome_Consumidor:='CONSUMIDOR';
+            oNFCe.ArquivoPFXdoCertificado:=oConfiguracao.caminhoCertificadoDigital;
+            oNFCe.Senha_Certificado:=oConfiguracao.Senha;
+            oNFCe.Token_NFCe:=oConfiguracao.tokenNfce;
+            oNFCe.Token_NFCe_Id:=oConfiguracao.idTokenNfce;
+
+            if (oNFCe.GerarVenda(oConfiguracao.nroNFCe+1, oConfiguracao.nroSerieNFCe,bufTemp,bufPagamento)) then begin
+              oConfiguracao.AtualizarNroNFCe;
+              FreeAndNilSplash;
+            end
+
+          finally
+            if Assigned(oNFCe) then
+               FreeAndNil(oNFCe);
+          end;
+      end;
     end;
   finally
     Screen.Cursor:=crDefault;
+    FreeAndNilSplash;
     LimparBufDataSet;
     LimparCampos(true);
   end;
@@ -422,6 +457,12 @@ begin
   SetFocusPadrao;
 end;
 
+procedure TfrmPropdv.FreeAndNilSplash;
+begin
+  if Assigned(frmpdvsplash) then
+     FreeAndNil(frmpdvsplash);
+end;
+
 procedure Tfrmpropdv.edtCodigoExit(Sender: TObject);
 begin
   SelecionarProduto(TMaskEdit(Sender).Text);
@@ -430,6 +471,8 @@ end;
 procedure Tfrmpropdv.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   bufTemp.Close;
+  if Assigned(oConfiguracao) then
+     FreeAndNil(oConfiguracao);
 end;
 
 procedure Tfrmpropdv.FormCreate(Sender: TObject);
@@ -456,6 +499,9 @@ begin
   bufPagamento.FieldDefs.Add('valorTroco',ftFloat,0);
   bufPagamento.CreateDataset;
   dtsBufPagamento.DataSet:=bufPagamento;
+
+  oConfiguracao:=TConfiguracao.Create(dtmPrincipal.ConDataBase);
+  oConfiguracao.Selecionar;
 
   ACBrEnterTab1.EnterAsTab:=true;
   ConfigurarCampos;

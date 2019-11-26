@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, ACBrSAT, ACBrSATClass, ACBrSATExtratoFortesFr,
-  pcnConversao, ACBrUtil, uEnum, Forms;
+  pcnConversao, ACBrUtil, uEnum, Forms, BufDataset, db;
 
 type
 
@@ -39,7 +39,7 @@ type
       destructor Destroy; override;
       function Inicializar:Boolean;
       function ConsultarSAT: string;
-      function GerarVenda:Boolean;
+      function GerarVenda(bufVenda: TBufDataset; bufPagamento: TBufDataset):Boolean;
       procedure ImprimirCFeSAT;
       procedure ImprimirCFeSATResumido;
 
@@ -152,7 +152,7 @@ begin
   result:=ComponenteSAT.Resposta.mensagemRetorno;
 end;
 
-function TSAT.GerarVenda: Boolean;
+function TSAT.GerarVenda(bufVenda: TBufDataset; bufPagamento: TBufDataset): Boolean;
 Var TotalItem:Double;
     TotalGeral:Double;
 begin
@@ -165,59 +165,71 @@ begin
     ide.numeroCaixa := F_NumeroCaixa;
     ide.cNF         := Random(999999);
 
-    Dest.CNPJCPF    := '45.288.813/0001-67';
-    Dest.xNome      := 'Nome do Cliente Aqui';
+    //Dest.CNPJCPF    := '45.288.813/0001-67';
+    //Dest.xNome      := 'Nome do Cliente Aqui';
+    //
+    //Entrega.xLgr    := 'Endereco do cliente aqui';
+    //Entrega.nro     := '123';
+    //Entrega.xCpl    := 'complemento';
+    //Entrega.xBairro := 'bairro';
+    //Entrega.xMun    := 'municipio';
+    //Entrega.UF      := 'SP';
 
-    Entrega.xLgr    := 'Endereco do cliente aqui';
-    Entrega.nro     := '123';
-    Entrega.xCpl    := 'complemento';
-    Entrega.xBairro := 'bairro';
-    Entrega.xMun    := 'municipio';
-    Entrega.UF      := 'SP';
+    bufVenda.First;
+    while not bufVenda.EOF do begin
+      with Det.Add do
+      begin
+        nItem         := bufVenda.FieldByName('item').AsInteger;
+        Prod.cProd    := bufVenda.FieldByName('produtoId').AsString;
+        Prod.cEAN     := bufVenda.FieldByName('codigogtin').AsString;
+        Prod.xProd    := bufVenda.FieldByName('descricao').AsString;
+        prod.NCM      := '99';
+        Prod.CFOP     := '5120';
+        Prod.uCom     := 'UN';
+        Prod.qCom     := bufVenda.FieldByName('quantidade').AsFloat;
+        Prod.vUnCom   := bufVenda.FieldByName('valorUnitario').AsFloat;
+        Prod.indRegra := irTruncamento;
+        Prod.vDesc    := 0;
 
-    with Det.Add do
-    begin
-      nItem         := 1;
-      Prod.cProd    := '0001';
-      Prod.cEAN     := '7893460192261';
-      Prod.xProd    := 'Produto 0001';
-      prod.NCM      := '99';
-      Prod.CFOP     := '5120';
-      Prod.uCom     := 'UN';
-      Prod.qCom     := 1;
-      Prod.vUnCom   := 120.00;
-      Prod.indRegra := irTruncamento;
-      Prod.vDesc    := 1;
+        TotalItem  := RoundABNT((Prod.qCom * Prod.vUnCom) + Prod.vOutro - Prod.vDesc, -2);  //ACBrUtil
+        TotalGeral := TotalGeral + TotalItem;
 
-      TotalItem  := RoundABNT((Prod.qCom * Prod.vUnCom) + Prod.vOutro - Prod.vDesc, -2);  //ACBrUtil
-      TotalGeral := TotalGeral + TotalItem;
+        Imposto.vItem12741 := TotalItem * 0.12;  //Lei da Transparencia para Calcular quanto a nota tem de imposto
+        Imposto.ICMS.orig := oeNacional;
+        if Emit.cRegTrib = RTSimplesNacional then
+          Imposto.ICMS.CSOSN := csosn102
+        else
+          Imposto.ICMS.CST := cst00;
 
-      Imposto.vItem12741 := TotalItem * 0.12;  //Lei da Transparencia para Calcular quanto a nota tem de imposto
-      Imposto.ICMS.orig := oeNacional;
-      if Emit.cRegTrib = RTSimplesNacional then
-        Imposto.ICMS.CSOSN := csosn102
-      else
-        Imposto.ICMS.CST := cst00;
+        Imposto.ICMS.pICMS := 18;
 
-      Imposto.ICMS.pICMS := 18;
+        Imposto.PIS.CST := pis49;
+        Imposto.PIS.vBC := TotalItem;
+        Imposto.PIS.pPIS := 0.0065;
 
-      Imposto.PIS.CST := pis49;
-      Imposto.PIS.vBC := TotalItem;
-      Imposto.PIS.pPIS := 0.0065;
+        Imposto.COFINS.CST := cof49;
+        Imposto.COFINS.vBC := TotalItem;
+        Imposto.COFINS.pCOFINS := 0.0065;
 
-      Imposto.COFINS.CST := cof49;
-      Imposto.COFINS.vBC := TotalItem;
-      Imposto.COFINS.pCOFINS := 0.0065;
-
+      end;
+      bufVenda.Next;
     end;
 
-    Total.DescAcrEntr.vDescSubtot := 5;
+    Total.DescAcrEntr.vDescSubtot := 0;
     Total.vCFeLei12741 := TotalGeral * 0.12;
 
+    bufPagamento.First;
     with Pagto.Add do
     begin
-      cMP := mpDinheiro;
-      vMP := TotalGeral;
+      case StrToInt(bufPagamento.FieldByName('codigoMeioPagamento').AsString) of
+        1: cMP := mpDinheiro;
+        2: cMP := mpCheque;
+        3: cMP := mpCartaodeCredito;
+        4: cMP := mpCartaodeDebito;
+        5: cMP := mpCreditoLoja;
+       99: cMP := mpOutros;
+      end;
+      vMP := bufPagamento.FieldByName('valorPago').AsFloat;
     end;
 
     InfAdic.infCpl := 'Acesse www.mfrinfo.com.br'+

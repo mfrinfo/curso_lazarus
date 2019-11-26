@@ -42,6 +42,7 @@ type
     procedure Usuario;
     procedure AcaoAcesso;
     procedure UsuariosAcaoAcesso;
+    procedure Configuracoes;
 end;
 
 implementation
@@ -61,6 +62,7 @@ begin
   Usuario;
   AcaoAcesso;
   UsuariosAcaoAcesso;
+  Configuracoes;
 end;
 
 destructor TAtualizacaoTable.Destroy;
@@ -69,7 +71,8 @@ begin
 end;
 
 
-Function TAtualizacaoTable.TabelaExisteNoBancoDeDados(aNomeTabela:String):Boolean;
+function TAtualizacaoTable.TabelaExisteNoBancoDeDados(aNomeTabela: String
+  ): Boolean;
 Var Qry:TZQuery;
 Begin
 
@@ -258,6 +261,35 @@ begin
       '	 PRIMARY KEY (usuarioId, acaoAcessoId), '+
       '	 CONSTRAINT FK_UsuarioAcaoAcessoUsuario FOREIGN KEY (usuarioId) references usuarios(usuarioId), '+
       '	 CONSTRAINT FK_UsuarioAcaoAcessoAcaoAcesso FOREIGN KEY (acaoAcessoId) references acaoAcesso(acaoAcessoId) '+
+      '	) '
+    );
+  end;
+end;
+
+procedure TAtualizacaoTable.Configuracoes;
+begin
+  if not TabelaExisteNoBancoDeDados('configuracoes') then begin
+    ExecutaDiretoBancoDeDados(
+      'CREATE TABLE configuracoes( '+
+      '	 configuracaoId VARCHAR(36) NOT NULL, '+
+      '	 empresa VARCHAR(50) NOT NULL, '+
+      '	 cnpj VARCHAR(18) NOT NULL, '+
+      '	 ie VARCHAR(15), '+
+      '	 cep  VARCHAR(10), '+
+      '	 numero  VARCHAR(10), '+
+      '	 logradouro VARCHAR(50), '+
+      '	 bairro VARCHAR(40), '+
+      '	 cidade VARCHAR(50), '+
+      '	 uf CHAR(2), '+
+      '	 codibge VARCHAR(7), '+
+      '	 tokenNfce VARCHAR(36), '+
+      '	 idTokenNfce VARCHAR(6), '+
+      '  caminhoCertificadoDigital VARCHAR(255), '+
+      '  senha VARCHAR(30), '+
+      '  tipoEmissaoEletronica Integer DEFAULT 0 NOT NULL, '+
+      '  nroSerieNFCe Integer DEFAULT 0 NOT NULL, '+
+      '  nroNFCe Integer DEFAULT 0 NOT NULL, '+
+      '	 PRIMARY KEY (configuracaoId) '+
       '	) '
     );
   end;

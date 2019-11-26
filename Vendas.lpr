@@ -12,7 +12,8 @@ uses
   uenum, cusuariologado, ufuncaoCriptografia, uutils, catualizacaocampomysql,
   ccadusuario, ucadusuario, uLogin, cacaoacesso, uCadAcaoAcesso,
   cInstanciarForm, uUsuarioVsAcoes, cbase, ucadcategoria, ucadcliente,
-  ucadproduto, upropdv, cpdvvenda, upropdv_pagamento, cpdvvendasat, cpdvvendanfce;
+  ucadproduto, upropdv, cpdvvenda, upropdv_pagamento, cpdvvendasat,
+  cpdvvendanfce, upropdv_splash, ucadconfiguracao, cCadConfiguracao;
 
 {$R *.res}
 

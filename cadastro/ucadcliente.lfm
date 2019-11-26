@@ -1,6 +1,6 @@
 inherited frmCadCliente: TfrmCadCliente
   Left = 641
-  Top = 264
+  Top = 265
   Caption = 'Cadastro de Cliente'
   OnClose = FormClose
   OnCreate = FormCreate
@@ -106,7 +106,11 @@ inherited frmCadCliente: TfrmCadCliente
     end
   end
   inherited pgcPrincipal: TPageControl
+    ActivePage = tabManutencao
+    TabIndex = 1
     inherited tabManutencao: TTabSheet
+      ClientHeight = 298
+      ClientWidth = 830
       object edtNome: TLabeledEdit[0]
         Tag = 2
         Left = 12

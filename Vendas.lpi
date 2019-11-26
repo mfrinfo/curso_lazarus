@@ -124,7 +124,7 @@
         <PackageName Value="LCL"/>
       </Item13>
     </RequiredPackages>
-    <Units Count="34">
+    <Units Count="37">
       <Unit0>
         <Filename Value="Vendas.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -321,6 +321,25 @@
         <Filename Value="class\cpdvvendanfce.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit33>
+      <Unit34>
+        <Filename Value="processo\upropdv_splash.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmpdvsplash"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="cadastro\ucadconfiguracao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadConfiguracao"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="class\ccadconfiguracao.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="cCadConfiguracao"/>
+      </Unit36>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -1,0 +1,389 @@
+inherited frmCadConfiguracao: TfrmCadConfiguracao
+  Left = 634
+  Height = 522
+  Top = 198
+  Width = 846
+  ClientHeight = 522
+  ClientWidth = 846
+  OnClose = FormClose
+  OnCreate = FormCreate
+  inherited pnlTitulo: TPanel
+    Width = 846
+    ClientWidth = 846
+    inherited lblTitulo: TLabel
+      Width = 210
+      Caption = 'Configuração do Sistema'
+    end
+  end
+  inherited pnlBotoes: TPanel
+    Top = 472
+    Width = 846
+    ClientWidth = 846
+    inherited btnNovo: TBitBtn
+      OnClick = btnNovoClick
+    end
+    inherited btnAlterar: TBitBtn
+      OnClick = btnAlterarClick
+    end
+    inherited btnGravar: TBitBtn
+      OnClick = btnGravarClick
+    end
+    inherited btnNavigator: TDBNavigator
+      Hints.Strings = (      )
+    end
+    inherited btnFechar: TBitBtn
+      Left = 752
+    end
+  end
+  inherited pgcPrincipal: TPageControl
+    Height = 422
+    Width = 846
+    ActivePage = tabManutencao
+    TabIndex = 1
+    inherited tabManutencao: TTabSheet
+      ClientHeight = 394
+      ClientWidth = 838
+      object edtConfiguracaoId: TLabeledEdit[0]
+        Tag = 1
+        Left = 12
+        Height = 23
+        Top = 32
+        Width = 350
+        EditLabel.Height = 15
+        EditLabel.Width = 350
+        EditLabel.Caption = 'Código'
+        EditLabel.ParentColor = False
+        MaxLength = 36
+        TabOrder = 0
+      end
+      object edtNomeEmpresa: TLabeledEdit[1]
+        Tag = 2
+        Left = 12
+        Height = 23
+        Top = 80
+        Width = 468
+        EditLabel.Height = 15
+        EditLabel.Width = 468
+        EditLabel.Caption = 'Nome da Empresa'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 1
+      end
+      object edtCNPJ: TMaskEdit[2]
+        Tag = 2
+        Left = 490
+        Height = 23
+        Top = 80
+        Width = 167
+        CharCase = ecNormal
+        MaxLength = 18
+        TabOrder = 2
+        SpaceChar = '_'
+      end
+      object lblCNPJ: TLabel[3]
+        Left = 489
+        Height = 15
+        Top = 63
+        Width = 28
+        Caption = 'CNPJ'
+        ParentColor = False
+      end
+      object edtIE: TMaskEdit[4]
+        Left = 666
+        Height = 23
+        Top = 80
+        Width = 150
+        CharCase = ecNormal
+        MaxLength = 15
+        TabOrder = 3
+        SpaceChar = '_'
+      end
+      object lblIe: TLabel[5]
+        Left = 666
+        Height = 15
+        Top = 63
+        Width = 9
+        Caption = 'IE'
+        ParentColor = False
+      end
+      object edtLogradouro: TLabeledEdit[6]
+        Left = 176
+        Height = 23
+        Top = 130
+        Width = 496
+        EditLabel.Height = 15
+        EditLabel.Width = 496
+        EditLabel.Caption = 'Logradouro'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 4
+      end
+      object edtCEP: TMaskEdit[7]
+        Left = 12
+        Height = 23
+        Top = 130
+        Width = 113
+        CharCase = ecNormal
+        MaxLength = 10
+        TabOrder = 5
+        EditMask = '99.999-999;0;_'
+        SpaceChar = '_'
+      end
+      object lblDocumento2: TLabel[8]
+        Left = 12
+        Height = 15
+        Top = 111
+        Width = 21
+        Caption = 'CEP'
+        ParentColor = False
+      end
+      object edtBuscarCEP: TBitBtn[9]
+        Left = 128
+        Height = 26
+        Top = 129
+        Width = 43
+        Caption = 'Buscar'
+        OnClick = edtBuscarCEPClick
+        TabOrder = 6
+      end
+      object edtNumero: TLabeledEdit[10]
+        Left = 685
+        Height = 23
+        Top = 129
+        Width = 132
+        EditLabel.Height = 15
+        EditLabel.Width = 132
+        EditLabel.Caption = 'Número'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 7
+      end
+      object edtBairro: TLabeledEdit[11]
+        Left = 12
+        Height = 23
+        Top = 186
+        Width = 297
+        EditLabel.Height = 15
+        EditLabel.Width = 297
+        EditLabel.Caption = 'Bairro'
+        EditLabel.ParentColor = False
+        MaxLength = 40
+        TabOrder = 8
+      end
+      object edtCidade: TLabeledEdit[12]
+        Left = 321
+        Height = 23
+        Top = 184
+        Width = 424
+        EditLabel.Height = 15
+        EditLabel.Width = 424
+        EditLabel.Caption = 'Municipio'
+        EditLabel.ParentColor = False
+        MaxLength = 50
+        TabOrder = 9
+      end
+      object edtUf: TLabeledEdit[13]
+        Left = 756
+        Height = 23
+        Top = 186
+        Width = 60
+        EditLabel.Height = 15
+        EditLabel.Width = 60
+        EditLabel.Caption = 'UF'
+        EditLabel.ParentColor = False
+        MaxLength = 2
+        TabOrder = 10
+      end
+      object EdtIBGEMunicipio: TLabeledEdit[14]
+        Left = 12
+        Height = 23
+        Top = 240
+        Width = 128
+        EditLabel.Height = 15
+        EditLabel.Width = 128
+        EditLabel.Caption = 'IBGE Municipio'
+        EditLabel.ParentColor = False
+        MaxLength = 7
+        TabOrder = 11
+      end
+      object edtTokenNfce: TLabeledEdit[15]
+        Left = 160
+        Height = 23
+        Top = 240
+        Width = 512
+        EditLabel.Height = 15
+        EditLabel.Width = 512
+        EditLabel.Caption = 'Token NFC-e'
+        EditLabel.ParentColor = False
+        MaxLength = 36
+        TabOrder = 12
+      end
+      object edtIdTokenNFCe: TLabeledEdit[16]
+        Left = 685
+        Height = 23
+        Top = 240
+        Width = 131
+        EditLabel.Height = 15
+        EditLabel.Width = 131
+        EditLabel.Caption = 'ID. Token NFC-e'
+        EditLabel.ParentColor = False
+        MaxLength = 6
+        TabOrder = 13
+      end
+      object edtCertificadoDigital: TLabeledEdit[17]
+        Left = 12
+        Height = 23
+        Top = 304
+        Width = 532
+        EditLabel.Height = 15
+        EditLabel.Width = 532
+        EditLabel.Caption = 'Nro. Série Certificado Digital'
+        EditLabel.ParentColor = False
+        MaxLength = 255
+        TabOrder = 14
+      end
+      object rdgTipoDeEmissao: TRadioGroup[18]
+        Left = 584
+        Height = 54
+        Top = 278
+        Width = 232
+        AutoFill = True
+        Caption = 'Tipo de Emissão Eletrônica'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 3
+        ClientHeight = 34
+        ClientWidth = 228
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          'Nenhum'
+          'SAT'
+          'NFC-e'
+        )
+        TabOrder = 15
+      end
+      object btnLocalizaCertificadoDigital: TSpeedButton[19]
+        Left = 552
+        Height = 22
+        Top = 304
+        Width = 23
+        Glyph.Data = {
+          36030000424D3803000000000000360000002800000010000000100000000100
+          18000000000002030000120B0000120B00000000000000000000FF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FF9B3B0A9B3B0A9B3B0A993B0DFF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF9B3B0AFA
+          EAC2E9B171953B11FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FF9B3B0AFAE9C0EAB474953B11FF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF9B3B0AF9
+          E7BFEBB677953B11FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFC3B6B09B3B0AA54D1E9B3B0A983B0EC3B8B4FF00FFFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA86441C58355FA
+          DEB1F7D6A5B3724AAC6C4CFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+          FF00FFFF00FFB89787A54E20F6D4A8FBE2B7F6D19DDBAB799A461FBDA79BFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFC5BEBBA0491DDDA876F9E3C2F9
+          DBADF4CB96E9B97FB17047A3542CFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+          FF00FFAE7559B86F40F6D6ACFBE9CDF7D5A4F2C68FEBB879CA905A984D28B68E
+          7AFF00FFFF00FFFF00FFFF00FFFF00FFBDA79B9F4516EBBC84FAE9D1FBE8CBF6
+          D09CEFC187E9B272D49758A7653C9B4419C5BEBBFF00FFFF00FFFF00FFC7C4C3
+          A4532BCD8E5BF5D5AAFBF5E9FAE2BEF3CB95EDBC80E7AD6ADF9C55B8743D924D
+          2BAE7254FF00FFFF00FFFF00FFB3856FAC5E30EFC187FAEEDEFCF9F5F7D6A9F1
+          C58DEBB778E4A862DF994EC179399B582E93411BC0ADA4FF00FFFF00FF9D3E0F
+          9B3B0A9B3B0A9B3B0A9B3B0A9B3B0A9B3B0A9B3B0A9B3B0A9B3B0A9A3B0B983B
+          0E973B0FA65B36FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+        }
+        OnClick = btnLocalizaCertificadoDigitalClick
+      end
+      object edtSenhaCertificado: TLabeledEdit[20]
+        Left = 12
+        Height = 23
+        Top = 360
+        Width = 232
+        EchoMode = emPassword
+        EditLabel.Height = 15
+        EditLabel.Width = 232
+        EditLabel.Caption = 'Senha do Certificado'
+        EditLabel.ParentColor = False
+        MaxLength = 30
+        PasswordChar = '*'
+        TabOrder = 16
+      end
+      object edtSerieNFCe: TCurrencyEdit[21]
+        Left = 256
+        Height = 23
+        Top = 360
+        Width = 112
+        Alignment = taRightJustify
+        DecimalPlaces = 0
+        DisplayFormat = '#######0'
+        MaxValue = 0
+        MinValue = 0
+        TabOrder = 17
+        Value = 0
+        ZeroEmpty = False
+      end
+      object edtNroNFCe: TCurrencyEdit[22]
+        Left = 383
+        Height = 23
+        Top = 360
+        Width = 112
+        Alignment = taRightJustify
+        DecimalPlaces = 0
+        DisplayFormat = '#######0'
+        MaxValue = 0
+        MinValue = 0
+        TabOrder = 18
+        Value = 0
+        ZeroEmpty = False
+      end
+      object lblSerieNFCe: TLabel[23]
+        Left = 258
+        Height = 15
+        Top = 342
+        Width = 78
+        Caption = 'Série da NFC-e'
+        ParentColor = False
+      end
+      object lblNroUltimaNFCe: TLabel[24]
+        Left = 384
+        Height = 15
+        Top = 342
+        Width = 98
+        Caption = 'Nro. Última NFC-e'
+        ParentColor = False
+      end
+    end
+  end
+  inherited qryListagem: TZQuery
+    SQL.Strings = (
+      ''
+      'SELECT configuracaoId, empresa, cnpj, COUNT(configuracaoId) AS Qtde FROM configuracoes;'
+    )
+  end
+  object OpenDialog1: TOpenDialog[5]
+    Title = 'Selecione a NFe'
+    DefaultExt = '.*pfx'
+    Filter = 'Arquivos Certificado Digital|*.PFX'
+    left = 480
+    top = 368
+  end
+  object ACBrBuscaCEP: TACBrCEP[6]
+    ProxyPort = '8080'
+    WebService = wsCepLivre
+    ChaveAcesso = 'e72b376ec92b125f395a7fc6b6c8eb18'
+    Usuario = 'mfrinfophone@gmail.com'
+    Senha = 'oVtqoE'
+    PesquisarIBGE = True
+    OnBuscaEfetuada = ACBrBuscaCEPBuscaEfetuada
+    left = 592
+    top = 8
+  end
+end

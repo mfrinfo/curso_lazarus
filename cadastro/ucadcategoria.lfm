@@ -1,6 +1,6 @@
 inherited frmCadCategoria: TfrmCadCategoria
-  Left = 575
-  Top = 291
+  Left = 384
+  Top = 71
   Caption = 'Cadastro de Categoria'
   OnClose = FormClose
   OnCreate = FormCreate
@@ -51,7 +51,11 @@ inherited frmCadCategoria: TfrmCadCategoria
     end
   end
   inherited pgcPrincipal: TPageControl
+    ActivePage = tabManutencao
+    TabIndex = 1
     inherited tabManutencao: TTabSheet
+      ClientHeight = 298
+      ClientWidth = 830
       object edtCategoriaId: TLabeledEdit[0]
         Tag = 1
         Left = 12
